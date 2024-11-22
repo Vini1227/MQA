@@ -25,9 +25,9 @@ Sistema de cadastro de doadores e ONGs. Criado com o intuito de facilitar a comu
 ## Desenvolvedores
 
 
-* [Ryon](https://github.com/Ryonxl)
-* [Guilherme](https://github.com/Guilhermemth)
-* [Paulo](https://github.com/Paulorc0)
-* [Felipe](https://github.com/Feliperasilva)
-* [Caio](https://github.com/Vini1227)
-* [Kaua](https://github.com/Kaua17742)
+* [Ryon](https://github.com/Ryonxl)👨🏿‍💻
+* [Guilherme](https://github.com/Guilhermemth)👩🏻‍💻
+* [Paulo](https://github.com/Paulorc0)👩🏾‍💻
+* [Felipe](https://github.com/Feliperasilva)👨🏻‍💻
+* [Caio](https://github.com/Vini1227)👨🏽‍💻
+* [Kaua](https://github.com/Kaua17742)👨🏽‍💻
