@@ -2,7 +2,7 @@
 Sistema de cadastro de doadores e ONGs. Criado com o intuito de facilitar a comunicação entre o usuário e instituições sociais. 
 
 
-##Funcionalidades 
+## Funcionalidades 
 
 
 *Cadastro de Usuários (ONGs, doadores e administrador)
@@ -11,7 +11,7 @@ Sistema de cadastro de doadores e ONGs. Criado com o intuito de facilitar a comu
 *Sistema de Chat (para forma de contato entre usuário e ONG)
 
 
-##Tecnologias 
+## Tecnologias 
 
 
 *HTML
@@ -22,7 +22,7 @@ Sistema de cadastro de doadores e ONGs. Criado com o intuito de facilitar a comu
 *REACT
 
 
-##Desenvolvedores
+## Desenvolvedores
 
 
 *[Ryon](https://github.com/Ryonxl)
