@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #8EACBF;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.card {
+  background-color: white;
+  padding: 75px;
+  border-radius: 20px;
+  width: 500px;
+  height: 950px;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 20px;
+  color: #8EACBF;
+}
+
+.label-float input{
+  margin-left: 30px; 
+  height: 52px;  
+  width: 420px;
+  padding: 5px 5px;
+  display: inline-block;
+  border: 1px solid #8EACBF;
+  background-color: white;
+  outline: none;
+  min-width: 180px;
+  font-size: 16px;
+  transition: all .3s ease-out;
+  border-radius: 20px;
+  
+}
+
+.label-float{
+  position: relative;
+  padding-top: 13px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.label-float input:focus{
+  border-bottom: 2px solid #8EACBF;
+}
+
+.label-float label{
+  margin-left: 41px;
+  color: #8EACBF;
+  pointer-events: none;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  margin-top: 13px;
+  transition: all .3s ease-out;
+}
+
+.label-float input:focus + label,
+.label-float input:valid + label{
+  font-size: 13px;
+  margin-top: 0;
+  color: #4f98c5;
+}
+
+button{
+  width: 420px;
+  height: 76px;
+  background-color: transparent;
+  border-color: #8EACBF;
+  color: #8EACBF;
+  padding: 7px;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: none;
+  transition: all .4s ease-out;
+}
+
+button:hover{
+  background-color: #8EACBF;
+  color: #fff;
+}
+
+.justify-center{
+  display: flex;
+  justify-content: center;
+}
+
+.fa-eye{
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+  color: #8EACBF;
+}
+
+#msgError{
+  text-align: center;
+  color: #ff0000;
+  background-color: #ffbbbb;
+  padding: 10px;
+  border-radius: 4px;
+  display: none;
+}
+
+#msgSuccess{
+  text-align: center;
+  color: #00bb00;
+  background-color: #bbffbe;
+  padding: 10px;
+  border-radius: 4px;
+  display: none;
+}
+
+.label-desc input{
+    margin-left: 30px; 
+    height: 299px;  
+    width: 420px;
+    padding: 5px 5px;
+    display: inline-block;
+    border: 1px solid #8EACBF;
+    background-color: white;
+    outline: none;
+    min-width: 180px;
+    font-size: 16px;
+    transition: all .3s ease-out;
+    border-radius: 20px;
+    
+  }
+  
+  .label-desc{
+    position: relative;
+    padding-top: 13px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  
+  .label-desc input:focus{
+    border-bottom: 2px solid #8EACBF;
+  }
+  
+  .label-desc label{
+    margin-left: 41px;
+    color: #8EACBF;
+    pointer-events: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    margin-top: 13px;
+    transition: all .3s ease-out;
+  }
+  
+  .label-desc input:focus + label,
+  .label-desc input:valid + label{
+    font-size: 13px;
+    margin-top: 0;
+    color: #4f98c5;
+  }
+  
