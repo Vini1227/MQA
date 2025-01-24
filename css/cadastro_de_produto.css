@@ -81,10 +81,11 @@ body{
     display: flex;
     flex-direction: column;
     width: 700px;
+    height: auto;
     background-color: #8EACBF;
     align-self: center;
     justify-self: center;
-    border-radius: 25px ;
+    border-radius: 25px;
 }
 
 .titulo.cadastro{
@@ -137,6 +138,7 @@ body{
     min-width: 100%;
     min-height: 100%;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .droplist{
@@ -145,16 +147,22 @@ body{
     justify-content: space-between;
     margin-top: 40px;
     background-color: #ffffff;
-    min-width: 650px;
+    width: 650px;
     min-height: 60px;
     border-radius: 10px;
+    max-width: 650px; 
 
 }
 
 .droplistp {
-    text-align: center;
+    text-align: left;
     font-weight: bold;
     color: #0D0D0D;
     font-size: 24px;
     margin-inline: 10px;
+}
+
+details p {
+    word-break: break-word;
+    margin-top: 20px;
 }
