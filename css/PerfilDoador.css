@@ -33,6 +33,8 @@ header{
     width: 100%;
     height: 494px;
     background-image: url(../img/coelho.png);
+    background-position: center center ;
+    background-size: cover;
     max-width: 100%;
     background-repeat: no-repeat;
     margin-top: 100px;
@@ -99,7 +101,7 @@ h2 {
     /*background-color: #f2f2f2;*/
     padding: 20px; /* Adiciona espaçamento interno */
     display: none; /* Ocultar a parte inferior por padrão */ 
-    opacity: 0; /* Inicialmente transparente */ 
+    opacity: 100; /* Inicialmente transparente */ 
     transition: opacity 0.5s ease; /* Transição suave para opacidade */
 }
 
@@ -194,15 +196,16 @@ h2 {
     padding: 0;
 }
 
-.Descricao input{
+.Descricao textarea{
     height: 250px;
     width: 100%;
     border-radius: 20px;
     border: black 1px solid;
-    display: inline-block;
+    display: flex;
     outline: none;
     font-size: 16px;
     transition: all .3s ease-out;
+    padding: 10px;
 }
 
 .Descricao input:focus{

@@ -4,5 +4,5 @@ function openInferior(Nm){
     if(typeof inferior == 'undefined' || inferior === null)
         return;
 
-        inferior.style.display = 'Block';
+        inferior.style.display = 'flex';
 }
