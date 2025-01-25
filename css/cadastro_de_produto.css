@@ -157,6 +157,7 @@ body{
 .droplistp {
     text-align: left;
     font-weight: bold;
+    width: 100%;
     color: #0D0D0D;
     font-size: 24px;
     margin-inline: 10px;
@@ -192,4 +193,14 @@ summary::after {
     right: 25px; 
     margin-right: 10px;
     margin-top: -4px;
+}
+
+.pix-symbol {
+    width: 45px;
+    height: 45px;
+    background-image: url('../imgs/pix.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    margin: 30px auto 10px auto;
 }
