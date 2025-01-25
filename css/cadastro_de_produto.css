@@ -71,7 +71,7 @@ body{
     z-index: 2;
     left: 20%;
     top: 45%;
-    color: #ffffff;
+    color: #f2f2f2;
     font-size: 50px;
     font-weight: bold;
     
@@ -105,7 +105,7 @@ body{
 .check {
     display: flex;
     margin-top: 30px;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
     height: 60px;
     width: 300px;
     border-radius: 10px;
@@ -146,7 +146,7 @@ body{
     align-items: center;
     justify-content: space-between;
     margin-top: 40px;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
     width: 650px;
     min-height: 60px;
     border-radius: 10px;
@@ -203,4 +203,26 @@ summary::after {
     background-repeat: no-repeat;
     display: flex;
     margin: 30px auto 10px auto;
+}
+
+.cad-mon-ttl {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+input {
+    direction: ltr;
+}
+
+.pix-inp-box {
+    height: 82px;
+    width: 537px;
+    border-radius: 20px;
+    display: flex;
+    outline: none;
+    font-size: 16px;
+    transition: all .3s ease-out;
+    text-align: center;
+    margin: auto;
+    background-color: #ffffff;
 }
