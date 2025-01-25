@@ -160,9 +160,36 @@ body{
     color: #0D0D0D;
     font-size: 24px;
     margin-inline: 10px;
+    margin: 10px;
+    direction: rtl;
 }
 
 details p {
     word-break: break-word;
     margin-top: 20px;
+}
+
+summary {
+    cursor: pointer;
+    direction: rtl;
+    text-align: left;
+    list-style: none;
+}
+
+details[open] summary::after {
+    content: "▲";
+    font-size: 2rem;
+    position: absolute;
+    right: 25px;
+    margin-right: 10px;
+    margin-top: -4px;
+}
+
+summary::after {
+    content: "▼";
+    font-size: 2rem;
+    position: absolute;
+    right: 25px; 
+    margin-right: 10px;
+    margin-top: -4px;
 }
