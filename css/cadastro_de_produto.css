@@ -226,3 +226,23 @@ input {
     margin: auto;
     background-color: #ffffff;
 }
+
+.bank-inp-box{
+    height: 42px;
+    width: 537px;
+    border-radius: 20px;
+    display: flex;
+    outline: none;
+    font-size: 16px;
+    transition: all .3s ease-out;
+    text-align: center;
+    margin: auto;
+    background-color: #ffffff;
+}
+
+.cad-mon-text{
+    text-align: left;
+    margin-bottom: 10px;
+    position: relative;
+    left: 44.5px;
+}
