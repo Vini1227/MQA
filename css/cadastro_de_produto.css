@@ -229,7 +229,7 @@ input {
 
 .bank-inp-box{
     height: 42px;
-    width: 537px;
+    width: 600px;
     border-radius: 20px;
     display: flex;
     outline: none;
@@ -245,4 +245,26 @@ input {
     margin-bottom: 10px;
     position: relative;
     left: 44.5px;
+}
+
+.button-box {
+    display: flex;              /* Adiciona o flex container */
+    margin: 60px auto 10px auto;
+    width: 600px;
+}
+
+.button {
+    position: relative;
+    background-color: #8EACBF;
+    width: 180px;
+    min-height: 42px;
+    margin-left: 20px;
+    border-radius: 10px;
+    left: 0px;
+}
+
+.button-mon-text {
+    position: relative;
+    text-align: center;
+    margin: 5px 5px 5px 5px;
 }
