@@ -8,15 +8,15 @@
 
       include_once('./config.php');
 
-      $email = $_POST['email'];
       $usuario = $_POST['usuario'];
+      $email = $_POST['email'];
       $senha = $_POST['senha'];
       $confir_senha = $_POST['confirmar'];
       $descricao = $_POST['descricao'];
 
       if ($senha == $confir_senha) {
 
-         $result = mysqli_query($conexao, "INSERT INTO cadastro(email,usuario,senha,descricao,confir_senha) VALUES ('$email','$usuario','$senha','$descricao','$confir_senha')");
+         $result = mysqli_query($conexao, "INSERT INTO cadastro(usuario,email,senha,descricao,confir_senha) VALUES ('$usuario','$email','$senha','$descricao','$confir_senha')");
   
          if($result){
           echo "cadastro realizado com sucesso!";
@@ -50,12 +50,12 @@
           
                   <div class="label-float">
                      <input type="text" id="nome"
-                     name="email" placeholder=" " required>
-                     <label id="labelNome" for="nome">Email</label>
+                     name="usuario" placeholder=" " required>
+                     <label id="labelNome" for="nome">Nome</label>
                   </div>
       
                   <div class="label-float">
-                     <input type="text" name="usuario" id="usuario" placeholder=" " required>
+                     <input type="text" name="email" id="usuario" placeholder=" " required>
                      <label id="labelUsuario" for="usuario">Usuário</label>
                   </div>
                   
