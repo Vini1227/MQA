@@ -17,13 +17,14 @@
       if ($senha == $confir_senha) {
 
          $result = mysqli_query($conexao, "INSERT INTO cadastro(usuario,email,senha,descricao,confir_senha) VALUES ('$usuario','$email','$senha','$descricao','$confir_senha')");
-  
-         if($result){
-          echo "cadastro realizado com sucesso!";
-         }
-         else{
-         echo "as senhas nao coincidem tente novamente";
-         }
+         
+         header('Location:login.php');
+         //if($result){
+         // echo "cadastro realizado com sucesso!";
+         //}
+         //else{
+         //echo "as senhas nao coincidem tente //novamente";
+         //}
       }
   
    }
