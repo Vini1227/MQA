@@ -87,6 +87,7 @@ h1{
   font-size: 30px;
   margin-top: 20px;
   border-radius: 20px;
+  border: 2px solid;
   cursor: pointer;
   outline: none;
   transition: all .4s ease-out;
