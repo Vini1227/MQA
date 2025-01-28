@@ -50,10 +50,12 @@ label{
     cursor: pointer;
     color: #8EACBF;
     font-weight: bold;
-    border: 1px solid #8EACBF;
+    border: 2px solid #8EACBF;
     padding: 10px;
     border-radius: 20px;
     width: 45%;
+    height: 5vh;
+    transition: all .4s ease-out;
 }
 #submit:hover{
     border: none;
