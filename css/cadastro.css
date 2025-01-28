@@ -76,7 +76,7 @@ h1{
   color: #4f98c5;
 }
 
-button{
+#submit{
   width: 420px;
   height: 76px;
   background-color: transparent;
@@ -92,7 +92,8 @@ button{
   transition: all .4s ease-out;
 }
 
-button:hover{
+#submit:hover{
+  border: none;
   background-color: #8EACBF;
   color: #fff;
 }
