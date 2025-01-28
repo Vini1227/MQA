@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container-login">
-        <form action="">
+        <form action="./testlogin.php" method="post">
             <h1>Login</h1>
             <label for="usuário">Usuário:</label>
             <br>
