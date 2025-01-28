@@ -4,8 +4,8 @@ USE crud_login;
 CREATE TABLE cadastro
 (
     id int unsigned not null auto_increment,
-    email varchar(100) not null,
     usuario varchar(100) not null,
+    email varchar(100) not null,
     senha varchar(20) not null,
     descricao varchar(200) not null,
     PRIMARY KEY (id)
