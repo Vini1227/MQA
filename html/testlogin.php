@@ -21,7 +21,7 @@
         header('Location: login.php');
       }
       else{
-        header('Location: cadastro_de_produtos.html');
+        header('Location:sistema.php');
       }
    }
    else
