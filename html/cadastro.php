@@ -1,34 +1,46 @@
 <?php
-  if(isset($_POST['submit'])){
-      //print_r($_POST['email']);
-      //print_r($_POST['usuario']);
-      //print_r($_POST['senha']);
-      //print_r($_POST['confirmar']);
-      //print_r($_POST['descricao']);
+if (isset($_POST['submit'])) {
+    include_once('./config.php');
 
-      include_once('./config.php');
+    // Coletando dados do formulário
+    $usuario = $_POST['usuario'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $confir_senha = $_POST['confirmar'];
+    $descricao = $_POST['descricao'];
 
-      $usuario = $_POST['usuario'];
-      $email = $_POST['email'];
-      $senha = $_POST['senha'];
-      $confir_senha = $_POST['confirmar'];
-      $descricao = $_POST['descricao'];
+    // Verificando se as senhas coincidem
+    if ($senha == $confir_senha) {
+        try {
+            // Criação da conexão PDO
+            $conexao = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
+            $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      if ($senha == $confir_senha) {
+            // Preparando a consulta SQL
+            $sql = "INSERT INTO cadastro (usuario, email, senha, descricao, confir_senha) VALUES (:usuario, :email, :senha, :descricao, :confir_senha)";
+            $stmt = $conexao->prepare($sql);
 
-         $result = mysqli_query($conexao, "INSERT INTO cadastro(usuario,email,senha,descricao,confir_senha) VALUES ('$usuario','$email','$senha','$descricao','$confir_senha')");
-         
-         header('Location:login.php');
-         //if($result){
-         // echo "cadastro realizado com sucesso!";
-         //}
-         //else{
-         //echo "as senhas nao coincidem tente //novamente";
-         //}
-      }
-  
-   }
+            // Vinculando os parâmetros
+            $stmt->bindParam(':usuario', $usuario);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':senha', $senha);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':confir_senha', $confir_senha);
 
+            // Executando a consulta
+            $stmt->execute();
+
+            // Redirecionando para a página de login
+            header('Location:login.php');
+            exit();
+        } catch (PDOException $e) {
+            // Exibindo mensagem de erro
+            echo "Falha na Conexão: " . $e->getMessage();
+        }
+    } else {
+        echo "As senhas não coincidem. Tente novamente.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,54 +50,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
     <title>Cadastro</title>
 </head>
 <body>
-    <div class='container'>
-        <div class='card'>
-         <form action="./cadastro.php" method="post">
-          <h1> Cadastrar </h1>
-          
-          <div id='msgError'></div>
-          <div id='msgSuccess'></div>
-          
-                  <div class="label-float">
-                     <input type="text" id="nome"
-                     name="usuario" placeholder=" " required>
-                     <label id="labelNome" for="nome">Nome</label>
-                  </div>
-      
-                  <div class="label-float">
-                     <input type="text" name="email" id="usuario" placeholder=" " required>
-                     <label id="labelUsuario" for="usuario">Usuário</label>
-                  </div>
-                  
-                  <div class="label-float">
-                     <input type="password" name="senha" id="senha" placeholder=" " required>
-                     <label id="labelSenha" for="senha">Senha</label>
-                     
-                  </div>
-      
-                  <div class="label-float">
-                     <input type="password" name="confirmar" id="confirmSenha" placeholder=" " required>
-                     <label id="labelConfirmSenha" for="confirmSenha">Confirmar Senha</label>
-                  </div>
-                  
-                  <div class="label-desc">
-                    <input type="description" name="descricao" id="descricao" placeholder=" " required>
-                    <label id="labeldescricao" for="descricao">Descrição:</label>
-                 </div>
-
-                  
-                  <div class='justify-center'>
-                  <input type="submit" id="submit" name="submit">
-                  </div>
-      
-          
-        </div>
-      </form>
-        </div>
-
-     <script src="../js/cadastro.js"></script>
+   <div class="app">
+      <div class="header">
+         <div class="nav">
+           <img class="mqa" src="../imgs/MQA_white.svg" alt="">
+           <div class="nav-links">
+           <a class="nav-link" href="">Login</a>
+           <a class="nav-link" href="">Sign-up</a>
+           </div>
+         </div>
+      </div>
+      <div class="main">
+         <div class="login-card">
+            <h1 class="card-title">Cadastrar-se</h1>
+            <div class="card-inputs">
+            <div class="card-input"> 
+               <label for="nome">Nome</label>
+               <input class="wrap-input" type="text" name="nome" id="nome">
+            </div>
+            <div class="card-input"> 
+               <label for="email">E-mail</label>
+               <input class="wrap-input" type="email" name="email" id="email">
+            </div>
+            <div class="card-input"> 
+               <label for="senha">Senha</label>
+               <input class="wrap-input" type="password" name="senha" id="senha">
+            </div>
+            <div class="card-input"> 
+               <label for="senha">Confirmar Senha</label>
+               <input class="wrap-input" type="password" name="senha" id="senha">
+            </div>
+            <div class="nowrap-card-input"> 
+               <label for="descricao">Descrição</label>
+               <textarea maxlength="213" class="nowrap-input" type="text" name="descricao" id="descricao"></textarea>
+            </div>
+            </div>
+            <input class="card-button" type="submit" name="submit" value="Registrar">
+         </div>
+      </div>
+   </div>
 </body>
 </html>

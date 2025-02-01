@@ -3,14 +3,14 @@ USE crud_login;
 
 CREATE TABLE cadastro
 (
-    id int unsigned not null auto_increment,
-    usuario varchar(100) not null,
-    email varchar(100) not null,
-    senha varchar(20) not null,
-    descricao varchar(200) not null,
+    id INT unsigned NOT NULL auto_increment,
+    usuario VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
-alter table cadastro
-add confir_senha varchar(20) not null;
+ALTER TABLE cadastro
+ADD confir_senha VARCHAR(20) NOT NULL;
 
-select * from cadastro
+SELECT * FROM cadastro

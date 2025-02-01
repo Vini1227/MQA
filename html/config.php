@@ -1,16 +1,14 @@
 <?php
+try { // Bloco try para tentar a conexão com o banco de dados
     $dbhost = 'localhost';
-    $dbUsername = 'root';
-    $dbPassword = '';
-    $dbName = 'crud_login';
+    $dbusername = 'root';
+    $dbpassword = 'root';
+    $dbname = 'crud_login';
 
-    $conexao = new mysqli($dbhost, $dbUsername, $dbPassword, $dbName);
+    $conexao = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    //if ($conexao->connect_errno) {
-    //    echo "Falha na Conexão";
-    //} else {
-        //echo "Conexão bem-sucedida!";
-    //}
-
-
+}   catch (PDOException $e) { // Bloco catch para capturar exceções
+        echo "Falha na Conexão: " . $e->getMessage();
+}
 ?>
