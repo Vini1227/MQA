@@ -21,6 +21,7 @@
         <div class="img-perf-box">
             <img class="imagem-do-perfil" src="../imgs/avatar.png">
         </div>
+        <div class="cad-monprod-box"></div>
     </div>
 </body>
      
