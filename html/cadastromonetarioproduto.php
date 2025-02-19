@@ -15,8 +15,11 @@
                 <img class="mqa" src="../imgs/MQA_white.svg" alt="">
             </div>
         </div>  
+        <div class="banner-perf-box">
+            <img class="banner-do-perfil" src="../imgs/banner.png">
+        </div>
         <div class="img-perf-box">
-            <img class="imagem-do-perfil" src="../imgs/banner.png">
+            <img class="imagem-do-perfil" src="../imgs/avatar.png">
         </div>
     </div>
 </body>

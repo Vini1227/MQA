@@ -33,17 +33,35 @@
   max-width: 60px;
 }
 
-.imagem-do-perfil {
+/*Divs referentes a parte do banner e da foto de perfil*/
+.banner-do-perfil {
   display: flex;
   justify-content: center;
   width: 100%;
   max-height: 448px;
 }
 
-.img-perf-box {
+.banner-perf-box {
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 100%;
+}
+
+.img-perf-box {
+  position: absolute;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
   background-color: gray;
-  min-height: 448px;
+  border-radius: 50%;
+  margin-left: 9.03%;
+  margin-top: 422px;
+}
+
+.imagem-do-perfil {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
