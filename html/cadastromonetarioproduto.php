@@ -33,6 +33,18 @@
                     <input type="checkbox" id="checkbox1" class="checkbox" name="checkbox1" value="valor1">
                 </div>
             </div>
+            <div>
+                <details class="details-box">
+                    <summary class="titulos titulos-var1">Cadastro Monetário</summary>
+                    <p>Funcionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </details>
+            </div>
+            <div>
+                <details class="details-box">
+                    <summary class="titulos titulos-var1">Cadastro Monetário</summary>
+                    <p>Funcionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                </details>
+            </div>
         </div>
     </div>
 </body>
