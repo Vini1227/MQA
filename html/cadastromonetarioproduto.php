@@ -21,7 +21,19 @@
         <div class="img-perf-box">
             <img class="imagem-do-perfil" src="../imgs/avatar.png">
         </div>
-        <div class="cad-monprod-box"></div>
+        <div class="cad-monprod-box">
+            <p class="titulos">Tipos de Doações Aceitas:</p>
+            <div class="row-box">
+                <div class="box-da-checkbox">
+                    <p class="titulos titulos-var1">Dinheiro</p>
+                    <input type="checkbox" id="checkbox1" class="checkbox" name="checkbox1" value="valor1">
+                </div>
+                <div class="box-da-checkbox">
+                    <p class="titulos titulos-var1">Itens</p>
+                    <input type="checkbox" id="checkbox1" class="checkbox" name="checkbox1" value="valor1">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
      
