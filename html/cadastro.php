@@ -20,21 +20,25 @@ if (isset($_POST['submit'])) {
             $sql = "INSERT INTO cadastro (usuario, email, senha, descricao, confir_senha) VALUES (:usuario, :email, :senha, :descricao, :confir_senha)";
             $stmt = $pdo->prepare($sql);
 
-                // Executando a consulta
-                $stmt->execute();
+            // Vinculando os parâmetros
+            $stmt->bindParam(':usuario', $usuario);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':senha', $senha);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':confir_senha', $confir_senha);
 
-                // Redirecionando para a página de login
-                header('Location: login.php');
-                exit();
-            } catch (PDOException $e) {
-                // Exibindo mensagem de erro
-                echo "Falha na inserção: " . $e->getMessage();
-            }
-        } else {
-            echo "As senhas não coincidem. Tente novamente.";
+            // Executando a consulta
+            $stmt->execute();
+
+            // Redirecionando para a página de login
+            header('Location:login.php');
+            exit();
+        } catch (PDOException $e) {
+            // Exibindo mensagem de erro
+            echo "Falha na Conexão: " . $e->getMessage();
         }
     } else {
-        echo "Falha na Conexão: Conexão não foi estabelecida.";
+        echo "As senhas não coincidem. Tente novamente.";
     }
 }
 ?>
@@ -55,8 +59,8 @@ if (isset($_POST['submit'])) {
          <div class="nav">
            <img class="mqa" src="../imgs/MQA_white.svg" alt="">
            <div class="nav-links">
-           <a class="nav-link" href="../html/login.php">Login</a>
-           <a class="nav-link" href="../html/cadastro.php">Sign-up</a>
+           <a class="nav-link" href="">Login</a>
+           <a class="nav-link" href="">Sign-up</a>
            </div>
          </div>
       </div>
