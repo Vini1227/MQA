@@ -63,7 +63,6 @@
             <div>
                 <details class="details-box">
                     <summary class="titulos titulos-var1">Lista de Itens</summary>
-                    <p>Funcionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                 </details>
             </div>
         </div>
