@@ -1,10 +1,10 @@
 <?php
 require_once('config.php');
 
-$sql = "SELECT * FROM cadastro ORDER BY id DESC ";
+$sql = "SELECT * FROM cadastro ORDER BY id ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(); 
-$result = $stmt->fetch(PDO::FETCH_ASSOC); 
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 
 //print_r($result)
 ?>
@@ -34,7 +34,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
         <tbody>
             <?php
             if($stmt->rowCount() > 0) {
-               while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+               foreach($result as $row) {
                      echo "<tr>
                             <td>{$row['id']}</td>
                             <td>{$row['usuario']}</td>
