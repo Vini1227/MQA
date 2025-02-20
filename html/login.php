@@ -22,15 +22,16 @@
       <div class="main"> <!-- parte principal da pagina -->
          <div class="login-card">
             <h1 class="card-title">Login</h1>
+            <form action="./testlogin.php" method="post">
             <div class="card-input"> 
-               <label for="nome">Nome</label> <!-- input de nome de usuario -->
-               <input type="text" name="nome" id="nome">
+               <label for="nome">Email</label> <!-- input de nome de usuario -->
+               <input type="text" name="email" id="email">
             </div>
             <div class="card-input"> 
                <label for="senha">Senha</label> <!-- input de senha -->
                <input type="password" name="senha" id="senha">
             </div>
-            <button class="card-button">Entrar</button> <!-- botão -->
+            <input class="card-button" type="submit" name="submit" value="Entrar"> <!-- botão -->
          </div>
       </div>
    </div>
