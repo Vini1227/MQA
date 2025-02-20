@@ -21,15 +21,11 @@
       //print_r($result);
 
       if($stmt->rowCount() > 0){
-        echo "Login efetuado com sucesso";
-        //header('Location:sistema.php');
+        //echo "Login efetuado com sucesso";
+        header('Location:sistema.php');
       }
       else{
-        header('Location:login.php');
+        echo "Login ou senha incorretos";
       }
-   }
-   else
-   {
-     header('Location:login.php');
    }
 ?>
