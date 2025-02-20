@@ -1,24 +1,24 @@
 <?php
 if (isset($_POST['submit'])) {
-    include_once('./config.php');
+    require_once('config.php');
 
     // Coletando dados do formulário
     $usuario = $_POST['usuario'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $confir_senha = $_POST['confirmar'];
+    $confir_senha = $_POST['confir_senha'];
     $descricao = $_POST['descricao'];
 
     // Verificando se as senhas coincidem
     if ($senha == $confir_senha) {
         try {
             // Criação da conexão PDO
-            $conexao = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
-            $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Preparando a consulta SQL
             $sql = "INSERT INTO cadastro (usuario, email, senha, descricao, confir_senha) VALUES (:usuario, :email, :senha, :descricao, :confir_senha)";
-            $stmt = $conexao->prepare($sql);
+            $stmt = $pdo->prepare($sql);
 
             // Vinculando os parâmetros
             $stmt->bindParam(':usuario', $usuario);
@@ -67,10 +67,11 @@ if (isset($_POST['submit'])) {
       <div class="main">
          <div class="login-card">
             <h1 class="card-title">Cadastrar-se</h1>
+            <form action="cadastro.php" method="post">
             <div class="card-inputs">
             <div class="card-input"> 
                <label for="nome">Nome</label>
-               <input class="wrap-input" type="text" name="nome" id="nome">
+               <input class="wrap-input" type="text" name="usuario" id="usuario">
             </div>
             <div class="card-input"> 
                <label for="email">E-mail</label>
@@ -82,7 +83,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="card-input"> 
                <label for="senha">Confirmar Senha</label>
-               <input class="wrap-input" type="password" name="senha" id="senha">
+               <input class="wrap-input" type="password" name="confir_senha" id="confir_senha">
             </div>
             <div class="nowrap-card-input"> 
                <label for="descricao">Descrição</label>
