@@ -3,7 +3,7 @@
    //print_r($_REQUEST);
    if(isset($_POST['submit'])&& !empty($_POST['email']) && !empty($_POST['senha']))
    {
-      include_once('config.php');
+      require_once('config.php');
       $email = $_POST['email'];
       $senha = $_POST['senha'];
 
@@ -11,17 +11,21 @@
       //print_r('<br>');
       //print_r('senha:'.$senha);
 
-      $sql = "SELECT * FROM cadastro WHERE email = '$email' and senha = '$senha'";
-
-      $result = $conexao->query($sql);
+      $sql = "SELECT * FROM cadastro WHERE email = :email AND senha = :senha";
+      $stmt = $pdo->prepare($sql);
+      $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+      $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
       //print_r($result);
 
-      if(mysqli_num_rows($result)<1){
-        header('Location: login.php');
+      if($stmt->rowCount() > 0){
+        echo "Login efetuado com sucesso";
+        //header('Location:sistema.php');
       }
       else{
-        header('Location:sistema.php');
+        header('Location:login.php');
       }
    }
    else
