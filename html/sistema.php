@@ -1,9 +1,10 @@
 <?php
-include_once('config.php');
+require_once('config.php');
 
 $sql = "SELECT * FROM cadastro ORDER BY id DESC ";
-
-$result = $conexao->query($sql);
+$stmt = $pdo->prepare($sql);
+$stmt->execute(); 
+$result = $stmt->fetch(PDO::FETCH_ASSOC); 
 
 //print_r($result)
 ?>
@@ -32,9 +33,9 @@ $result = $conexao->query($sql);
         </thead>
         <tbody>
             <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>
+            if($stmt->rowCount() > 0) {
+               while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                     echo "<tr>
                             <td>{$row['id']}</td>
                             <td>{$row['usuario']}</td>
                             <td>{$row['email']}</td>
@@ -46,7 +47,8 @@ $result = $conexao->query($sql);
                             </td>
                           </tr>";
                 }
-            } else {
+            } 
+            else {
                 echo "<tr><td colspan='7'>Nenhum usuário encontrado</td></tr>";
             }
             ?>
