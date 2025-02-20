@@ -1,5 +1,5 @@
 <?php
-include_once('config.php');
+require_once('config.php');
 
 
 if (isset($_GET['id'])) {
@@ -7,13 +7,14 @@ if (isset($_GET['id'])) {
 
 
     $sqlDelete = "DELETE FROM cadastro WHERE id = '$id'";
+    $stmt = $pdo->prepare($sqlDelete);
 
-    if ($conexao->query($sqlDelete) === TRUE) {
+    if ($stmt->execute() === TRUE) {
 
         echo "<script>alert('Registro excluído com sucesso!');</script>";
     } else {
 
-        echo "<script>alert('Erro ao excluir o registro: {$conexao->error}');</script>";
+        //echo "<script>alert('Erro ao excluir o registro: {$conexao->error}');</script>";
     }
 
     echo "<script>window.location.href='sistema.php';</script>";
