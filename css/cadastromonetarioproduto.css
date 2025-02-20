@@ -88,9 +88,9 @@
   display: flex;
   font-size: 28px;
   font-weight: bold;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 30px auto auto auto;
+  width: fit-content;
+  height: fit-content;
 }
 
 .titulos-var1 {
@@ -138,12 +138,9 @@
   cursor: pointer;
 }
 
-details p {
-  word-break: break-word;
-}
 
 summary {
-  display: flex;
+  position: relative;
   text-align: left;
   list-style: none;
   align-items: center;
@@ -153,13 +150,87 @@ summary {
 details[open] summary::after {
   content: "▲";
   font-size: 24px;
-  display: flex;
-  margin-left: 218px;
+  position: absolute;
+  left: 458px;
 }
 
 summary::after {
   content: "▼";
   font-size: 24px;
+  position: absolute;
+  left: 458px;
+}
+
+/*Parte referente ao conteúdo interno da dropdown list de cadastro monetario*/
+
+.pix-imagem {
+  width: 40.37px;
+  height: 39.35px;
+  margin: 30px auto auto auto;
   display: flex;
-  margin-left: 218px;
+}
+
+.pix-textbox {
+  width: 328px;
+  height: 35px;
+  border: 1.5px solid #8F8F8F;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 75px;
+}
+
+.titulos-varPix {
+  margin: 20px auto auto auto;
+}
+
+.titulos-varBanco {
+  margin: 30px auto 20px auto;
+}
+
+.subtitulos {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  margin: auto auto 5px 0px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.banco-textbox {
+  width: 478px;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid #8f8f8f;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+.salvarEsquecer-box {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  margin: auto 0px auto auto;
+}
+
+.button {
+  display: flex;
+  width: fit-content;
+  height: 50px;
+  align-items: center;
+  background-color: #00ccff;
+  border-radius: 20px;
+  margin-left: 12px;
+  margin-top: 95px;
+  margin-bottom: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.titulos-varEsqSalvar {
+  font-size: 24px;
+  margin: auto 26px auto 26px;
+  color: #ffffff;
 }

@@ -36,12 +36,33 @@
             <div>
                 <details class="details-box">
                     <summary class="titulos titulos-var1">Cadastro Monetário</summary>
-                    <p>Funcionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                    <img src="../imgs/pix.png" alt="simbolo do pix" class="pix-imagem">
+                    <p class="titulos titulos-varPix">Pix</p>
+                    <input type="text" class="pix-textbox">
+                    <p class="titulos titulos-varBanco">Banco</p>
+                    <p class="subtitulos">Agência</p>
+                    <input type="text" class="banco-textbox">
+                    <p class="subtitulos">CNPJ</p>
+                    <input type="text" class="banco-textbox">
+                    <p class="subtitulos">Código da Conta</p>
+                    <input type="text" class="banco-textbox">
+                    <p class="subtitulos">Nome do Banco</p>
+                    <input type="text" class="banco-textbox">
+                    <p class="subtitulos">Tipo da Conta</p>
+                    <input type="text" class="banco-textbox">
+                    <div class="salvarEsquecer-box">
+                        <button class="button">
+                            <p class="titulos titulos-varEsqSalvar">Esquecer</p>
+                        </button>
+                        <button class="button">
+                            <p class="titulos titulos-varEsqSalvar">Salvar</p>
+                        </button>
+                    </div>
                 </details>
             </div>
             <div>
                 <details class="details-box">
-                    <summary class="titulos titulos-var1">Cadastro Monetário</summary>
+                    <summary class="titulos titulos-var1">Lista de Itens</summary>
                     <p>Funcionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                 </details>
             </div>
