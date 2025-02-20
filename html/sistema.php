@@ -42,7 +42,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td>{$row['senha']}</td>
                             <td>{$row['confir_senha']}</td>
                             <td>{$row['descricao']}</td>
-                        <td>
+                            <td>
+                                <a href='update.php?id={$row['id']}'>Editar</a> &nbsp; | &nbsp;
+
                                 <a href='delete.php?id={$row['id']}' class='delete-btn' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>Excluir</a>
                             </td>
                           </tr>";
