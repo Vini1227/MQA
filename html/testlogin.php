@@ -1,5 +1,7 @@
 <?php
 
+  session_start(); 
+
    //print_r($_REQUEST);
    if(isset($_POST['submit'])&& !empty($_POST['email']) && !empty($_POST['senha']))
    {
@@ -20,9 +22,11 @@
 
       //print_r($result);
 
-      if($stmt->rowCount() > 0){
+      if($result){
+        $_SESSION['email'] = $email;
         //echo "Login efetuado com sucesso";
         header('Location:sistema.php');
+        exit();
       }
       else{
         echo "Login ou senha incorretos";
