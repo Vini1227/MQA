@@ -1,5 +1,12 @@
 <?php
+session_start(); 
+
 require_once('config.php');
+
+if(!isset($_SESSION['email'])) {
+    header('Location:./login.php');
+    exit();
+}
 
 $sql = "SELECT * FROM cadastro ORDER BY id ";
 $stmt = $pdo->prepare($sql);
@@ -18,6 +25,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <h1>Acessou o Sistema</h1>
+    <a href="./logout.php">Sair</a>
     <div>
     <table>
         <thead>
