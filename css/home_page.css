@@ -1,0 +1,164 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 78px;
+    background-color: #00ccff;
+    height: auto;
+}
+
+.link{
+   float: right;
+   margin-top: 30px;
+   margin-right: 78px;
+   display: flex;
+   gap: 25px;
+}
+
+a{
+    text-decoration: none;  
+    color: white;
+
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .link{
+    flex-direction: column;
+    float: right;
+    margin-top: 30px;
+    margin-right: 78px;
+    display: flex;
+    gap: 30px;
+    }
+
+    a{
+    text-decoration: none;  
+    font-size: 20px; 
+    }
+
+    .box, .box2 {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .img, .img02 {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .texto, .sobre {
+        width: 100%;
+    }
+}
+
+#b1, #b2, #b3, #b4{
+    font-size: 20px; 
+
+}
+
+#b1, #b2{
+    font-family: 'jetBrains mono', monospace;
+}
+
+#b3, #b4{
+    font-family: 'lalezar';
+    
+}
+
+.carrossel{
+    height: 500px;
+    background-color: rgb(155, 153, 153);
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    margin-bottom: 50px;
+
+}
+
+.box2 {
+    height: auto;
+    padding-left: 200px; 
+    display: flex;
+    flex-direction: row;
+    font-family: 'krona one';
+}
+
+.texto{
+    color: #00ccff;
+    margin-top: 150px;
+    padding: 80px;
+    width: 60%;
+    font-family: 'krona one';
+}
+
+p{
+    color: black;
+}
+
+.sobre{
+    color: #00ccff;
+}
+
+.img{
+    width: 40%;
+}
+
+.img02{
+    margin-left: 30%;
+}
+
+p{
+    font-size: 15px;
+}
+
+.botao{
+    background-color: white;
+    border-color: #00ccff ;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'krona one';
+    padding: 18px 32px 18px 32px;
+    color: #00ccff;
+    margin-top: 50px;
+    margin-right: 30px;
+    float: right;
+    box-shadow: 2px 2px 10px 10px #00ccffc4;
+}
+
+.botao2{
+    background-color: white;
+    border-color: #00ccff ;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'krona one';
+    padding: 17px 16px 18px 16px;
+    color: #00ccff;
+    margin-top: 30px;
+    box-shadow: 2px 2px 10px 10px #00ccffc4;
+}
+
+.botao:hover, .botao2:hover{
+    cursor: pointer;
+    background-color: #00ccff;
+    color: white;
+}
+
+footer{
+    width: 100%;
+    height: 200px;
+    background-color: #00ccff;
+}
