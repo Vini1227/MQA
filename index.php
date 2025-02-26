@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home-Page</title>
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/b0c267dc7d.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -42,57 +42,61 @@
 
     <div class="box3">
 
-        <h1 class="relH1">Relatos de Doadores</h1>
-
-        <button class="next"><img src="img/next-left.png" alt=""></button>
-
-        <div class="card">
-            <img src="img/img_user.png" alt="">
-            <h3>NOME</h3>
-            <p class="text-user">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <div class="star">
-                <ul>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star-o"></i></li>
-                </ul>
-            </div>
+        <div class="box3-section">
+            <h1 class="box3-title">Avaliações e Comentários</h1>
         </div>
+        <div class="box3-cardsbox">
 
-        <div class="card">
-            <img src="img/img_user.png" alt="">
-            <h3>NOME</h3>
-            <p class="text-user">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <div class="star">
-                <ul>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star-o"></i></li>
-                </ul>
+            <button class="next"><i class="fa-solid fa-angle-left"></i></button>
+
+            <div class="box3-card card1">
+                <i class="fa-solid fa-circle-user"></i>
+                <h3 class="card-name-user">MariaL93</h3>
+                <p class="card-text-user">"Plataforma incrível! Fazer doações nunca foi tão fácil e seguro. Adorei a experiência!"</p>
+                <div class="card-boxstar">
+                    <ul class="rating-stars">
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <img src="img/img_user.png" alt="">
-            <h3>NOME</h3>
-            <p class="text-user">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <div class="star">
-                <ul>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star checked"></i></li>
-                    <li><i class="fa fa-star-o"></i></li>
-                </ul>
+            <div class="box3-card card2">
+                <i class="fa-solid fa-circle-user"></i>
+                <h3 class="card-name-user">JoaoSilva23</h3>
+                <p class="card-text-user">"Muito bom! A navegação no site é tranquila e eu encontrei várias causas que me tocaram."</p>
+                <div class="card-boxstar">
+                    <ul class="rating-stars">
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star-o"></i></li>
+                    </ul>
+                </div>
             </div>
+
+            <div class="box3-card card3">
+                <i class="fa-solid fa-circle-user"></i>
+                <h3 class="card-name-user">AnaPaula77</h3>
+                <p class="card-text-user">"Ótimo site para doações! A variedade de causas disponíveis me impressionou, e consegui contribuir facilmente."</p>
+                <div class="card-boxstar">
+                    <ul class="rating-stars">
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star checked"></i></li>
+                        <li><i class="fa fa-star-o"></i></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="prev"><i class="fa-solid fa-angle-right"></i></button>
+        
         </div>
-
-        <button class="next"><img src="img/next-right.png" alt=""></button>
-
     </div>
 
     <div class="box4">
