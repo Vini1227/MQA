@@ -11,19 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <header>
-        <img src="../imgs/logov2.png" alt="">
-
-        <div class="link">
-            <a href="#" id="b1">Quem somos?</a>
-            <a href="#" id="b2">Como Funciona?</a>
-            <a href="#" id="b3">Login</a>
-            <a href="#" id="b4">Cadastre-se</a>
-        </div>
-        
-    </header>
-
-    <div class="carrossel">
+<div class="app"> <!-- classe app é a div pai de toda pagina -->
+      <div class="header">
+         <div class="nav">
+           <img class="mqa" src="../imgs/MQA_white.svg" alt="">
+           <div class="nav-links"> <!-- links do header -->
+           <a class="nav-link" href="../html/login.php">Login</a>
+           <a class="nav-link" href="../html/cadastro.php">Sign-up</a>
+           </div>
+         </div>
+      </div>
+      <div class="main"> <!-- parte principal da pagina -->
+      <div class="carrossel">
     </div>
 
     <!--cadastramento-->
@@ -123,5 +122,8 @@
 
     <footer></footer>
 
+         
+      </div>
+   </div>
 </body>
 </html>
