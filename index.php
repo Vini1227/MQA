@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home-Page</title>
-    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Krona+One&family=Lalezar&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <header>
-        <img src="../imgs/logov2.png" alt="">
-
-        <div class="link">
-            <a href="#" id="b1">Quem somos?</a>
-            <a href="#" id="b2">Como Funciona?</a>
-            <a href="#" id="b3">Login</a>
-            <a href="#" id="b4">Cadastre-se</a>
-        </div>
-        
-    </header>
+<div class="app"> <!-- classe app é a div pai de toda pagina -->
+      <div class="header">
+         <div class="nav">
+           <img class="mqa" src="../imgs/MQA_white.svg" alt="">
+           <div class="nav-links"> <!-- links do header -->
+           <a class="nav-link" href="../html/login.php">Login</a>
+           <a class="nav-link" href="../html/cadastro.php">Sign-up</a>
+           </div>
+         </div>
+      </div>
 
     <div class="carrossel">
     </div>
