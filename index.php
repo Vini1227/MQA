@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Krona+One&family=Lalezar&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -22,32 +21,26 @@
          </div>
       </div>
       <div class="main"> <!-- parte principal da pagina -->
-      <div class="carrossel">
-    </div>
-
-    <!--cadastramento-->
-    <div class="box">
-
-        <div class="img"><img src="../imgs/home_img1.png" alt=""></div>
-
-        <div class="texto"><h1>Faça seu cadastro de acordo ...</h1>
-            <br><br>
-            <p>Com apenas alguns passos você estará pronto para doar.
-            <br><br>
-            e se você for um ... clicando em acessar estará apto a fazer
-            a cadastrar sua ONG, instituição ou associação sem fins
-            lucrativos.
-            </p>
-
-            <button class="botao">Acessar</button>
+      
+        <div class="box1">
         </div>
-        
-    </div>
-    <!--fim cadastramento-->
+    
+        <div class="box2">
+            <div class="box2-section">
+                <h1 class="box2-title">Registre-se de acordo com seu Perfil</h1>
+                <p class="box2-text">
+                    Cadastre-se como doador e faça a diferença ajudando diversas causas, 
+                    ou registre sua organização para receber apoio essencial. Juntos, podemos transformar vidas e construir um futuro melhor. 
+                    Clique no botão "Registre-se" para começar e participe dessa corrente de solidariedade!
+                </p>
+                <button class="box2-button">Registre-se</button>
+            </div>
+            <div class="box2-img">
+                <img class="box-2-img-home1" src="../imgs/home-illustration01.svg" alt="">
+            </div>
+        </div>
 
-    <!--Início dos CARDS-->
-
-    <div class="cards">
+    <div class="box3">
 
         <h1 class="relH1">Relatos de Doadores</h1>
 
@@ -102,10 +95,7 @@
 
     </div>
 
-    <!--Fim dos CARDS-->
-
-    <!--inicio sobre nós-->
-    <div class="box2">
+    <div class="box4">
         <div class="sobre">
             
             <h1>Quem somos nós ?</h1>
@@ -118,11 +108,7 @@
             <img src="../imgs/home_img2.png" alt="">
         </div>
     </div>
-    <!--fim sobre nós-->
-
-    <footer></footer>
-
-         
+   
       </div>
    </div>
 </body>
