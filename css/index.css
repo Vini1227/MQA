@@ -1,49 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-* {
-  margin: 0;
+*{
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  background-color: #00ccff;
-  min-height: 80px;
-  width: 100%;
-  z-index: 9999;
-}
-
-.nav {
+header{
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  min-height: 80px;
-  width: 90%;
+  padding-left: 78px;
+  background-color: #00ccff;
+  height: auto;
 }
 
-.nav-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bolder;
-  font-size: 18px;
-  margin: 0px 10px;
-  padding: 10px;
+.link{
+ float: right;
+ margin-top: 30px;
+ margin-right: 78px;
+ display: flex;
+ gap: 25px;
 }
 
-.mqa {
-  max-height: 60px;
-  max-width: 60px;
-}
+a{
+  text-decoration: none;  
+  color: white;
 
+}
 
 @media (max-width: 768px) {
   header {
@@ -87,6 +67,15 @@
 
 }
 
+#b1, #b2{
+  font-family: 'jetBrains mono', monospace;
+}
+
+#b3, #b4{
+  font-family: 'lalezar';
+  
+}
+
 .carrossel{
   height: 500px;
   background-color: rgb(155, 153, 153);
@@ -105,6 +94,7 @@
   padding-left: 200px; 
   display: flex;
   flex-direction: row;
+  font-family: 'krona one';
 }
 
 .texto{
@@ -112,6 +102,7 @@
   margin-top: 150px;
   padding: 80px;
   width: 60%;
+  font-family: 'krona one';
 }
 
 p{
@@ -139,6 +130,7 @@ p{
   border-color: #00ccff ;
   border-radius: 5px;
   font-size: 20px;
+  font-family: 'krona one';
   padding: 18px 32px 18px 32px;
   color: #00ccff;
   margin-top: 50px;
@@ -152,6 +144,7 @@ p{
   border-color: #00ccff ;
   border-radius: 5px;
   font-size: 20px;
+  font-family: 'krona one';
   padding: 17px 16px 18px 16px;
   color: #00ccff;
   margin-top: 30px;
@@ -174,6 +167,7 @@ h3{
 .relH1{
   width: 100%;
   padding-left: 200px;
+  font-family: 'krona one';
   color: #00ccff;
 }
 
