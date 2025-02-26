@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home-Page</title>
+    <title>MQA</title>
     <link rel="stylesheet" href="../css/index.css">
     <script src="https://kit.fontawesome.com/b0c267dc7d.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="app"> <!-- classe app é a div pai de toda pagina -->
       <div class="header">
          <div class="nav">
-           <img class="mqa" src="../imgs/MQA_white.svg" alt="">
+           <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
            <div class="nav-links"> <!-- links do header -->
-           <a class="nav-link" href="../html/login.php">Login</a>
-           <a class="nav-link" href="../html/cadastro.php">Sign-up</a>
+           <a class="nav-link" href="../pages/login.php">Login</a>
+           <a class="nav-link" href="../pages/cadastro.php">Sign-up</a>
            </div>
          </div>
       </div>
@@ -36,7 +36,7 @@
                 <button class="box2-button">Registre-se</button>
             </div>
             <div class="box2-img">
-                <img class="box-2-img-home1" src="../imgs/home-illustration01.svg" alt="">
+                <img class="box2-img-home1" src="../imgs/home-illustration01.svg" alt="">
             </div>
         </div>
 
@@ -100,18 +100,23 @@
     </div>
 
     <div class="box4">
-        <div class="sobre">
-            
-            <h1>Quem somos nós ?</h1>
-            <br><br>
-            <p>123</p>
-            <button class="botao2">Sobre Nós</button>
+            <div class="box4-section">
+                <h1 class="box4-title">Conheça mais sobre a nossa equipe de desenvolvedores</h1>
+                <p class="box4-text">
+                    Conheça a nossa talentosa equipe de desenvolvedores que trabalha incansavelmente para trazer inovação e qualidade. 
+                    Clique no botão "Saiba Mais" e descubra as mentes criativas por trás de nossos projetos de sucesso. 
+                    Você vai adorar conhecer o time que faz tudo acontecer!
+                </p>
+                <button class="box4-button">Saiba Mais</button>
+            </div>
+            <div class="box4-img">
+                <img class="box4-img-home2" src="../imgs/home-illustration02.svg" alt="">
+            </div>
         </div>
 
-        <div class="img02">
-            <img src="../imgs/home_img2.png" alt="">
+        <div class="box5 footer"> 
+
         </div>
-    </div>
    
       </div>
    </div>

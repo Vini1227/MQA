@@ -59,8 +59,8 @@ if (isset($_POST['submit'])) {
          <div class="nav">
            <img class="mqa" src="../imgs/MQA_white.svg" alt="">
            <div class="nav-links">
-           <a class="nav-link" href="">Login</a>
-           <a class="nav-link" href="">Sign-up</a>
+           <a class="nav-link" href="../html/login.php">Login</a>
+           <a class="nav-link" href="../html/cadastro.php">Sign-up</a>
            </div>
          </div>
       </div>
