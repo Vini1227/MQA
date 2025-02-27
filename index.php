@@ -23,15 +23,15 @@
       </div>
       <div class="main"> <!-- parte principal da pagina -->
       
-        <div class="box1"> 
+        <div class="box1"> <!-- box que contem o carousel -->
             <div class="box1-carousel">
-                <div class="carousel-slide slide1 active-slide"><h1 class="carousel-title">Bem-vindos ao Mãos Que Ajudam</h1></div>
-                <div class="carousel-slide slide2"><h1 class="carousel-title">Bem-vindos ao Mãos Que Ajudam</h1></div>
-                <div class="carousel-slide slide3"><h1 class="carousel-title">Bem-vindos ao Mãos Que Ajudam</h1></div>
+                <div class="carousel-slide slide1 active-slide"><h1 class="carousel-title">Bem-vindo ao Mãos Que Ajudam</h1></div>
+                <div class="carousel-slide slide2"><h1 class="carousel-title">Bem-vindo ao Mãos Que Ajudam</h1></div>
+                <div class="carousel-slide slide3"><h1 class="carousel-title">Bem-vindo ao Mãos Que Ajudam</h1></div>
             </div>
         </div>
     
-        <div class="box2">
+        <div class="box2"> <!-- box para registrar-se -->
             <div class="box2-section">
                 <h1 class="box2-title">Registre-se de acordo com seu Perfil</h1>
                 <p class="box2-text">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-    <div class="box3">
+    <div class="box3"> <!-- box para os cards de avaliações e comentários -->
 
         <div class="box3-section">
             <h1 class="box3-title">Avaliações e Comentários</h1>
@@ -55,7 +55,7 @@
 
             <button class="next"><i class="fa-solid fa-angle-left"></i></button>
 
-            <div class="box3-card card1">
+            <div class="box3-card card1"> <!-- card 1 -->
                 <i class="fa-solid fa-circle-user"></i>
                 <h3 class="card-name-user">MariaL93</h3>
                 <p class="card-text-user">"Plataforma incrível! Fazer doações nunca foi tão fácil e seguro. Adorei a experiência!"</p>
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="box3-card card2">
+            <div class="box3-card card2"> <!-- card 2 -->
                 <i class="fa-solid fa-circle-user"></i>
                 <h3 class="card-name-user">JoaoSilva23</h3>
                 <p class="card-text-user">"Muito bom! A navegação no site é tranquila e eu encontrei várias causas que me tocaram."</p>
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="box3-card card3">
+            <div class="box3-card card3"> <!-- card 3 -->
                 <i class="fa-solid fa-circle-user"></i>
                 <h3 class="card-name-user">AnaPaula77</h3>
                 <p class="card-text-user">"Ótimo site para doações! A variedade de causas disponíveis me impressionou, e consegui contribuir facilmente."</p>
@@ -105,7 +105,7 @@
         </div>
     </div>
 
-    <div class="box4">
+    <div class="box4"> <!-- box para conhecer a equipe de desenvolvedores -->
             <div class="box4-section">
                 <h1 class="box4-title">Conheça mais sobre a nossa equipe de desenvolvedores</h1>
                 <p class="box4-text">
@@ -120,7 +120,7 @@
             </div>
         </div>
 
-        <div class="box5">
+        <div class="box5"> <!-- box que contem o footer -->
             <div class="box5-img"><img class="box5-img-home3" src="../imgs/MQA_whitewithtext.svg" alt=""></div> 
             <div class="box5-footer">
                 <div class="footer-nav">
