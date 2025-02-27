@@ -8,7 +8,7 @@ if(!isset($_SESSION['email'])) {
     exit();
 }
 
-$sql = "SELECT * FROM cadastro ORDER BY id ";
+$sql = "SELECT * FROM usuario ORDER BY id ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(); 
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
@@ -31,10 +31,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Usuário</th>
+                <th>Nome</th>
                 <th>Email</th>
                 <th>Senha</th>
-                <th>confirmar</th>
                 <th>Descrição</th>
                 <th>Ações</th>
             </tr>
@@ -45,10 +44,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                foreach($result as $row) {
                      echo "<tr>
                             <td>{$row['id']}</td>
-                            <td>{$row['usuario']}</td>
+                            <td>{$row['nome']}</td>
                             <td>{$row['email']}</td>
                             <td>{$row['senha']}</td>
-                            <td>{$row['confir_senha']}</td>
                             <td>{$row['descricao']}</td>
                             <td>
                                 <a href='update.php?id={$row['id']}'>Editar</a> &nbsp; | &nbsp;

@@ -13,7 +13,7 @@
       //print_r('<br>');
       //print_r('senha:'.$senha);
 
-      $sql = "SELECT * FROM cadastro WHERE email = :email AND senha = :senha";
+      $sql = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";
       $stmt = $pdo->prepare($sql);
       $stmt->bindParam(':email', $email, PDO::PARAM_STR);
       $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
@@ -29,7 +29,9 @@
         exit();
       }
       else{
-        echo "Login ou senha incorretos";
+        echo "<script>alert('Login ou Senha Incorretos!');</script>";
+        echo "<script>window.location.href='login.php';</script>";
+        exit();
       }
    }
 ?>

@@ -3,29 +3,46 @@ if (isset($_POST['submit'])) {
     require_once('config.php');
 
     // Coletando dados do formulário
-    $usuario = $_POST['usuario'];
+    $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $confir_senha = $_POST['confir_senha'];
     $descricao = $_POST['descricao'];
 
+   if (empty($nome) || empty($email) || empty($senha) || empty($descricao)) {
+      echo "<script>alert('Preencha todos os campos!');</script>";
+      echo "<script>window.location.href='cadastro.php';</script>";
+      exit();
+   }
+
     // Verificando se as senhas coincidem
-    if ($senha == $confir_senha) {
-        try {
-            // Criação da conexão PDO
-            $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if ($senha !== $_POST['confir_senha']) {
+      echo "<script>alert('Senhas não coincidem!');</script>";
+      echo "<script>window.location.href='cadastro.php';</script>";
+      exit();
+   }
+
+   try {
+      $sql = $pdo->prepare("SELECT COUNT(*) FROM usuario WHERE email = :email");
+      $sql->bindParam(':email', $email);
+      $sql->execute();
+      $existe = $sql->fetchColumn();
+
+   if ($existe > 0) {
+      echo "<script>alert('Email ja cadastrado! Seu Corno!');</script>";
+      echo "<script>window.location.href='cadastro.php';</script>";
+      exit();
+   }
+
 
             // Preparando a consulta SQL
-            $sql = "INSERT INTO cadastro (usuario, email, senha, descricao, confir_senha) VALUES (:usuario, :email, :senha, :descricao, :confir_senha)";
+            $sql = "INSERT INTO usuario (nome, email, senha, descricao) VALUES (:nome, :email, :senha, :descricao)";
             $stmt = $pdo->prepare($sql);
 
             // Vinculando os parâmetros
-            $stmt->bindParam(':usuario', $usuario);
+            $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':senha', $senha);
             $stmt->bindParam(':descricao', $descricao);
-            $stmt->bindParam(':confir_senha', $confir_senha);
 
             // Executando a consulta
             $stmt->execute();
@@ -37,10 +54,8 @@ if (isset($_POST['submit'])) {
             // Exibindo mensagem de erro
             echo "Falha na Conexão: " . $e->getMessage();
         }
-    } else {
-        echo "As senhas não coincidem. Tente novamente.";
     }
-}
+   
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +86,7 @@ if (isset($_POST['submit'])) {
             <div class="card-inputs">
             <div class="card-input"> 
                <label for="nome">Nome</label>
-               <input class="wrap-input" type="text" name="usuario" id="usuario">
+               <input class="wrap-input" type="text" name="nome" id="nome">
             </div>
             <div class="card-input"> 
                <label for="email">E-mail</label>
