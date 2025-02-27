@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/b0c267dc7d.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 <body>
 <div class="app"> <!-- classe app é a div pai de toda pagina -->
@@ -22,7 +23,12 @@
       </div>
       <div class="main"> <!-- parte principal da pagina -->
       
-        <div class="box1">
+        <div class="box1"> 
+            <div class="box1-carousel">
+                <div class="carousel-slide slide1 active-slide"><h1 class="carousel-title">Bem-vindos ao Mãos Que Ajudam</h1></div>
+                <div class="carousel-slide slide2"><h1 class="carousel-title">Bem-vindos ao Mãos Que Ajudam</h1></div>
+                <div class="carousel-slide slide3"><h1 class="carousel-title">Bem-vindos ao Mãos Que Ajudam</h1></div>
+            </div>
         </div>
     
         <div class="box2">
@@ -114,10 +120,11 @@
             </div>
         </div>
 
-        <div class="box5"> 
+        <div class="box5">
+            <div class="box5-img"><img class="box5-img-home3" src="../imgs/MQA_whitewithtext.svg" alt=""></div> 
             <div class="box5-footer">
                 <div class="footer-nav">
-                    <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
+                    <div class="rights-reserved">© Mãos Que Ajudam. Todos os direitos reservados.</div>
                     <div class="footer-links"> <!-- links do header -->
                     <a class="footer-link" href=""><i class="fa-brands fa-facebook"></i></a>
                     <a class="footer-link" href=""><i class="fa-brands fa-instagram"></i></a>
@@ -132,5 +139,6 @@
    
       </div>
    </div>
+   <script src="../js/carousel.js"></script>
 </body>
 </html>
