@@ -29,7 +29,9 @@
         exit();
       }
       else{
-        echo "Login ou senha incorretos";
+        echo "<script>alert('Login ou Senha Incorretos!');</script>";
+        echo "<script>window.location.href='login.php';</script>";
+        exit();
       }
    }
 ?>
