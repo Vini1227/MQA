@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
    <div class="app">
       <div class="header">
          <div class="nav">
-           <img class="mqa" src="../imgs/MQA_white.svg" alt="">
+           <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
            <div class="nav-links">
            <a class="nav-link" href="../pages/login.php">Login</a>
            <a class="nav-link" href="../pages/cadastro.php">Sign-up</a>

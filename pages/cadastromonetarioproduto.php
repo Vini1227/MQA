@@ -12,7 +12,7 @@
     <div class="app">
         <div class="header">
             <div class="nav">
-                <img class="mqa" src="../imgs/MQA_white.svg" alt="">
+                <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
             </div>
         </div>  
         <div class="banner-perf-box">
