@@ -21,6 +21,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/sistema.css">
+    <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
     <title>Sistema</title>
 </head>
 <body>
