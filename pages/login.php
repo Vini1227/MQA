@@ -14,8 +14,8 @@
          <div class="nav">
            <img class="mqa" src="../imgs/MQA_white.svg" alt="">
            <div class="nav-links"> <!-- links do header -->
-           <a class="nav-link" href="../html/login.php">Login</a>
-           <a class="nav-link" href="../html/cadastro.php">Sign-up</a>
+           <a class="nav-link" href="../pages/login.php">Login</a>
+           <a class="nav-link" href="../pages/cadastro.php">Sign-up</a>
            </div>
          </div>
       </div>
