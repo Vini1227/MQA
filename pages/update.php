@@ -30,6 +30,7 @@ if (!$usuario) {
 <head>
     <meta charset="UTF-8">
     <title>Editar Usuário</title>
+    <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
 </head>
 <body>
     <h1>Editar Usuário</h1>
