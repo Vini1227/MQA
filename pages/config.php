@@ -2,7 +2,7 @@
 try { // Bloco try para tentar a conexão com o banco de dados
     $dbhost = 'localhost';
     $dbusername = 'root';
-    $dbpassword = '';
+    $dbpassword = 'root';
     $dbname = 'crud_login';
 
     $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
