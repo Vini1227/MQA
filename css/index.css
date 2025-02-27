@@ -6,8 +6,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-user-select: none;
   -webkit-user-drag: none;
-  
-
 }
 
 .app {
@@ -47,16 +45,77 @@
   max-height: 60px;
 } /* fim do cabeçalho do site */
 
-.box1, .box2, .box3, .box4, .box5{  /* boxes do site */
+.box2, .box3, .box4{  /* boxes do site */
   max-width: 100vw;
   height: 80vh;
-  padding: 20px;
+  padding: 50px;
   box-sizing: border-box;
 }
 
 .box1{
-  background-color: #8f8f8f;
+  height: 80vh;
+  max-width: 100vw;
 }
+
+.box1-carousel {
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.carousel-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: fade 1s ease-in-out;
+}
+
+.carousel-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(50%);
+  z-index: -1; /* Coloca o pseudo-elemento atrás do conteúdo */
+}
+
+.active-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-title {
+  font-size: 64px;
+  font-weight: bolder;
+  color: #ffffff;
+  max-width: 70%;
+  text-align: center;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+.slide1::before {
+  background-image: url('https://rodadebrinquedo.com.br/wp-content/uploads/2020/10/meninoviolao.jpg');
+  
+}
+.slide2::before {
+  background-image: url('https://ogimg.infoglobo.com.br/in/25078219-0fa-e45/FT1086A/limpeza.jpg');
+  
+}
+.slide3::before {
+  background-image: url('https://img.freepik.com/fotos-gratis/pessoas-que-estao-com-coracao-de-borracha_1150-18576.jpg?t=st=1740625262~exp=1740628862~hmac=173c2f331544253a42c932454e054d9c2a104508c13bd174dd547082de0026d9&w=1060');
+  
+}
+
 
 .box2{ /* box 2 do site */
   display: flex;
@@ -273,5 +332,53 @@
 } /* fim do box 4 do site */
 
 .box5{ /* box 5 do site */
+  display: flex;
+  flex-direction: column;
   background-color: #00ccff;
+  max-width: 100vw;
+  height: 80vh;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.box5-footer{
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  min-height: 80px;
+  width: 100%;
+}
+
+.footer-nav{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  width: 90%;
+  border-top: solid 1px #ffffff;
+}
+
+.fa-brands{
+  font-size: 30px;
+  padding-right: 10px;
+  color: #ffffff;
+}
+
+.rights-reserved{
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.box5-img {
+  display: flex;
+  max-width: 100%;
+  height: 100%;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.box5-img-home3 {
+  height: 330px
 }
