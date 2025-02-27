@@ -10,7 +10,7 @@ function showSlides() {
     if (slideIndex > slides.length) { slideIndex = 1 }
     if (slideIndex < 1) { slideIndex = slides.length }
     slides[slideIndex - 1].classList.add('active-slide');
-    setTimeout(showSlides, 10000); // Muda a imagem a cada 10 segundos
+    setTimeout(showSlides, 10000); // Muda a imagem a cada 5 segundos
 }
 
 function plusSlides(n) {
