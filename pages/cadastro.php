@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
    }
 
    try {
-      $sql = $pdo->prepare("SELECT * FROM usuario WHERE email = :email");
+      $sql = $pdo->prepare("SELECT COUNT(*) FROM usuario WHERE email = :email");
       $sql->bindParam(':email', $email);
       $sql->execute();
       $existe = $sql->fetchColumn();
@@ -74,8 +74,8 @@ if (isset($_POST['submit'])) {
          <div class="nav">
            <img class="mqa" src="../imgs/MQA_white.svg" alt="">
            <div class="nav-links">
-           <a class="nav-link" href="../html/login.php">Login</a>
-           <a class="nav-link" href="../html/cadastro.php">Sign-up</a>
+           <a class="nav-link" href="./login.php">Login</a>
+           <a class="nav-link" href="cadastro.php">Sign-up</a>
            </div>
          </div>
       </div>
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
             <div class="card-inputs">
             <div class="card-input"> 
                <label for="nome">Nome</label>
-               <input class="wrap-input" type="text" name="usuario" id="usuario">
+               <input class="wrap-input" type="text" name="nome" id="nome">
             </div>
             <div class="card-input"> 
                <label for="email">E-mail</label>
