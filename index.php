@@ -114,8 +114,20 @@
             </div>
         </div>
 
-        <div class="box5 footer"> 
+        <div class="box5"> 
+            <div class="box5-footer">
+                <div class="footer-nav">
+                    <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
+                    <div class="footer-links"> <!-- links do header -->
+                    <a class="footer-link" href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a class="footer-link" href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a class="footer-link" href=""><i class="fa-brands fa-x-twitter"></i></a>
+                    <a class="footer-link" href=""><i class="fa-brands fa-discord"></i></a>
+                </div>
+         </div>
 
+
+            </div>
         </div>
    
       </div>
