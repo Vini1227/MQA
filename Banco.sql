@@ -1,16 +1,12 @@
-CREATE DATABASE crud_login;
-USE crud_login;
+CREATE DATABASE MQA;
+USE MQA;
 
-CREATE TABLE cadastro
+CREATE TABLE usuario
 (
     id INT unsigned NOT NULL auto_increment,
-    usuario VARCHAR(255) NOT NULL,
+    nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
+    CONSTRAINT pk_id PRIMARY KEY (id)
 );
-ALTER TABLE cadastro
-ADD confir_senha VARCHAR(20) NOT NULL;
-
-SELECT * FROM cadastro
