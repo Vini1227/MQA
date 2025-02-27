@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
 
-    $sqlDelete = "DELETE FROM cadastro WHERE id = '$id'";
+    $sqlDelete = "DELETE FROM usuario WHERE id = '$id'";
     $stmt = $pdo->prepare($sqlDelete);
 
     if ($stmt->execute() === TRUE) {

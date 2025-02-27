@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Busca o usuário pelo ID
-    $sql = "SELECT * FROM cadastro WHERE id = :id";
+    $sql = "SELECT * FROM usuario WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -35,17 +35,11 @@ if (!$usuario) {
     <h1>Editar Usuário</h1>
     <form method="POST" action="./config_update.php">
         
-        <label>Usuário:</label>
-        <input type="text" name="usuario" value="<?= $usuario['usuario'] ?>" required><br><br>
-
-        <label>Email:</label>
-        <input type="email" name="email" value="<?= $usuario['email'] ?>" required><br><br>
+        <label>Nome:</label>
+        <input type="text" name="nome" value="<?= $usuario['nome'] ?>" required><br><br>
         
         <label>Senha:</label>
-        <input type="password" name="senha" value="<?= $usuario['senha'] ?>" required><br><br>
-        
-        <label>Confirmar Senha:</label>
-        <input type="password" name="confir_senha" value="<?= $usuario['confir_senha'] ?>" required><br><br>    
+        <input type="password" name="senha" value="<?= $usuario['senha'] ?>" required><br><br>  
         
         <label>Descrição:</label>
         <input type="text" name="descricao" value="<?= $usuario['descricao'] ?>" required><br><br>
