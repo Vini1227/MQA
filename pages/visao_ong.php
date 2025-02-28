@@ -1,3 +1,19 @@
+<?php
+// Captura os dados enviados pelo formulário
+$dadosRecebidos = false; // Controle para verificar se há dados
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nome = htmlspecialchars($_POST['nome'] ?? 'Anônimo'); // Nome do doador, valor padrão "Anônimo"
+    $item = htmlspecialchars($_POST['item'] ?? ''); // Item doado
+    $quantidade = htmlspecialchars($_POST['quantidade'] ?? ''); // Quantidade doada
+    $descricao = htmlspecialchars($_POST['descricao'] ?? ''); // Descrição do item
+
+    // Verificar se um item válido foi selecionado
+    if (!empty($item)) {
+        $dadosRecebidos = true; // Dados válidos foram enviados
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -26,46 +42,46 @@
         <div class="main">
             <h1 class="text-do-perfil">Doações Realizadas</h1>
 
-        <div class="tabela-doacoes"> 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>
-                            <img class="icone" src="../imgs/produto.png" alt="icone-produto">
-                            Item
-                        </th>
-                        <th>Quantidade</th>
-                        <th>
-                            <img class="icone" src="../imgs/dinheiro.png" alt="icone-valor">
-                            Valor
-                        </th> 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>
-                        <img class="img-do-perfil" src="../imgs/avatar.png" alt="Perfil">
-                        Marquinhos
-                    </td>
-                      <td>Camiseta</td>
-                      <td>1</td>
-                      <td>R$ 100,00</td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <img class="img-do-perfil" src="../imgs/avatar.png" alt="Perfil">
-                        Ryon
-                    </td>
-                    <td>
-                        Camiseta
-                    </td>
-                    <td>1</td>
-                    <td>R$ 100,00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div> 
+            <div class="tabela-doacoes"> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>
+                                <img class="icone" src="../imgs/produto.png" alt="icone-produto">
+                                Item
+                            </th>
+                            <th>Quantidade</th>
+                            <th>
+                                Descrição
+                            </th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($dadosRecebidos) {
+                            // Exibir os dados recebidos em uma linha da tabela
+                            echo "<tr>
+                                <td>
+                                    <img class='img-do-perfil' src='../imgs/avatar.png' alt='Perfil'>
+                                    $nome
+                                </td>
+                                <td>$item</td>
+                                <td>$quantidade</td>
+                                <td>$descricao</td>
+                            </tr>";
+                        } else {
+                            // Mensagem de nenhum dado recebido
+                            echo "<tr>
+                                <td colspan='4'>Nenhum dado válido foi enviado.</td>
+                            </tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div> 
+    </div>
 </body>
 </html>
+
