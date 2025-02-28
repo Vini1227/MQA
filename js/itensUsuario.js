@@ -55,41 +55,38 @@ dropdownItems.forEach(item => {
     });
 });
 
-// Capturar elementos do dropdown
-const dropdownButton = document.querySelector('.dropdown-button');
-const dropdownSelected = document.getElementById('dropdown-selected');
-const dropdownItems = document.querySelectorAll('.dropdown-content a');
-const hiddenInput = document.getElementById('selected-item');
+// Selecionar os elementos do dropdown
+const dropdownBtn = document.querySelector('.dropdown-button');
+const selectedTextElement = document.getElementById('dropdown-selected');
+const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+const hiddenField = document.getElementById('selected-item');
 
-// Adicionar evento para capturar o item selecionado
-dropdownItems.forEach(item => {
-    item.addEventListener('click', (event) => {
-        event.preventDefault(); // Impede o comportamento padrão do link
+// Adicionar evento para capturar a opção selecionada
+dropdownLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevenir comportamento padrão do link
 
-        // Obter valor e texto da opção selecionada
-        const selectedText = item.textContent;
-        const selectedValue = item.getAttribute('data-value');
+        // Obter texto e valor do item selecionado
+        const itemText = link.textContent;
+        const itemValue = link.getAttribute('data-value');
 
         // Atualizar o botão com o texto selecionado
-        dropdownSelected.textContent = selectedText;
+        selectedTextElement.textContent = itemText;
 
-        // Atualizar o valor do campo oculto
-        hiddenInput.value = selectedValue;
+        // Atualizar o campo oculto com o valor selecionado
+        hiddenField.value = itemValue;
     });
 });
 
-// Validar o formulário antes de enviar
+// Função para validar o formulário
 function validateForm() {
-    const selectedValue = hiddenInput.value;
+    const selectedItemValue = hiddenField.value;
 
-    // Verificar se "Lista de Itens" foi selecionada
-    if (!selectedValue) {
+    // Verificar se o usuário selecionou um item válido
+    if (!selectedItemValue) {
         alert("Por favor, selecione um item válido na lista.");
-        return false; // Impede o envio do formulário
+        return false; // Bloqueia o envio do formulário
     }
 
     return true; // Permite o envio do formulário
 }
-
-
-
