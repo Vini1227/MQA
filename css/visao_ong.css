@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  
+  .app {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: center;
+    background-color: #00ccff;
+    min-height: 80px;
+    width: 100%;
+    z-index: 9999;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+    width: 90%;
+  }
+  
+  .mqa {
+    max-height: 60px;
+  }
+
+  .banner-do-perfil {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-height: 100%;
+  }
+  
+  .banner-perf-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 448px;
+  }
+  
+  .img-perf-box {
+    display: flex;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    background-color: gray;
+    border-radius: 50%;
+    margin-left: 9.03%;
+    margin-top: -90px;
+    z-index: 2;
+  }
+  
+  .imagem-do-perfil {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main {
+    width: 80%;
+    margin: 100px auto 40px;
+}
+.text-do-perfil {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left; 
+    margin-left: 10px; 
+}
+.tabela-doacoes {
+    display: flex;
+    justify-content: flex-start; 
+    margin-left: 10px; 
+}
+.icone {
+  width: 20px;
+  height: 20px;
+}
+table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 250px 15px #00000040;
+    border:none;
+}
+th {
+    background-color:#E0E0E0;
+    color: black;
+    font-weight: normal;
+    border-bottom: 1px solid #ccc;
+}
+th img.icone {
+  width: 18px; 
+  height: 18px;
+  vertical-align: middle; 
+  margin-right: 5px; 
+}
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+td img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+td:first-child {
+    display: flex;
+    align-items: center; 
+    white-space: nowrap;  
+    gap: 12px;  
+    padding: 12px;
+}
+
+td:first-child img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;  
+}
