@@ -31,9 +31,15 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Item</th>
+                        <th>
+                            <img class="icone" src="../imgs/produto.png" alt="icone-produto">
+                            Item
+                        </th>
                         <th>Quantidade</th>
-                        <th>Valor</th> 
+                        <th>
+                            <img class="icone" src="../imgs/dinheiro.png" alt="icone-valor">
+                            Valor
+                        </th> 
                     </tr>
                 </thead>
                 <tbody>

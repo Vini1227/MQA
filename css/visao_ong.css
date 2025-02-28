@@ -33,8 +33,7 @@
   .mqa {
     max-height: 60px;
   }
-  
- 
+
   .banner-do-perfil {
     display: flex;
     justify-content: center;
@@ -72,9 +71,6 @@
     width: 80%;
     margin: 100px auto 40px;
 }
-
-
-
 .text-do-perfil {
     font-size: 24px;
     color: #333;
@@ -83,16 +79,15 @@
     text-align: left; 
     margin-left: 10px; 
 }
-
-
-
 .tabela-doacoes {
     display: flex;
     justify-content: flex-start; 
     margin-left: 10px; 
 }
-
-
+.icone {
+  width: 20px;
+  height: 20px;
+}
 table {
     width: 100%;
     max-width: 800px;
@@ -108,6 +103,12 @@ th {
     color: black;
     font-weight: normal;
     border-bottom: 1px solid #ccc;
+}
+th img.icone {
+  width: 18px; 
+  height: 18px;
+  vertical-align: middle; 
+  margin-right: 5px; 
 }
 th, td {
     padding: 12px;
