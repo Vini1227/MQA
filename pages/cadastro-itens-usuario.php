@@ -38,7 +38,7 @@
                     <button id="card-toggle-1" class="dnttp-itens">Itens</button>
                 </div>
             </div>
-            <form action="processa_dados.php" method="POST" onsubmit="return validateForm()">
+            <form action="visao_ong.php" method="POST" onsubmit="return validateForm()">
                 <div id="iten-donate-card" class="iten-donate-card">
                     <div class="itndnt-inputs">
                         <div class="input-dropdown">
@@ -47,9 +47,9 @@
                                 <i class="fa-solid fa-angle-down"></i>
                             </button>
                             <div class="dropdown-content">
-                                <a href="#" data-value="opcao1">Opção 1</a>
-                                <a href="#" data-value="opcao2">Opção 2</a>
-                                <a href="#" data-value="opcao3">Opção 3</a>
+                                <a href="#" data-value="Alimentos">Alimentos</a>
+                                <a href="#" data-value="Roupas">Roupas</a>
+                                <a href="#" data-value="Higiene">Higiene</a>
                             </div>
                         </div>
                         <!-- Campo oculto para armazenar o valor selecionado -->
