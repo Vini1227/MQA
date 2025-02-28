@@ -55,5 +55,41 @@ dropdownItems.forEach(item => {
     });
 });
 
+// Capturar elementos do dropdown
+const dropdownButton = document.querySelector('.dropdown-button');
+const dropdownSelected = document.getElementById('dropdown-selected');
+const dropdownItems = document.querySelectorAll('.dropdown-content a');
+const hiddenInput = document.getElementById('selected-item');
+
+// Adicionar evento para capturar o item selecionado
+dropdownItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+        event.preventDefault(); // Impede o comportamento padrão do link
+
+        // Obter valor e texto da opção selecionada
+        const selectedText = item.textContent;
+        const selectedValue = item.getAttribute('data-value');
+
+        // Atualizar o botão com o texto selecionado
+        dropdownSelected.textContent = selectedText;
+
+        // Atualizar o valor do campo oculto
+        hiddenInput.value = selectedValue;
+    });
+});
+
+// Validar o formulário antes de enviar
+function validateForm() {
+    const selectedValue = hiddenInput.value;
+
+    // Verificar se "Lista de Itens" foi selecionada
+    if (!selectedValue) {
+        alert("Por favor, selecione um item válido na lista.");
+        return false; // Impede o envio do formulário
+    }
+
+    return true; // Permite o envio do formulário
+}
+
 
 
