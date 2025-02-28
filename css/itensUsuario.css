@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #00ccff;
+  max-height: 80px;
+  width: 100%;
+  z-index: 9999;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  width: 90%;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 18px;
+  margin: 0px 10px;
+  padding: 10px;
+}
+
+.mqa {
+  max-height: 60px;
+}
+
+.main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.ong-profile {
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  max-height: 80px;
+  width: 100%;
+  z-index: 8888;
+}
+
+.ong-profile-space {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  min-height: 80px;
+  width: 90%;
+}
+
+.ong-profile-img {
+ padding-right: 20px;
+}
+
+.ong-profile-img-logo {
+  max-height: 60px;
+  max-width: 60px;
+}
+
+.donatetype-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 20px;
+  width: 400px;
+  max-height: 365px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 250px 10px #00000026;
+}
+
+.dnttp-card-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.dnttp-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.dnttp-money, .dnttp-itens {
+  width: 180px;
+  height: 60px;
+  border-radius: 5px;
+  border: none;
+  background-color: #00ccff;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.dnttp-money:hover, .dnttp-itens:hover{
+  border: #00ccff solid;
+  background-color: #ffffff;
+  color: #00ccff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.iten-donate-card {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    max-height: 365px;
+    width: 560px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 250px 10px #00000026;
+}
+
+.itndnt-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    padding-bottom: 20px;
+  
+}
+
+.input-dropdown { /* Inicio do Dropdown */
+    position: relative;
+    display: inline-block;
+    height: 100%;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #00ccff;
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    width: 240px;
+    border-radius: 5px;
+}
+
+.dropdown-button:hover {
+    background-color: #ffffff;
+    border: #00ccff solid;
+    color: #00ccff;
+    transition: 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    width: 240px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.input-dropdown:hover .dropdown-content {
+    display: block;
+} /* Fim do Dropdown */
+
+.input-count { /* inicio do contador */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #00ccff;
+    padding: 20px;
+    color: white;
+    height: 100%;
+    width: 240px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.input-count:hover {
+    background-color: #ffffff;
+    border: #00ccff solid;
+    color: #00ccff;
+    transition: 0.3s;
+}
+
+.input-count-number{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #b0b0b0;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+.fa-plus, .fa-minus {
+    color: #8f8f8f;
+    font-size: 16px;
+}
+
+.input-count button {
+    background-color: #f4f4f4;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    
+}
+
+.input-count button:hover {
+    background-color: #ffffff;
+    transition: 0.3s;
+}
+
+.input-count button:hover > * {
+  color: #000000;
+  transition: 0.3s;
+}
+
+.input-count input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 30px;
+    height: 20px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+} /* fim do contador */
+
+
+.prev-step-button {
+    font-size: 24px;
+    font-weight: bold;
+    width: 120px;
+    min-height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    background-color: #00ccff;
+    cursor: pointer;
+}
+
+.prev-step-button:hover {
+  color: #00ccff;
+  background: #ffffff;
+  border: #00ccff solid;
+  transition: 0.3s;
+}
+
+input::-webkit-outer-spin-button, /* isso aqui remove as setas do input number */
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.itndnt-description {
+  width: 100%;
+}
+  
+.input-desc {
+    width: 100%;
+    height: 180px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: #b0b0b0;
+    background-color: #f4f4f4;
+    border-style: solid;
+    border-width: 2px;
+    margin-top: 5px;
+    resize: none;
+}
+  
+label {
+  font-weight: bold;
+}
+
+.itndnt-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.dnt-button {
+    font-size: 18px;
+    font-weight: bold;
+    width: 120px;
+    min-height: 60px;
+    border-radius: 5px;
+    border: none;
+    background-color: #00ccff;
+    color: #ffffff;
+}
+
+.dnt-button:hover {
+  background-color: #ffffff;
+  color: #00ccff;
+  border: #00ccff solid;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bold-text {  
+  font-weight: bold;
+}
