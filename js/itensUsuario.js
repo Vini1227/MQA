@@ -37,5 +37,23 @@ incrementButton.addEventListener("click", () => {
     }
 });
 
+// Selecionar o botão e o texto padrão
+const dropdownButton = document.querySelector('.dropdown-button');
+const dropdownSelected = document.getElementById('dropdown-selected');
+const dropdownItems = document.querySelectorAll('.dropdown-content a');
+
+// Adicionar evento a cada item da lista
+dropdownItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+        event.preventDefault(); // Evitar comportamento padrão do link
+
+        // Capturar o texto da opção selecionada
+        const selectedText = item.textContent;
+
+        // Atualizar o texto do botão
+        dropdownSelected.textContent = selectedText;
+    });
+});
+
 
 
