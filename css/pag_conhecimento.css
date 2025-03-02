@@ -1,0 +1,80 @@
+*{
+padding: 0;
+margin: 0;
+}
+
+header{
+display: flex;
+justify-content: space-between;
+padding-left: 78px;
+background-color: #00ccff;
+height: auto;
+}
+
+.link{
+float: right;
+margin-top: 30px;
+margin-right: 78px;
+display: flex;
+gap: 45px;
+}
+
+a{
+text-decoration: none;  
+color: white;
+}
+
+#b3, #b4{
+font-family: 'lalezar';
+font-size: 20px;
+}
+
+.content{
+display: flex;
+position: absolute;
+flex-direction: column;
+background-color: white;
+justify-content: center;
+align-items: center;
+padding: 30px 142px 66px 142px;
+border-radius: 20px;
+border: 1.5px solid #8f8f8f;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+box-shadow: 1px 1px 50px 50px #dddddd;
+}
+
+.conhec{
+display: flex;
+flex-direction: row;
+gap: 72px;
+margin-top: 66px;
+}
+
+.doador{
+width: 250px;
+height: 250px;
+background-color: #00ccff;
+border-radius: 50%;
+border: none;
+}
+   
+.inst{
+width: 250px;
+height: 250px;
+background-color: #00ccff;
+border-radius: 50%;
+border: none;
+}
+
+p{
+font-family: 'lalezar';
+font-size: 36px;
+color: white;
+}
+
+h1{
+  font-size: 40px;  
+  font-family: 'DM Sans';
+}
