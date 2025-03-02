@@ -35,43 +35,43 @@
     <div class="opcoes_por_cor">
 
         <button class="cor" id="01">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="02">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="03">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="04">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="05">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="06">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="07">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="08">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="09">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
         <button class="cor" id="10">
-            <img src="./img/cor01.png" alt="">
+            <img src="../imgs/cor01.png" alt="">
         </button>
 
     </div>
@@ -83,17 +83,17 @@
     <div class="content-ongs">
 
         <div class="card_ong">
-            <img src="./img/coelho1.png" alt="">
+            <img src="../imgs/coelho1.png" alt="">
             <button class="botao-ong">Salva Animal</button>
         </div>
 
         <div class="card_ong">
-            <img src="./img/cachorro.png" alt="">
+            <img src="../imgs/cachorro.png" alt="">
             <button class="botao-ong">Canil Igarassu</button>
         </div>
 
         <div class="card_ong">
-            <img src="./img/bromelia.png" alt="">
+            <img src="../imgs/bromelia.png" alt="">
             <button class="botao-ong">Refúgio das Bromelias</button>
         </div>
     </div>
