@@ -1,0 +1,114 @@
+*{
+padding: 0;
+margin: 0;
+}
+
+header{
+display: flex;
+justify-content: space-between;
+padding-left: 78px;
+background-color: #00ccff;
+height: auto;
+}
+
+.v3{
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.link{
+float: right;
+justify-content: center;
+align-items: center;
+margin-right: 78px;
+display: flex;
+gap: 45px;
+}
+
+a{
+text-decoration: none;  
+color: white;
+}
+
+#b3, #b4{
+font-family: 'lalezar';
+font-size: 20px;
+}
+
+.content-pesq{
+background-color: #00ccff;
+padding: 20px 78px 20px 78px;
+display: flex;
+}
+
+.pesq{
+width: 100%;
+border-bottom-left-radius: 20px;
+border-top-left-radius: 20px;
+padding: 8px 10px 8px 22px;
+font-size: 20px;
+font-family: 'lalezar';
+border-right: none;
+border: 1.5px solid #8f8f8f;
+background-color: #f4f4f4;
+outline: none;
+}
+
+.icone{
+align-items: center;
+display: flex;
+padding-left: 12px;
+padding-right: 15px;
+border-top-right-radius: 20px;
+border-bottom-right-radius: 20px;
+border: 1.5px solid #8f8f8f;
+background-color: white;
+}
+.fa{
+background-color: rgba(0, 0, 0, 0.5)
+}
+
+.opcoes_por_cor{
+display: flex;
+gap: 31px;
+margin: 80px 80px 37px 81px;
+}
+
+.cor{
+border: none;
+background-color: white;
+}
+
+.title{
+margin-left: 78px;
+font-family: 'lalezar';
+font-size: 20px;
+}
+
+.content-ongs{
+display: flex;
+position: absolute;
+flex-direction: row;
+gap: 60px;
+margin: 5px 78px;
+padding-bottom: 100px;
+}
+
+.card_ong{
+display: flex;
+flex-direction: column;
+}
+
+.botao-ong{
+justify-content: center;
+align-items: center;
+padding-top: 13px;
+padding-bottom: 13px;
+font-family: 'lalezar';
+font-size: 32px;
+border: none;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+color: white;
+background-color: #00ccff;
+}
