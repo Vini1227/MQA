@@ -233,3 +233,17 @@ summary::after {
   margin: auto 26px auto 26px;
   color: #ffffff;
 }
+
+/*Parte referente a descrição da ONG */
+
+.textarea-descricao {
+  display: flex;
+  width: 478px;
+  min-height: 105px;
+  background-color: #ffffff;
+  margin: 30px auto auto auto;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: hidden;
+  border-color: #8f8f8f;
+}

@@ -22,6 +22,8 @@
             <img class="imagem-do-perfil" src="../imgs/avatar.png">
         </div>
         <div class="cad-monprod-box">
+            <h1 class="titulos">Descrição</h1>
+            <textarea class="textarea-descricao"></textarea>
             <p class="titulos">Tipos de Doações Aceitas:</p>
             <div class="row-box">
                 <div class="box-da-checkbox">
