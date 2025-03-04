@@ -247,3 +247,36 @@ summary::after {
   overflow: hidden;
   border-color: #8f8f8f;
 }
+
+/* Dropdown da Lista de Itens*/
+
+.nomeTipo-box {
+  display: flex;
+  width: 458px;
+  min-height: 50px;
+  margin: 0px 0px 0px auto;
+  flex-direction: row;
+}
+
+.nomeItems-box {
+  display: flex;
+  width: 50%;
+  height: 50px;
+}
+
+.nomeItems-box2 {
+  display: flex;
+  width: 50%;
+  height: 50px;
+  border-bottom: 1.5px solid #8f8f8f;
+}
+
+.titulos-var2 {
+  font-size: 24px;
+  margin: auto auto auto 0px;
+}
+
+.textoItems {
+  font-size: 20px;
+  margin: auto auto auto 0px;
+}
