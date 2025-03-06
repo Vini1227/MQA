@@ -284,4 +284,18 @@ details[open]{
 
 #adicionar {
   display: none;
+  width: 480px;
+  height: fit-content;
+  flex-direction: column;
+}
+
+.desc-produto {
+  display: flex;
+  width: 438px;
+  min-height: 105px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: hidden;
+  border-color: #8f8f8f;
 }

@@ -87,6 +87,18 @@
                         </div>
                     </div>
                     <div id="adicionar">
+                        <div>
+                            <p class="titulos subtitulos">Nome</p>
+                            <input type="text" class="banco-textbox">
+                        </div>
+                        <div>
+                            <p class="titulos subtitulos">Tipo do Produto</p>
+                            <input type="text" class="banco-textbox">
+                        </div>
+                        <div>
+                            <p class="titulos subtitulos">Descrição</p>
+                            <textarea class="desc-produto"></textarea>
+                        </div>
                         <div class="salvarEsquecer-box">
                             <button class="button">
                                 <p class="titulos titulos-varEsqSalvar" id="adicionarEsquecer">Esquecer</p>

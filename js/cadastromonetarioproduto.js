@@ -6,7 +6,7 @@ const adicionarSalvar = document.getElementById ('adicionarSalvar')
 
 botaoAdicionar.addEventListener('click', () => {
     visualizarDiv.style.display = 'none'; // Oculta a div de visualizar
-    adicionarDiv.style.display = 'block'; // Mostra a div de adicionar
+    adicionarDiv.style.display = 'flex'; // Mostra a div de adicionar
 });
 
 adicionarEsquecer.addEventListener('click', () => {
