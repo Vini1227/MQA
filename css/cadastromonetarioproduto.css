@@ -144,6 +144,7 @@ summary {
   list-style: none;
   align-items: center;
   padding: 9px 0px;
+  cursor: pointer;
 }
 
 details[open] summary::after {
@@ -158,6 +159,10 @@ summary::after {
   font-size: 24px;
   position: absolute;
   left: 458px;
+}
+
+details[open]{
+  cursor: default;
 }
 
 /*Parte referente ao conteúdo interno da dropdown list de cadastro monetario*/
@@ -275,4 +280,8 @@ summary::after {
 
 .celula {
   margin: 20px 100px 0px 0px; 
+}
+
+#adicionar {
+  display: none;
 }

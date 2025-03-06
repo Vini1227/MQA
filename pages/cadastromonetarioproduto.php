@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/cadastromonetarioproduto.css">
     <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
+    <script src="../js/cadastromonetarioproduto.js" defer></script>
     <title>Editar Cadastro</title>
 </head>
 <body>
@@ -65,23 +66,35 @@
             <div>
                 <details class="details-box">
                     <summary class="titulos titulos-var1">Lista de Itens</summary>
-                    <table class="nomeTipo-box">
-                        <tr>
-                            <th><div class="celula">Nome</div></th>
-                            <th><div class="celula">Tipo</div></th>
-                        </tr>
-                        <tr>
-                            <td><div class="celula">Carne</div></td>
-                            <td><div class="celula">Alimento</div></td>
-                        </tr>
-                    </table>
-                    <div class="salvarEsquecer-box">
-                        <button class="button">
-                            <p class="titulos titulos-varEsqSalvar">Editar</p>
-                        </button>
-                        <button class="button">
-                            <p class="titulos titulos-varEsqSalvar">Adicionar</p>
-                        </button>
+                    <div id="visualizar">
+                        <table class="nomeTipo-box">
+                            <tr>
+                                <th><div class="celula">Nome</div></th>
+                                <th><div class="celula">Tipo</div></th>
+                            </tr>
+                            <tr>
+                                <td><div class="celula">Carne</div></td>
+                                <td><div class="celula">Alimento</div></td>
+                            </tr>
+                        </table>
+                        <div class="salvarEsquecer-box">
+                            <button class="button">
+                                <p class="titulos titulos-varEsqSalvar">Editar</p>
+                            </button>
+                            <button class="button" id="botaoAdicionar">
+                                <p class="titulos titulos-varEsqSalvar">Adicionar</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="adicionar">
+                        <div class="salvarEsquecer-box">
+                            <button class="button">
+                                <p class="titulos titulos-varEsqSalvar" id="adicionarEsquecer">Esquecer</p>
+                            </button>
+                            <button class="button" id="adicionarSalvar">
+                                <p class="titulos titulos-varEsqSalvar">Salvar</p>
+                            </button>
+                        </div>
                     </div>
                 </details>
             </div>
