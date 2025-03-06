@@ -65,22 +65,16 @@
             <div>
                 <details class="details-box">
                     <summary class="titulos titulos-var1">Lista de Itens</summary>
-                    <div class="nomeTipo-box">
-                        <div class="nomeItems-box">
-                            <p class="titulos titulos-var2">Nome</p>
-                        </div>
-                        <div class="nomeItems-box">
-                            <p class="titulos titulos-var2">Tipo</p>
-                        </div>
-                    </div>
-                    <div class="nomeTipo-box">
-                        <div class="nomeItems-box2">
-                            <p class="textoItems">Comida</p>
-                        </div>
-                        <div class="nomeItems-box2">
-                            <p class="textoItems">Alimento</p>
-                        </div>
-                    </div>
+                    <table class="nomeTipo-box">
+                        <tr>
+                            <th><div class="celula">Nome</div></th>
+                            <th><div class="celula">Tipo</div></th>
+                        </tr>
+                        <tr>
+                            <td><div class="celula">Carne</div></td>
+                            <td><div class="celula">Alimento</div></td>
+                        </tr>
+                    </table>
                 </details>
             </div>
         </div>

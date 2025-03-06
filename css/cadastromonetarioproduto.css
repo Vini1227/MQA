@@ -252,31 +252,27 @@ summary::after {
 
 .nomeTipo-box {
   display: flex;
-  width: 458px;
-  min-height: 50px;
-  margin: 0px 0px 0px auto;
-  flex-direction: row;
+  margin: 0px auto 0px 0px;
+  width: 478px;
+  height: fit-content;
+  border-collapse: collapse;
 }
 
-.nomeItems-box {
-  display: flex;
-  width: 50%;
-  height: 50px;
+.nomeTipo-box th, .nomeTipo-box td {
+  text-align: left; 
 }
 
-.nomeItems-box2 {
-  display: flex;
-  width: 50%;
-  height: 50px;
-  border-bottom: 1.5px solid #8f8f8f;
+.nomeTipo-box th {
+  background-color: #f4f4f4; 
+  font-size: 20px; 
+  font-weight: bold;
 }
 
-.titulos-var2 {
-  font-size: 24px;
-  margin: auto auto auto 0px;
+.nomeTipo-box tr:has(td) {
+  border-bottom: 2px solid #8f8f8f;
+  width: 100%; 
 }
 
-.textoItems {
-  font-size: 20px;
-  margin: auto auto auto 0px;
+.celula {
+  margin: 20px 100px 0px 0px; 
 }
