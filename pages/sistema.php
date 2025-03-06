@@ -53,6 +53,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <a href='update.php?id={$row['id']}'>Editar</a> &nbsp; | &nbsp;
 
                                 <a href='delete.php?id={$row['id']}' class='delete-btn' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>Excluir</a>
+                                <a href='cadastromonetarioproduto.php?id={$row['id']}'>Cadastro Monetário</a>
                             </td>
                           </tr>";
                 }

@@ -1,3 +1,39 @@
+<?php
+session_start();
+require_once('config.php');
+
+// Verifica se o usuário está logado pelo email
+if (!isset($_SESSION['email'])) {
+    echo "<script>alert('Você precisa estar logado para acessar esta página!');</script>";
+    echo "<script>window.location.href='login.php';</script>";
+    exit();
+}
+
+$email = $_SESSION['email']; // Recupera o email da sessão
+
+// Busca o ID do usuário com base no email
+$sqlUsuario = "SELECT id FROM usuario WHERE email = :email";
+$stmt = $pdo->prepare($sqlUsuario);
+$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+$stmt->execute();
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$usuario) {
+    echo "<script>alert('Usuário não encontrado!');</script>";
+    echo "<script>window.location.href='login.php';</script>";
+    exit();
+}
+
+$usuario_id = $usuario['id']; // Define o ID do usuário logado
+
+// Busca os itens cadastrados pelo usuário
+$sqlItens = "SELECT nome, tipo FROM itens WHERE usuario_id = :usuario_id";
+$stmtItens = $pdo->prepare($sqlItens);
+$stmtItens->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+$stmtItens->execute();
+$itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -72,10 +108,12 @@
                                 <th><div class="celula">Nome</div></th>
                                 <th><div class="celula">Tipo</div></th>
                             </tr>
-                            <tr>
-                                <td><div class="celula">Carne</div></td>
-                                <td><div class="celula">Alimento</div></td>
-                            </tr>
+                            <?php foreach ($itens as $item): ?>
+                    <tr>
+                        <td><div class="celula"><?php echo htmlspecialchars($item['nome']); ?></div></td>
+                        <td><div class="celula"><?php echo htmlspecialchars($item['tipo']); ?></div></td>
+                    </tr>
+                <?php endforeach; ?>
                         </table>
                         <div class="salvarEsquecer-box">
                             <button class="button">
@@ -86,28 +124,31 @@
                             </button>
                         </div>
                     </div>
+                    <form action="adicionar_item.php" method="POST">
                     <div id="adicionar">
                         <div>
-                            <p class="titulos subtitulos">Nome</p>
-                            <input type="text" class="banco-textbox">
+                            <p class="titulos subtitulos" id="nome">Nome</p>
+                            <input type="text" class="banco-textbox" name="nome">
                         </div>
                         <div>
-                            <p class="titulos subtitulos">Tipo do Produto</p>
-                            <input type="text" class="banco-textbox">
+                            <p class="titulos subtitulos" id="tipo">Tipo do Produto</p>
+                            <input type="text" class="banco-textbox" name="tipo">
                         </div>
                         <div>
-                            <p class="titulos subtitulos">Descrição</p>
-                            <textarea class="desc-produto"></textarea>
+                            <p class="titulos subtitulos" id="descricao">Descrição</p>
+                            <textarea class="desc-produto" name="descricao"></textarea>
                         </div>
                         <div class="salvarEsquecer-box">
                             <button class="button">
                                 <p class="titulos titulos-varEsqSalvar" id="adicionarEsquecer">Esquecer</p>
                             </button>
-                            <button class="button" id="adicionarSalvar">
+                            <button type="submit" class="button" id="adicionarSalvar">
                                 <p class="titulos titulos-varEsqSalvar">Salvar</p>
                             </button>
                         </div>
                     </div>
+                    </form>
+                    
                 </details>
             </div>
         </div>
