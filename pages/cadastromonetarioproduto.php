@@ -27,7 +27,7 @@ if (!$usuario) {
 $usuario_id = $usuario['id']; // Define o ID do usuário logado
 
 // Busca os itens cadastrados pelo usuário
-$sqlItens = "SELECT nome, tipo FROM itens WHERE usuario_id = :usuario_id";
+$sqlItens = "SELECT id, nome, tipo FROM itens WHERE usuario_id = :usuario_id";
 $stmtItens = $pdo->prepare($sqlItens);
 $stmtItens->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
 $stmtItens->execute();
@@ -108,15 +108,15 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                                 <th><div class="celula">Nome</div></th>
                                 <th><div class="celula">Tipo</div></th>
                             </tr>
-                            <?php foreach ($itens as $item): ?>
-                    <tr>
-                        <td><div class="celula"><?php echo htmlspecialchars($item['nome']); ?></div></td>
-                        <td><div class="celula"><?php echo htmlspecialchars($item['tipo']); ?></div></td>
-                    </tr>
-                <?php endforeach; ?>
+                        <?php foreach ($itens as $item): ?>
+                            <tr>
+                                <td><div class="celula"><?php echo htmlspecialchars($item['nome']); ?></div></td>
+                                <td><div class="celula"><?php echo htmlspecialchars($item['tipo']); ?></div></td>
+                            </tr>
+                        <?php endforeach; ?>
                         </table>
                         <div class="salvarEsquecer-box">
-                            <button class="button">
+                            <button class="button" id="botaoEditar">
                                 <p class="titulos titulos-varEsqSalvar">Editar</p>
                             </button>
                             <button class="button" id="botaoAdicionar">
@@ -148,7 +148,31 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     </form>
-                    
+                    <div id="editar">
+                        <table class="nomeTipo-box">
+                            <tr>
+                                <th><div class="celula">Nome</div></th>
+                                <th><div class="celula">Tipo</div></th>
+                            </tr>
+                        <?php foreach ($itens as $item): ?>
+                            <tr>
+                                <td><div class="celula"><?php echo htmlspecialchars($item['nome']); ?></div></td>
+                                <td><div class="celula"><?php echo htmlspecialchars($item['tipo']); ?></div></td>
+                                <td>
+                                    <a class="botao-deletareditar" href="deletar_item.php?id=<?php echo $item['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este item?');">
+                                    <img src="\imgs\trashcan.png" alt="Imagem 1">
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </table>
+                        <div class="salvarEsquecer-box">
+                            <button class="button" id="editarVoltar">
+                                <p class="titulos titulos-varEsqSalvar">Editar</p>
+                            </button>
+                        </div>
+                    </div>
                 </details>
             </div>
         </div>

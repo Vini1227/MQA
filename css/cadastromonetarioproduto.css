@@ -299,3 +299,24 @@ details[open]{
   overflow: hidden;
   border-color: #8f8f8f;
 }
+
+#editar {
+  display: none;
+  width: 480px;
+  height: fit-content;
+  flex-direction: column;
+}
+
+.botao-deletareditar {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background-color: #00ccff;
+  border-radius: 20%;
+}
+
+.botao-deletareditar img {
+  width: 24px;
+  height: 24px;
+  margin: auto;
+}
