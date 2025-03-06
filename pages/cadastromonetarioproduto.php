@@ -75,6 +75,14 @@
                             <td><div class="celula">Alimento</div></td>
                         </tr>
                     </table>
+                    <div class="salvarEsquecer-box">
+                        <button class="button">
+                            <p class="titulos titulos-varEsqSalvar">Editar</p>
+                        </button>
+                        <button class="button">
+                            <p class="titulos titulos-varEsqSalvar">Adicionar</p>
+                        </button>
+                    </div>
                 </details>
             </div>
         </div>
