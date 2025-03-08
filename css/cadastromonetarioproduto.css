@@ -184,7 +184,9 @@ details[open]{
   margin-top: 20px;
   margin-left: 75px;
 }
-
+.pix-textbox:hover {
+  border: 1.5px solid #00ccff;
+}
 .titulos-varPix {
   margin: 20px auto auto auto;
 }
@@ -210,6 +212,10 @@ details[open]{
   padding: 5px;
   box-sizing: border-box;
   margin-bottom: 8px;
+}
+
+.banco-textbox:hover {
+  border: 1.5px solid #00ccff;
 }
 
 .salvarEsquecer-box {
@@ -302,6 +308,10 @@ details[open]{
   padding: 20px;
   overflow: hidden;
   border-color: #8f8f8f;
+}
+
+.desc-produto:hover{
+  border-color: #00ccff;
 }
 
 #editar {
