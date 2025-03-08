@@ -233,6 +233,10 @@ details[open]{
   cursor: pointer;
 }
 
+.button:hover {
+  border: 1.5px solid #FFFFFF;
+}
+
 .titulos-varEsqSalvar {
   font-size: 24px;
   margin: auto 26px auto 26px;
@@ -316,6 +320,10 @@ details[open]{
   border: none;
   margin-right: 20px;
   cursor: pointer;
+}
+
+.botao-deletareditar:hover {
+  border: 1.5px solid #FFFFFF;
 }
 
 .botao-deletareditar img {
