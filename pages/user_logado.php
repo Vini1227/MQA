@@ -1,3 +1,17 @@
+<?php
+session_start();
+require_once('config.php');
+
+if(!isset($_SESSION['usuario'])) {
+    header('Location:./login.php');
+    exit();
+}
+
+$usuario = $_SESSION['usuario'];
+$imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usuario['imagem'] : '../imgs/doador.png';
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,11 +30,14 @@
 
 <body>
     <header>
-        <img class="v3" src="./img/logov3.png" alt="">
+        <img class="v3" src="../imgs/MQA_whitewithtext.svg" alt="">
 
         <div class="link">
-            <a href="#" id="b3">PauloRC0</a>
-            <a href="#" id="b4">Sair</a>
+            <a href="./user_perfil.php" id="b3">
+            <img src="<?php echo $usuario['imagem'] ? '../uploads/users/' . $usuario['imagem'] : '../imgs/doador.png'; ?>" class="user-img" alt="">
+               <?php echo $usuario['nome']; ?>
+        </a>
+            <a href="./logout.php" id="b4">Sair</a>
         </div>
             
     </header>
