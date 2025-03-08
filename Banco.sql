@@ -8,6 +8,7 @@ CREATE TABLE usuario
     email VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
+    imagem VARCHAR (255) DEFAULT NULL,
     CONSTRAINT pk_id PRIMARY KEY (id)
 );
 
