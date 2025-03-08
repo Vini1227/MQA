@@ -31,3 +31,25 @@ editarVoltar.addEventListener('click', () => {
     visualizarDiv.style.display = 'block';
     editarDiv.style.display = 'none';
 });
+
+function atualizarItem(id, nome, tipo, descricao) {
+    document.getElementById("atualizar-id").value = id;
+    document.getElementById("atualizar-nome").value = nome;
+    document.getElementById("atualizar-tipo").value = tipo;
+    document.getElementById("atualizar-descricao").value = descricao;
+
+    document.getElementById("editar").style.display = "none";
+    document.getElementById("atualizar").style.display = "block";
+}
+
+document.getElementById("atualizarVoltar").addEventListener("click", () => {
+    document.getElementById("visualizar").style.display = "block";
+    document.getElementById("atualizar").style.display = "none";
+});
+
+document.getElementById("formAtualizar").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    this.submit();
+});
+

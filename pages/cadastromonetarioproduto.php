@@ -27,7 +27,7 @@ if (!$usuario) {
 $usuario_id = $usuario['id']; // Define o ID do usuário logado
 
 // Busca os itens cadastrados pelo usuário
-$sqlItens = "SELECT id, nome, tipo FROM itens WHERE usuario_id = :usuario_id";
+$sqlItens = "SELECT id, nome, tipo, descricao FROM itens WHERE usuario_id = :usuario_id";
 $stmtItens = $pdo->prepare($sqlItens);
 $stmtItens->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
 $stmtItens->execute();
@@ -139,13 +139,38 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                             <textarea class="desc-produto" name="descricao"></textarea>
                         </div>
                         <div class="salvarEsquecer-box">
-                            <button class="button">
-                                <p class="titulos titulos-varEsqSalvar" id="adicionarEsquecer">Esquecer</p>
+                            <button class="button" type="button">
+                                <p class="titulos titulos-varEsqSalvar" id="adicionarEsquecer">Voltar</p>
                             </button>
                             <button type="submit" class="button" id="adicionarSalvar">
                                 <p class="titulos titulos-varEsqSalvar">Salvar</p>
                             </button>
                         </div>
+                    </div>
+                    </form>
+                    <div id="atualizar" style="display: none;">
+                        <h1 class="titulos">Atualizar Item</h1>
+                        <form id="formAtualizar" action="atualizar_item.php" method="POST">
+                            <input type="hidden" name="id" id="atualizar-id">
+                            
+                            <p class="titulos subtitulos">Nome</p>
+                            <input type="text" class="banco-textbox" name="nome" id="atualizar-nome">
+                            
+                            <p class="titulos subtitulos">Tipo</p>
+                            <input type="text" class="banco-textbox" name="tipo" id="atualizar-tipo">
+                            
+                            <p class="titulos subtitulos">Descrição</p>
+                            <textarea class="desc-produto" name="descricao" id="atualizar-descricao"></textarea>
+                            
+                            <div class="salvarEsquecer-box">
+                                <button type="button" class="button" id="atualizarVoltar">
+                                    <p class="titulos titulos-varEsqSalvar">Cancelar</p>
+                                </button>
+                                <button type="submit" class="button">
+                                    <p class="titulos titulos-varEsqSalvar">Salvar</p>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                     </form>
                     <div id="editar">
@@ -162,6 +187,16 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                                     <a class="botao-deletareditar" href="deletar_item.php?id=<?php echo $item['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este item?');">
                                     <img src="\imgs\trashcan.png" alt="Imagem 1">
                                     </a>
+                                </td>
+                                <td>
+                                    <button class="botao-atualizar botao-deletareditar" onclick="atualizarItem(
+                                        <?php echo $item['id']; ?>, 
+                                        '<?php echo isset($item['nome']) ? htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8') : ''; ?>', 
+                                        '<?php echo isset($item['tipo']) ? htmlspecialchars($item['tipo'], ENT_QUOTES, 'UTF-8') : ''; ?>', 
+                                        '<?php echo isset($item['descricao']) ? htmlspecialchars($item['descricao'], ENT_QUOTES, 'UTF-8') : ''; ?>'
+                                    )">
+                                        <img src="\imgs\edit.png" alt="Imagem 1">
+                                    </button>
                                     
                                 </td>
                             </tr>
@@ -178,4 +213,4 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </body>
-     
+</html>

@@ -33,11 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descricao = $_POST['descricao'] ?? null;
 
     // Validação de campos obrigatórios
-    if (empty($nome) || empty($tipo)) {
-        echo "<script>alert('Os campos Nome e Tipo são obrigatórios!');</script>";
-        echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
-        exit();
-    }
+    
+        // Os campos 'nome' e 'tipo' são obrigatórios
+        if (empty($_POST['nome']) || empty($_POST['tipo'])) {
+            echo "<script>alert('Os campos Nome e Tipo são obrigatórios!');</script>";
+            echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
+            exit();
+        }
 
     try {
         // Insere o item no banco de dados
@@ -54,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } catch (PDOException $e) {
         echo "Erro ao cadastrar item: " . $e->getMessage();
     }
+
 }
 ?>
 

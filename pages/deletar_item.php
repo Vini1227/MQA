@@ -43,4 +43,4 @@ if (isset($_GET['id'])) {
     }
 }
 
-echo "<script>window.location.href='sistema.php';</script>";
+echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
