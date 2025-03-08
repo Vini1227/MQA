@@ -140,7 +140,7 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="salvarEsquecer-box">
                             <button class="button" type="button">
-                                <p class="titulos titulos-varEsqSalvar" id="adicionarEsquecer">Voltar</p>
+                                <p class="titulos titulos-varEsqSalvar" id="adicionarEsquecer">Esquecer</p>
                             </button>
                             <button type="submit" class="button" id="adicionarSalvar">
                                 <p class="titulos titulos-varEsqSalvar">Salvar</p>
@@ -185,7 +185,7 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                                 <td><div class="celula"><?php echo htmlspecialchars($item['tipo']); ?></div></td>
                                 <td>
                                     <a class="botao-deletareditar" href="deletar_item.php?id=<?php echo $item['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este item?');">
-                                    <img src="\imgs\trashcan.png" alt="Imagem 1">
+                                    <img id="lixo" src="\imgs\trashcan.png" alt="Imagem 1">
                                     </a>
                                 </td>
                                 <td>

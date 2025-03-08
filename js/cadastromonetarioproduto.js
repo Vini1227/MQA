@@ -53,3 +53,11 @@ document.getElementById("formAtualizar").addEventListener("submit", function(eve
     this.submit();
 });
 
+const img = document.getElementById('lixo');
+img.addEventListener('mouseover', function() {
+img.src = '/imgs/redcan.png';
+});
+
+img.addEventListener('mouseout', function() {
+img.src = '/imgs/trashcan.png'; // Caminho da imagem original
+});

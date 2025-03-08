@@ -263,6 +263,10 @@ details[open]{
   border-color: #8f8f8f;
 }
 
+.textarea-descricao:hover {
+  border-color: #00ccff;
+}
+
 /* Dropdown da Lista de Itens*/
 
 .nomeTipo-box {
@@ -334,6 +338,7 @@ details[open]{
 
 .botao-deletareditar:hover {
   border: 1.5px solid #FFFFFF;
+  box-sizing: border-box;
 }
 
 .botao-deletareditar img {
