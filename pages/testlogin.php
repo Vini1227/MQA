@@ -20,12 +20,18 @@
       $stmt->execute();
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-      //print_r($result);
-
       if($result){
-        $_SESSION['email'] = $email;
+        //print_r($usuario);
+        $_SESSION['usuario'] = [
+          'id' => $result['id'],
+          'email' => $result['email'],
+          'nome' => $result['nome'],
+          'imagem' => $result['imagem']
+        ];
+
+      //print_r($result);
         //echo "Login efetuado com sucesso";
-        header('Location:sistema.php');
+        header('Location:user_logado.php');
         exit();
       }
       else{

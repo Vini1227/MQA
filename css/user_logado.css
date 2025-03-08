@@ -12,17 +12,38 @@ height: auto;
 }
 
 .v3{
+max-height: 60px;
 padding-top: 10px;
 padding-bottom: 10px;
 }
 
 .link{
+display: flex;
 float: right;
 justify-content: center;
 align-items: center;
 margin-right: 78px;
-display: flex;
-gap: 45px;
+gap: 30px;
+flex-wrap: nowrap;
+}
+
+.link a {
+text-decoration: none;
+color: white;
+font-family: 'Lalezar', sans-serif;
+font-size: 20px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+
+flex-shrink: 0;
+}
+
+.user-img{
+width: 30px;
+height: 30px;
+border-radius: 50%;
+margin-right: 10px;
 }
 
 a{
@@ -31,6 +52,8 @@ color: white;
 }
 
 #b3, #b4{
+display: flex;
+align-items: center;
 font-family: 'lalezar';
 font-size: 20px;
 }
