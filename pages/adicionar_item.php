@@ -2,29 +2,29 @@
 session_start();
 require_once('config.php');
 
-// Verifica se o usuário está logado pelo email
-if (!isset($_SESSION['email'])) {
+// Verifica se a ONG está logada pela sessão
+if (!isset($_SESSION['ong'])) {
     echo "<script>alert('Você precisa estar logado para cadastrar um item!');</script>";
     echo "<script>window.location.href='login.php';</script>";
     exit();
 }
 
-$email = $_SESSION['email']; // Recupera o email da sessão
+$email = $_SESSION['ong']['email']; // Recupera o email da ONG logada
 
-// Busca o ID do usuário com base no email
-$sqlUsuario = "SELECT id FROM usuario WHERE email = :email";
-$stmt = $pdo->prepare($sqlUsuario);
+// Busca o ID da ONG com base no email
+$sqlOng = "SELECT id FROM ongs WHERE email = :email";
+$stmt = $pdo->prepare($sqlOng);
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->execute();
-$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+$ong = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$usuario) {
-    echo "<script>alert('Usuário não encontrado!');</script>";
+if (!$ong) {
+    echo "<script>alert('ONG não encontrada!');</script>";
     echo "<script>window.location.href='login.php';</script>";
     exit();
 }
 
-$usuario_id = $usuario['id']; // Define o ID do usuário logado
+$ong_id = $ong['id']; // Define o ID da ONG logada
 
 // Processa o formulário ao enviar
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,30 +33,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descricao = $_POST['descricao'] ?? null;
 
     // Validação de campos obrigatórios
-    
-        // Os campos 'nome' e 'tipo' são obrigatórios
-        if (empty($_POST['nome']) || empty($_POST['tipo'])) {
-            echo "<script>alert('Os campos Nome e Tipo são obrigatórios!');</script>";
-            echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
-            exit();
-        }
+    if (empty($nome) || empty($tipo)) {
+        echo "<script>alert('Os campos Nome e Tipo são obrigatórios!');</script>";
+        echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
+        exit();
+    }
+
+    // Escapar os dados de entrada para evitar SQL Injection (embora já esteja usando Prepared Statements)
+    $nome = htmlspecialchars($nome);
+    $tipo = htmlspecialchars($tipo);
+    $descricao = htmlspecialchars($descricao);
 
     try {
-        // Insere o item no banco de dados
-        $sql = "INSERT INTO itens (nome, tipo, descricao, usuario_id) VALUES (:nome, :tipo, :descricao, :usuario_id)";
+        // Insere o item no banco de dados, associando o ID da ONG
+        $sql = "INSERT INTO itens (nome, tipo, descricao, ong_id) VALUES (:nome, :tipo, :descricao, :ong_id)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
         $stmt->bindParam(':tipo', $tipo, PDO::PARAM_STR);
         $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-        $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+        $stmt->bindParam(':ong_id', $ong_id, PDO::PARAM_INT);
         $stmt->execute();
 
+        // Feedback para o usuário
         echo "<script>alert('Item cadastrado com sucesso!');</script>";
         echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
     } catch (PDOException $e) {
-        echo "Erro ao cadastrar item: " . $e->getMessage();
+        echo "<script>alert('Erro ao cadastrar item: " . $e->getMessage() . "');</script>";
+        echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
     }
-
 }
 ?>
-

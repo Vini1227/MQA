@@ -2,39 +2,39 @@
 session_start();
 require_once('config.php');
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['email'])) {
+// Verifica se a ONG está logada pela sessão
+if (!isset($_SESSION['ong'])) {
     echo "<script>alert('Você precisa estar logado para excluir um item!');</script>";
     echo "<script>window.location.href='login.php';</script>";
     exit();
 }
 
-$email = $_SESSION['email']; // Recupera o email da sessão
+$email = $_SESSION['ong']['email']; // Recupera o email da ONG logada
 
-// Busca o ID do usuário com base no email
-$sqlUsuario = "SELECT id FROM usuario WHERE email = :email";
-$stmtUsuario = $pdo->prepare($sqlUsuario);
-$stmtUsuario->bindParam(':email', $email, PDO::PARAM_STR);
-$stmtUsuario->execute();
-$usuario = $stmtUsuario->fetch(PDO::FETCH_ASSOC);
+// Busca o ID da ONG com base no email
+$sqlOng = "SELECT id FROM ongs WHERE email = :email";
+$stmtOng = $pdo->prepare($sqlOng);
+$stmtOng->bindParam(':email', $email, PDO::PARAM_STR);
+$stmtOng->execute();
+$ong = $stmtOng->fetch(PDO::FETCH_ASSOC);
 
-if (!$usuario) {
-    echo "<script>alert('Usuário não encontrado!');</script>";
+if (!$ong) {
+    echo "<script>alert('ONG não encontrada!');</script>";
     echo "<script>window.location.href='login.php';</script>";
     exit();
 }
 
-$usuario_id = $usuario['id']; // ID do usuário logado
+$ong_id = $ong['id']; // ID da ONG logada
 
 // Verifica se o ID do item foi passado na URL
 if (isset($_GET['id'])) {
     $item_id = intval($_GET['id']); // Converte o ID para inteiro
 
-    // Exclui o item pertencente ao usuário logado
-    $sqlDelete = "DELETE FROM itens WHERE id = :item_id AND usuario_id = :usuario_id";
+    // Exclui o item pertencente à ONG logada
+    $sqlDelete = "DELETE FROM itens WHERE id = :item_id AND ong_id = :ong_id";
     $stmtDelete = $pdo->prepare($sqlDelete);
     $stmtDelete->bindParam(':item_id', $item_id, PDO::PARAM_INT);
-    $stmtDelete->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+    $stmtDelete->bindParam(':ong_id', $ong_id, PDO::PARAM_INT);
 
     if ($stmtDelete->execute()) {
         echo "<script>alert('Item excluído com sucesso!');</script>";
@@ -44,3 +44,4 @@ if (isset($_GET['id'])) {
 }
 
 echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
+?>
