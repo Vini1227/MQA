@@ -13,6 +13,7 @@ header{
 }
 
 .v3{
+    max-height: 60px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -105,6 +106,14 @@ button{
     border: none;
     color: white;
     font-size: 24px;
+}
+button:hover{
+    border: #00ccff solid;
+    background-color: #ffffff;
+    color: #00ccff;
+    cursor: pointer;
+    transition: 0.3s;
+    
 }
 p{
     font-size: 32px;
