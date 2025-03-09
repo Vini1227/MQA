@@ -26,7 +26,8 @@
           'id' => $result['id'],
           'email' => $result['email'],
           'nome' => $result['nome'],
-          'imagem' => $result['imagem']
+          'imagem' => $result['imagem'],
+          'descricao' => $result['descricao']
         ];
 
       //print_r($result);
