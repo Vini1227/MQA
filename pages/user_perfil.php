@@ -67,6 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Perfil do Usuário</title>
 </head>
 <body>
+    <header>    
+        <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
+
+    </header>
 
 <div class="container">
     <h2>Perfil</h2>

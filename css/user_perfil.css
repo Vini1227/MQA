@@ -4,6 +4,19 @@
     margin: 0;
     padding: 0;
 }
+header { 
+    display: flex;
+    justify-content: space-between;
+    padding-left: 78px;
+    background-color: #00ccff;
+    min-height: 80px;
+    width: 100%;
+  }
+.mqa {
+    max-height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
 h2, h3 {
     text-align: center;
