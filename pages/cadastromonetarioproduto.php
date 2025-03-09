@@ -27,6 +27,83 @@ if (!$ong) {
 
 $ong_id = $ong['id']; // Define o ID da ONG logada
 
+// Verifica se já existe um cadastro monetário para essa ONG
+$sqlVerificaCadastro = "SELECT * FROM cadastro_monetario WHERE ong_id = :ong_id";
+$stmtVerifica = $pdo->prepare($sqlVerificaCadastro);
+$stmtVerifica->bindParam(':ong_id', $ong_id, PDO::PARAM_INT);
+$stmtVerifica->execute();
+$cadastroExistente = $stmtVerifica->fetch(PDO::FETCH_ASSOC);
+
+// Processa o formulário ao enviar
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pix = $_POST['pix'] ?? null;
+    $agencia = $_POST['agencia'] ?? null;
+    $cnpj = $_POST['cnpj'] ?? null;
+    $codigo_conta = $_POST['codigo_conta'] ?? null;
+    $nome_banco = $_POST['nome_banco'] ?? null;
+    $tipo_conta = $_POST['tipo_conta'] ?? null;
+
+    // Validação de Pix (obrigatório)
+    if (empty($pix)) {
+        echo "<script>alert('O campo Pix é obrigatório!');</script>";
+        echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
+        exit();
+    }
+
+    try {
+        if ($cadastroExistente) {
+            // Se já existe um cadastro monetário para esta ONG, fazemos a atualização
+            $sqlUpdate = "UPDATE cadastro_monetario 
+                          SET pix = :pix, agencia = :agencia, cnpj = :cnpj, codigo_conta = :codigo_conta, 
+                              nome_banco = :nome_banco, tipo_conta = :tipo_conta
+                          WHERE ong_id = :ong_id";
+            $stmtUpdate = $pdo->prepare($sqlUpdate);
+            $stmtUpdate->bindParam(':pix', $pix, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':agencia', $agencia, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':cnpj', $cnpj, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':codigo_conta', $codigo_conta, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':nome_banco', $nome_banco, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':tipo_conta', $tipo_conta, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':ong_id', $ong_id, PDO::PARAM_INT);
+            $stmtUpdate->execute();
+
+            echo "<script>alert('Cadastro Monetário atualizado com sucesso!');</script>";
+        } else {
+            // Se não existe, inserimos o novo cadastro
+            $sqlInsert = "INSERT INTO cadastro_monetario (ong_id, pix, agencia, cnpj, codigo_conta, nome_banco, tipo_conta)
+                          VALUES (:ong_id, :pix, :agencia, :cnpj, :codigo_conta, :nome_banco, :tipo_conta)";
+            $stmtInsert = $pdo->prepare($sqlInsert);
+            $stmtInsert->bindParam(':ong_id', $ong_id, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':pix', $pix, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':agencia', $agencia, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':cnpj', $cnpj, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':codigo_conta', $codigo_conta, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':nome_banco', $nome_banco, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':tipo_conta', $tipo_conta, PDO::PARAM_STR);
+            $stmtInsert->execute();
+
+            echo "<script>alert('Cadastro Monetário realizado com sucesso!');</script>";
+        }
+
+        // Redireciona após salvar
+        echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
+    } catch (PDOException $e) {
+        echo "Erro ao salvar os dados: " . $e->getMessage();
+    }
+}
+
+// Exibir dados existentes (caso haja) no formulário
+if ($cadastroExistente) {
+    $pix = $cadastroExistente['pix'];
+    $agencia = $cadastroExistente['agencia'];
+    $cnpj = $cadastroExistente['cnpj'];
+    $codigo_conta = $cadastroExistente['codigo_conta'];
+    $nome_banco = $cadastroExistente['nome_banco'];
+    $tipo_conta = $cadastroExistente['tipo_conta'];
+} else {
+    $pix = $agencia = $cnpj = $codigo_conta = $nome_banco = $tipo_conta = '';
+}
+
 // Busca os itens cadastrados pela ONG
 $sqlItens = "SELECT id, nome, tipo, descricao FROM itens WHERE ong_id = :ong_id";
 $stmtItens = $pdo->prepare($sqlItens);
@@ -73,33 +150,41 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                     <input type="checkbox" id="checkboxItens" class="checkbox" name="checkboxTipo[]" value="itens" autocomplete="off">
                 </div>
             </div>
-            <div>
-                <details class="details-box">
-                    <summary class="titulos titulos-var1">Cadastro Monetário</summary>
-                    <img src="../imgs/pix.png" alt="simbolo do pix" class="pix-imagem">
-                    <p class="titulos titulos-varPix">Pix</p>
-                    <input type="text" class="pix-textbox" name="pix" id="pix" autocomplete="off">
-                    <p class="titulos titulos-varBanco">Banco</p>
-                    <p class="subtitulos">Agência</p>
-                    <input type="text" class="banco-textbox" name="agencia" id="agencia" autocomplete="off">
-                    <p class="subtitulos">CNPJ</p>
-                    <input type="text" class="banco-textbox" name="cnpj" id="cnpj" autocomplete="off">
-                    <p class="subtitulos">Código da Conta</p>
-                    <input type="text" class="banco-textbox" name="codigo_conta" id="codigo_conta" autocomplete="off">
-                    <p class="subtitulos">Nome do Banco</p>
-                    <input type="text" class="banco-textbox" name="nome_banco" id="nome_banco" autocomplete="off">
-                    <p class="subtitulos">Tipo da Conta</p>
-                    <input type="text" class="banco-textbox" name="tipo_conta" id="tipo_conta" autocomplete="off">
-                    <div class="salvarEsquecer-box">
-                        <button class="button">
-                            <p class="titulos titulos-varEsqSalvar">Esquecer</p>
-                        </button>
-                        <button class="button">
-                            <p class="titulos titulos-varEsqSalvar">Salvar</p>
-                        </button>
-                    </div>
-                </details>
-            </div>
+            <form method="POST" action="cadastromonetarioproduto.php">
+    <details class="details-box">
+        <summary class="titulos titulos-var1">Cadastro Monetário</summary>
+        <img src="../imgs/pix.png" alt="simbolo do pix" class="pix-imagem">
+
+        <p class="titulos titulos-varPix">Pix</p>
+        <input type="text" class="pix-textbox" name="pix" id="pix" autocomplete="off" value="<?php echo htmlspecialchars($pix); ?>" required>
+
+        <p class="titulos titulos-varBanco">Banco</p>
+
+        <p class="subtitulos">Agência</p>
+        <input type="text" class="banco-textbox" name="agencia" id="agencia" autocomplete="off" value="<?php echo htmlspecialchars($agencia); ?>">
+
+        <p class="subtitulos">CNPJ</p>
+        <input type="text" class="banco-textbox" name="cnpj" id="cnpj" autocomplete="off" value="<?php echo htmlspecialchars($cnpj); ?>">
+
+        <p class="subtitulos">Código da Conta</p>
+        <input type="text" class="banco-textbox" name="codigo_conta" id="codigo_conta" autocomplete="off" value="<?php echo htmlspecialchars($codigo_conta); ?>">
+
+        <p class="subtitulos">Nome do Banco</p>
+        <input type="text" class="banco-textbox" name="nome_banco" id="nome_banco" autocomplete="off" value="<?php echo htmlspecialchars($nome_banco); ?>">
+
+        <p class="subtitulos">Tipo da Conta</p>
+        <input type="text" class="banco-textbox" name="tipo_conta" id="tipo_conta" autocomplete="off" value="<?php echo htmlspecialchars($tipo_conta); ?>">
+
+        <div class="salvarEsquecer-box">
+            <button type="reset" class="button">
+                <p class="titulos titulos-varEsqSalvar">Esquecer</p>
+            </button>
+            <button type="submit" class="button">
+                <p class="titulos titulos-varEsqSalvar">Salvar</p>
+            </button>
+        </div>
+    </details>
+</form>
             <div>
                 <details class="details-box">
                     <summary class="titulos titulos-var1">Lista de Itens</summary>

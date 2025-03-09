@@ -33,3 +33,17 @@ CREATE TABLE ongs
     cnpj VARCHAR(14) NOT NULL,
     CONSTRAINT pk_id PRIMARY KEY (id)
 );
+
+CREATE TABLE cadastro_monetario
+(
+    id INT unsigned NOT NULL AUTO_INCREMENT,
+    ong_id INT unsigned NOT NULL,
+    pix VARCHAR(255),
+    agencia VARCHAR(255),
+    cnpj VARCHAR(14),
+    codigo_conta VARCHAR(255),
+    nome_banco VARCHAR(255),
+    tipo_conta VARCHAR(50),
+    CONSTRAINT pk_cadastro_monetario PRIMARY KEY (id),
+    CONSTRAINT fk_ong_id FOREIGN KEY (ong_id) REFERENCES ongs(id) ON DELETE CASCADE
+);
