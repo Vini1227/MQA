@@ -8,16 +8,20 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 $usuario = $_SESSION['usuario'];
+$nome = isset($usuario['nome']) ? $usuario['nome'] : '';
+$descricao = isset($usuario['descricao']) ? $usuario['descricao'] : '';
+$imagemNovoNome = isset($usuario['imagem']) ? $usuario['imagem'] : 'default.png';
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['imagem'])) {
-    $imagem = $_FILES['imagem'];
-    $imagemErro = $imagem['error']; 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $_POST['nome'] ?? $nome;
+    $descricao = $_POST['descricao'] ?? $descricao;
 
-    if ($imagemErro == 0) {
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
+        $imagem = $_FILES['imagem'];
         $imagemNome = $imagem['name'];
         $imagemTmp = $imagem['tmp_name'];
-    
-        $imagemNovoNome = uniqid('' , true) . '.' . pathinfo($imagemNome, PATHINFO_EXTENSION);
+
+        $imagemNovoNome = uniqid('', true) . '.' . pathinfo($imagemNome, PATHINFO_EXTENSION);
         $imagemDestino = "../uploads/users/" . $imagemNovoNome;
 
         if (!is_dir("../uploads/users/")) {
@@ -30,38 +34,67 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['imagem'])) {
             $stmt->bindParam(':imagem', $imagemNovoNome, PDO::PARAM_STR);
             $stmt->bindParam(':id', $usuario['id'], PDO::PARAM_INT);
             $stmt->execute();
-
-            $_SESSION['usuario']['imagem'] = $imagemNovoNome;
-
-            echo "<script>alert('Imagem alterada com sucesso!');</script>";
-            echo "<script>window.location.href='user_logado.php';</script>";
-        } else {
-            echo "<script>alert('Erro ao alterar a imagem.');</script>";
-            echo "<script>window.location.href='user_perfil.php';</script>";
         }
     } else {
-        echo "<script>alert('Erro ao enviar a imagem.');</script>";
-        echo "<script>window.location.href='user_perfil.php';</script>";    
+        
+        $imagemNovoNome = $usuario['imagem'];
     }
+
+   
+    $sql = "UPDATE usuario SET nome = :nome, descricao = :descricao WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+    $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+    $stmt->bindParam(':id', $usuario['id'], PDO::PARAM_INT);
+    $stmt->execute();
+
+
+    $_SESSION['usuario']['nome'] = $nome;
+    $_SESSION['usuario']['descricao'] = $descricao;
+    $_SESSION['usuario']['imagem'] = $imagemNovoNome;
+
+    echo "<script>alert('Perfil atualizado com sucesso!');</script>";
+    echo "<script>window.location.href='user_logado.php';</script>";
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
-    <title>user_perfil</title>
+    <link rel="stylesheet" href="../css/user_perfil.css">
+    <title>Perfil do Usuário</title>
 </head>
 <body>
 
-<h2>Alterar Imagem de Perfil</h2>
+<div class="container">
+    <h2>Perfil</h2>
 
-<form action="user_perfil.php" method="POST" enctype="multipart/form-data">
-    <label for="imagem">Escolha uma nova imagem para o perfil:</label>
-    <input type="file" name="imagem" id="imagem" accept="image/*" required>
-    <button type="submit">Alterar Imagem</button>
-</form>
+    <div class="profile-header">
+        <img src="<?php echo '../uploads/users/' . htmlspecialchars($imagemNovoNome); ?>" alt="Foto de Perfil">
+        <h3><?php echo htmlspecialchars($nome); ?></h3>
+        <p><?php echo htmlspecialchars($descricao); ?></p>
+    </div>
+
+    <h2>Editar Perfil</h2>
+
+    <form action="user_perfil.php" method="POST" enctype="multipart/form-data">
+        <label for="imagem">Alterar Foto de Perfil:</label>
+        <input type="file" name="imagem" id="imagem" accept="image/*">
+        <br>
+        
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($nome); ?>" required>
+        <br>
+        
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" id="descricao" rows="4" required><?php echo htmlspecialchars($descricao); ?></textarea>
+        <br>
+        
+        <button type="submit">Salvar Alterações</button>
+    </form>
+</div>
 
 </body>
 </html>
