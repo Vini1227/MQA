@@ -29,16 +29,20 @@
 
         <div class="conhec">
 
+        <a href="cadastro.php">
             <button class="doador">
                 <img src="../imgs/doador.png" alt=""> 
                 <p>Doador</p>
             </button>
+        </a>
 
+        <a href="cadastro_ong_v2.php">
             <button class="inst">
                 <img src="../imgs/ONG.png" alt="">
                 <p>ONG</p>
             </button>
-        </div>
+        </a>
+    </div>
            
 
     </div>
