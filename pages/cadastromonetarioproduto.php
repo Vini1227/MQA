@@ -2,34 +2,35 @@
 session_start();
 require_once('config.php');
 
-// Verifica se o usuário está logado pelo email
-if (!isset($_SESSION['email'])) {
+// Verifica se a ONG está logada
+if (!isset($_SESSION['ong'])) {
     echo "<script>alert('Você precisa estar logado para acessar esta página!');</script>";
     echo "<script>window.location.href='login.php';</script>";
     exit();
 }
 
-$email = $_SESSION['email']; // Recupera o email da sessão
+// Recupera o e-mail da ONG a partir da sessão
+$email = $_SESSION['ong']['email']; // Agora estamos acessando corretamente a sessão da ONG
 
-// Busca o ID do usuário com base no email
-$sqlUsuario = "SELECT id FROM usuario WHERE email = :email";
-$stmt = $pdo->prepare($sqlUsuario);
+// Busca o ID da ONG com base no email
+$sqlOng = "SELECT id FROM ongs WHERE email = :email";
+$stmt = $pdo->prepare($sqlOng);
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->execute();
-$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+$ong = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$usuario) {
-    echo "<script>alert('Usuário não encontrado!');</script>";
+if (!$ong) {
+    echo "<script>alert('ONG não encontrada!');</script>";
     echo "<script>window.location.href='login.php';</script>";
     exit();
 }
 
-$usuario_id = $usuario['id']; // Define o ID do usuário logado
+$ong_id = $ong['id']; // Define o ID da ONG logada
 
-// Busca os itens cadastrados pelo usuário
-$sqlItens = "SELECT id, nome, tipo, descricao FROM itens WHERE usuario_id = :usuario_id";
+// Busca os itens cadastrados pela ONG
+$sqlItens = "SELECT id, nome, tipo, descricao FROM itens WHERE ong_id = :ong_id";
 $stmtItens = $pdo->prepare($sqlItens);
-$stmtItens->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+$stmtItens->bindParam(':ong_id', $ong_id, PDO::PARAM_INT);
 $stmtItens->execute();
 $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -60,16 +61,16 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="cad-monprod-box">
             <h1 class="titulos">Descrição</h1>
-            <textarea class="textarea-descricao"></textarea>
+            <textarea class="textarea-descricao" name="descricao" id="descricao" autocomplete="on"></textarea>
             <p class="titulos">Tipos de Doações Aceitas:</p>
             <div class="row-box">
                 <div class="box-da-checkbox">
                     <p class="titulos titulos-var1">Dinheiro</p>
-                    <input type="checkbox" id="checkbox1" class="checkbox" name="checkbox1" value="valor1">
+                    <input type="checkbox" id="checkboxDinheiro" class="checkbox" name="checkboxTipo[]" value="dinheiro" autocomplete="off">
                 </div>
                 <div class="box-da-checkbox">
                     <p class="titulos titulos-var1">Itens</p>
-                    <input type="checkbox" id="checkbox1" class="checkbox" name="checkbox1" value="valor1">
+                    <input type="checkbox" id="checkboxItens" class="checkbox" name="checkboxTipo[]" value="itens" autocomplete="off">
                 </div>
             </div>
             <div>
@@ -77,18 +78,18 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                     <summary class="titulos titulos-var1">Cadastro Monetário</summary>
                     <img src="../imgs/pix.png" alt="simbolo do pix" class="pix-imagem">
                     <p class="titulos titulos-varPix">Pix</p>
-                    <input type="text" class="pix-textbox">
+                    <input type="text" class="pix-textbox" name="pix" id="pix" autocomplete="off">
                     <p class="titulos titulos-varBanco">Banco</p>
                     <p class="subtitulos">Agência</p>
-                    <input type="text" class="banco-textbox">
+                    <input type="text" class="banco-textbox" name="agencia" id="agencia" autocomplete="off">
                     <p class="subtitulos">CNPJ</p>
-                    <input type="text" class="banco-textbox">
+                    <input type="text" class="banco-textbox" name="cnpj" id="cnpj" autocomplete="off">
                     <p class="subtitulos">Código da Conta</p>
-                    <input type="text" class="banco-textbox">
+                    <input type="text" class="banco-textbox" name="codigo_conta" id="codigo_conta" autocomplete="off">
                     <p class="subtitulos">Nome do Banco</p>
-                    <input type="text" class="banco-textbox">
+                    <input type="text" class="banco-textbox" name="nome_banco" id="nome_banco" autocomplete="off">
                     <p class="subtitulos">Tipo da Conta</p>
-                    <input type="text" class="banco-textbox">
+                    <input type="text" class="banco-textbox" name="tipo_conta" id="tipo_conta" autocomplete="off">
                     <div class="salvarEsquecer-box">
                         <button class="button">
                             <p class="titulos titulos-varEsqSalvar">Esquecer</p>
@@ -127,16 +128,16 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                     <form action="adicionar_item.php" method="POST">
                     <div id="adicionar">
                         <div>
-                            <p class="titulos subtitulos" id="nome">Nome</p>
-                            <input type="text" class="banco-textbox" name="nome">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="banco-textbox" name="nome" id="nome" autocomplete="on">
                         </div>
                         <div>
-                            <p class="titulos subtitulos" id="tipo">Tipo do Produto</p>
-                            <input type="text" class="banco-textbox" name="tipo">
+                            <label for="tipo">Tipo do Produto</label>
+                            <input type="text" class="banco-textbox" name="tipo" id="tipo" autocomplete="on">
                         </div>
                         <div>
-                            <p class="titulos subtitulos" id="descricao">Descrição</p>
-                            <textarea class="desc-produto" name="descricao"></textarea>
+                            <label for="descricao">Descrição</label>
+                            <textarea class="desc-produto" name="descricao" id="descricao" autocomplete="on"></textarea>
                         </div>
                         <div class="salvarEsquecer-box">
                             <button class="button" type="button">
@@ -153,14 +154,14 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                         <form id="formAtualizar" action="atualizar_item.php" method="POST">
                             <input type="hidden" name="id" id="atualizar-id">
                             
-                            <p class="titulos subtitulos">Nome</p>
-                            <input type="text" class="banco-textbox" name="nome" id="atualizar-nome">
+                            <label for="atualizar-nome">Nome</label>
+                            <input type="text" class="banco-textbox" name="nome" id="atualizar-nome" autocomplete="on">
                             
-                            <p class="titulos subtitulos">Tipo</p>
-                            <input type="text" class="banco-textbox" name="tipo" id="atualizar-tipo">
+                            <label for="atualizar-tipo">Tipo</label>
+                            <input type="text" class="banco-textbox" name="tipo" id="atualizar-tipo" autocomplete="on">
                             
-                            <p class="titulos subtitulos">Descrição</p>
-                            <textarea class="desc-produto" name="descricao" id="atualizar-descricao"></textarea>
+                            <label for="atualizar-descricao">Descrição</label>
+                            <textarea class="desc-produto" name="descricao" id="atualizar-descricao" autocomplete="on"></textarea>
                             
                             <div class="salvarEsquecer-box">
                                 <button type="button" class="button" id="atualizarVoltar">

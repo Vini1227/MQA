@@ -1,43 +1,56 @@
 <?php
+session_start();
 
-  session_start(); 
+if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])) {
+   require_once('config.php');
+   $email = $_POST['email'];
+   $senha = $_POST['senha'];
 
-   //print_r($_REQUEST);
-   if(isset($_POST['submit'])&& !empty($_POST['email']) && !empty($_POST['senha']))
-   {
-      require_once('config.php');
-      $email = $_POST['email'];
-      $senha = $_POST['senha'];
+   // Tentar fazer o login como "usuário" primeiro
+   $sql_usuario = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";
+   $stmt_usuario = $pdo->prepare($sql_usuario);
+   $stmt_usuario->bindParam(':email', $email, PDO::PARAM_STR);
+   $stmt_usuario->bindParam(':senha', $senha, PDO::PARAM_STR);
+   $stmt_usuario->execute();
+   $result_usuario = $stmt_usuario->fetch(PDO::FETCH_ASSOC);
 
-      //print_r('Email:'.$email);
-      //print_r('<br>');
-      //print_r('senha:'.$senha);
+   if ($result_usuario) {
+       // Se encontrado, armazena as informações do usuário na sessão
+       $_SESSION['usuario'] = [
+           'id' => $result_usuario['id'],
+           'email' => $result_usuario['email'],
+           'nome' => $result_usuario['nome'],
+           'imagem' => $result_usuario['imagem'] ?? null // Se imagem não existe, evita erro
+       ];
 
-      $sql = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";
-      $stmt = $pdo->prepare($sql);
-      $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-      $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
-      $stmt->execute();
-      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+       header('Location: user_logado.php'); // Redireciona para a página do usuário logado
+       exit();
+   } else {
+       // Se não encontrar um usuário, tenta fazer login como "ONG"
+       $sql_ong = "SELECT * FROM ongs WHERE email = :email AND senha = :senha";
+       $stmt_ong = $pdo->prepare($sql_ong);
+       $stmt_ong->bindParam(':email', $email, PDO::PARAM_STR);
+       $stmt_ong->bindParam(':senha', $senha, PDO::PARAM_STR);
+       $stmt_ong->execute();
+       $result_ong = $stmt_ong->fetch(PDO::FETCH_ASSOC);
 
-      if($result){
-        //print_r($usuario);
-        $_SESSION['usuario'] = [
-          'id' => $result['id'],
-          'email' => $result['email'],
-          'nome' => $result['nome'],
-          'imagem' => $result['imagem']
-        ];
+       if ($result_ong) {
+          
+           $_SESSION['ong'] = [
+               'id' => $result_ong['id'],
+               'email' => $result_ong['email'],
+               'nome' => $result_ong['nome'],
+               'descricao' => $result_ong['descricao'] ?? null
+           ];
 
-      //print_r($result);
-        //echo "Login efetuado com sucesso";
-        header('Location:user_logado.php');
-        exit();
-      }
-      else{
-        echo "<script>alert('Login ou Senha Incorretos!');</script>";
-        echo "<script>window.location.href='login.php';</script>";
-        exit();
-      }
+           header('Location: cadastromonetarioproduto.php');
+           exit();
+       } else {
+
+           echo "<script>alert('Login ou Senha Incorretos!');</script>";
+           echo "<script>window.location.href='login.php';</script>";
+           exit();
+       }
    }
+}
 ?>

@@ -18,9 +18,9 @@ CREATE TABLE itens
     nome VARCHAR(255) NOT NULL,
     tipo VARCHAR(255) NOT NULL,
     descricao VARCHAR(255),
-    usuario_id INT unsigned NOT NULL,
-    CONSTRAINT pk_id_itens PRIMARY KEY (id),
-    CONSTRAINT fk_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
+    ong_id INT unsigned NOT NULL,
+    CONSTRAINT pk_item_ong_id PRIMARY KEY (id),
+    CONSTRAINT fk_ong_id FOREIGN KEY (ong_id) REFERENCES ongs(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ongs
