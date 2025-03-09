@@ -213,15 +213,15 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                     <form action="adicionar_item.php" method="POST">
                     <div id="adicionar">
                         <div>
-                            <label for="nome">Nome</label>
+                            <label for="nome" class="subtitulos">Nome</label>
                             <input type="text" class="banco-textbox" name="nome" id="nome" autocomplete="on">
                         </div>
                         <div>
-                            <label for="tipo">Tipo do Produto</label>
+                            <label for="tipo" class="subtitulos">Tipo do Produto</label>
                             <input type="text" class="banco-textbox" name="tipo" id="tipo" autocomplete="on">
                         </div>
                         <div>
-                            <label for="descricao">Descrição</label>
+                            <label for="descricao" class="subtitulos">Descrição</label>
                             <textarea class="desc-produto" name="descricao" id="descricao" autocomplete="on"></textarea>
                         </div>
                         <div class="salvarEsquecer-box">
@@ -239,13 +239,13 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                         <form id="formAtualizar" action="atualizar_item.php" method="POST">
                             <input type="hidden" name="id" id="atualizar-id">
                             
-                            <label for="atualizar-nome">Nome</label>
+                            <label for="atualizar-nome" class="subtitulos">Nome</label>
                             <input type="text" class="banco-textbox" name="nome" id="atualizar-nome" autocomplete="on">
                             
-                            <label for="atualizar-tipo">Tipo</label>
+                            <label for="atualizar-tipo" class="subtitulos">Tipo</label>
                             <input type="text" class="banco-textbox" name="tipo" id="atualizar-tipo" autocomplete="on">
                             
-                            <label for="atualizar-descricao">Descrição</label>
+                            <label for="atualizar-descricao" class="subtitulos">Descrição</label>
                             <textarea class="desc-produto" name="descricao" id="atualizar-descricao" autocomplete="on"></textarea>
                             
                             <div class="salvarEsquecer-box">
