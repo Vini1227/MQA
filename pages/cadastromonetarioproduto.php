@@ -43,13 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome_banco = $_POST['nome_banco'] ?? null;
     $tipo_conta = $_POST['tipo_conta'] ?? null;
 
-    // Validação de Pix (obrigatório)
-    if (empty($pix)) {
-        echo "<script>alert('O campo Pix é obrigatório!');</script>";
-        echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
-        exit();
-    }
-
     try {
         if ($cadastroExistente) {
             // Se já existe um cadastro monetário para esta ONG, fazemos a atualização
@@ -156,7 +149,7 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
         <img src="../imgs/pix.png" alt="simbolo do pix" class="pix-imagem">
 
         <p class="titulos titulos-varPix">Pix</p>
-        <input type="text" class="pix-textbox" name="pix" id="pix" autocomplete="off" value="<?php echo htmlspecialchars($pix); ?>" required>
+        <input type="text" class="pix-textbox" name="pix" id="pix" autocomplete="off" value="<?php echo htmlspecialchars($pix); ?>">
 
         <p class="titulos titulos-varBanco">Banco</p>
 
