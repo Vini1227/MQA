@@ -13,7 +13,7 @@ if (!isset($_SESSION['ong'])) {
 $email = $_SESSION['ong']['email']; // Agora estamos acessando corretamente a sessão da ONG
 
 // Busca o ID e a descrição da ONG com base no email
-$sqlOng = "SELECT id, descricao FROM ongs WHERE email = :email";
+$sqlOng = "SELECT id, descricao, nome FROM ongs WHERE email = :email";
 $stmt = $pdo->prepare($sqlOng);
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->execute();
@@ -124,9 +124,11 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
             <div class="nav">
                 <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
             </div>
+            <a href="./logout.php" id="b4">Sair</a>
         </div>  
         <div class="banner-perf-box">
             <img class="banner-do-perfil" src="../imgs/banner.png">
+            <p class="texto-banner"><?php echo htmlspecialchars($ong['nome']); ?></p>
         </div>
         <div class="img-perf-box">
             <img class="imagem-do-perfil" src="../imgs/avatar.png">

@@ -18,7 +18,7 @@ try {
     $stmt->bindParam(':cnpj', $cnpj);
 
     if ($stmt->execute()) {
-        echo json_encode(['success' => true]);
+        echo "<script>window.location.href='login.php';</script>";
     } else {
         echo json_encode(['success' => false, 'error' => 'Erro ao inserir os dados']);
     }
