@@ -20,7 +20,9 @@ if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']
            'id' => $result_usuario['id'],
            'email' => $result_usuario['email'],
            'nome' => $result_usuario['nome'],
-           'imagem' => $result_usuario['imagem'] ?? null // Se imagem não existe, evita erro
+           'imagem' => $result_usuario['imagem'] ?? null, // Se imagem não existe, evita erro
+           'descricao' => $result_usuario['descricao'] 
+
        ];
 
        header('Location: user_logado.php'); // Redireciona para a página do usuário logado
