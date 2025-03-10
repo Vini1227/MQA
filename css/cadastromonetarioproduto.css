@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "DM Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
 
 .app {
   display: flex;
@@ -111,7 +110,7 @@
   height: 50px;
   background-color: #f4f4f4;
   margin-left: 26.6px;
-  border: 1.5px solid #8F8F8F;
+  border: 1.5px solid #8f8f8f;
   border-radius: 20px;
 }
 
@@ -120,7 +119,7 @@
   height: 30px;
   border-radius: 10px;
   margin: auto 26px auto auto;
-  border: 1.5px solid #8F8F8F;
+  border: 1.5px solid #8f8f8f;
 }
 
 .details-box {
@@ -132,11 +131,10 @@
   width: 528px;
   min-height: 50px;
   margin: 30px auto 0px auto;
-  border: 1.5px solid #8F8F8F;
+  border: 1.5px solid #8f8f8f;
   border-radius: 20px;
   cursor: pointer;
 }
-
 
 summary {
   position: relative;
@@ -161,7 +159,7 @@ summary::after {
   left: 458px;
 }
 
-details[open]{
+details[open] {
   cursor: default;
 }
 
@@ -177,7 +175,7 @@ details[open]{
 .pix-textbox {
   width: 328px;
   height: 35px;
-  border: 1.5px solid #8F8F8F;
+  border: 1.5px solid #8f8f8f;
   border-radius: 20px;
   box-sizing: border-box;
   padding: 5px;
@@ -240,7 +238,7 @@ details[open]{
 }
 
 .button:hover {
-  border: 1.5px solid #FFFFFF;
+  border: 1.5px solid #ffffff;
 }
 
 .titulos-varEsqSalvar {
@@ -267,6 +265,22 @@ details[open]{
   border-color: #00ccff;
 }
 
+.concluir {
+  display: flex;
+  width: fit-content;
+  height: 50px;
+  align-items: center;
+  background-color: #00ccff;
+  border-radius: 20px;
+  margin: 95px 25px 25px auto;
+  border: none;
+  cursor: pointer;
+}
+
+.concluir:hover {
+  border: 1.5px solid #ffffff;
+}
+
 /* Dropdown da Lista de Itens*/
 
 .nomeTipo-box {
@@ -277,23 +291,24 @@ details[open]{
   border-collapse: collapse;
 }
 
-.nomeTipo-box th, .nomeTipo-box td {
-  text-align: left; 
+.nomeTipo-box th,
+.nomeTipo-box td {
+  text-align: left;
 }
 
 .nomeTipo-box th {
-  background-color: #f4f4f4; 
-  font-size: 20px; 
+  background-color: #f4f4f4;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .nomeTipo-box tr:has(td) {
   border-bottom: 2px solid #8f8f8f;
-  width: 100%; 
+  width: 100%;
 }
 
 .celula {
-  margin: 20px 20px 0px 0px; 
+  margin: 20px 20px 0px 0px;
 }
 
 #adicionar {
@@ -314,7 +329,7 @@ details[open]{
   border-color: #8f8f8f;
 }
 
-.desc-produto:hover{
+.desc-produto:hover {
   border-color: #00ccff;
 }
 
@@ -337,7 +352,7 @@ details[open]{
 }
 
 .botao-deletareditar:hover {
-  border: 1.5px solid #FFFFFF;
+  border: 1.5px solid #ffffff;
   box-sizing: border-box;
 }
 

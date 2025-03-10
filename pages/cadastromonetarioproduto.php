@@ -12,8 +12,8 @@ if (!isset($_SESSION['ong'])) {
 // Recupera o e-mail da ONG a partir da sessão
 $email = $_SESSION['ong']['email']; // Agora estamos acessando corretamente a sessão da ONG
 
-// Busca o ID da ONG com base no email
-$sqlOng = "SELECT id FROM ongs WHERE email = :email";
+// Busca o ID e a descrição da ONG com base no email
+$sqlOng = "SELECT id, descricao FROM ongs WHERE email = :email";
 $stmt = $pdo->prepare($sqlOng);
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->execute();
@@ -26,6 +26,8 @@ if (!$ong) {
 }
 
 $ong_id = $ong['id']; // Define o ID da ONG logada
+$descricao_ong = $ong['descricao'] ?? ''; // Se a descrição for null, substitui por uma string vazia
+
 
 // Verifica se já existe um cadastro monetário para essa ONG
 $sqlVerificaCadastro = "SELECT * FROM cadastro_monetario WHERE ong_id = :ong_id";
@@ -131,7 +133,9 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="cad-monprod-box">
             <h1 class="titulos">Descrição</h1>
-            <textarea class="textarea-descricao" name="descricao" id="descricao" autocomplete="on"></textarea>
+            <form action="atualizar_descricao.php" method="POST" id="form-descricao">
+                <textarea class="textarea-descricao" name="descricao" id="descricao" autocomplete="on"><?php echo htmlspecialchars(trim($descricao_ong)); ?></textarea>
+            </form>
             <p class="titulos">Tipos de Doações Aceitas:</p>
             <div class="row-box">
                 <div class="box-da-checkbox">
@@ -288,6 +292,11 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </details>
+                <div class="button-container">
+                    <button type="submit" form="form-descricao" class="concluir">
+                        <p class="titulos titulos-varEsqSalvar">Concluir</p>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
