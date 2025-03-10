@@ -1,7 +1,7 @@
 *{
     margin:0;
     padding:0;
-    font-family: 'lalezar';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 header{
@@ -47,6 +47,9 @@ a{
     text-align: center;
     box-shadow: 0px 4px 250px 10px rgba(0, 0, 0, 0.15);
     margin-top: 50px;
+}
+label{
+    font-weight: bold;
 }
 .cnpj{
     width: 100%;
@@ -97,6 +100,7 @@ input{
 }
 
 button{
+
     width: 720px;
     height: 50px;
     justify-content: center;
@@ -108,14 +112,16 @@ button{
     font-size: 24px;
 }
 button:hover{
-    border: #00ccff solid;
-    background-color: #ffffff;
-    color: #00ccff;
-    cursor: pointer;
-    transition: 0.3s;
-    
+ 
+ border: #00ccff solid;
+ background-color: #ffffff;
+ color: #00ccff;
+ cursor: pointer;
+ transition: 0.3s;
+       
 }
 p{
+    font-weight: bold;
     font-size: 32px;
     align-items: center;
     width: 100%;

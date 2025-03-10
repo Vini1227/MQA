@@ -14,8 +14,8 @@ if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']
    $stmt_usuario->execute();
    $result_usuario = $stmt_usuario->fetch(PDO::FETCH_ASSOC);
 
+   // Se encontrar o usuário
    if ($result_usuario) {
-       // Se encontrado, armazena as informações do usuário na sessão
        $_SESSION['usuario'] = [
            'id' => $result_usuario['id'],
            'email' => $result_usuario['email'],
@@ -34,19 +34,19 @@ if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']
        $stmt_ong->execute();
        $result_ong = $stmt_ong->fetch(PDO::FETCH_ASSOC);
 
+       // Se encontrar a ONG
        if ($result_ong) {
-          
            $_SESSION['ong'] = [
                'id' => $result_ong['id'],
                'email' => $result_ong['email'],
                'nome' => $result_ong['nome'],
-               'descricao' => $result_ong['descricao'] ?? null
+               'descricao' => $result_ong['descricao'] ?? null // Se descrição não existe, evita erro
            ];
 
-           header('Location: cadastromonetarioproduto.php');
+           header('Location: cadastromonetarioproduto.php'); // Redireciona para a página da ONG logada
            exit();
        } else {
-
+           // Se não encontrar nem usuário nem ONG
            echo "<script>alert('Login ou Senha Incorretos!');</script>";
            echo "<script>window.location.href='login.php';</script>";
            exit();
@@ -54,3 +54,4 @@ if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']
    }
 }
 ?>
+
