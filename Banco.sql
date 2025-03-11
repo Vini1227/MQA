@@ -31,6 +31,8 @@ CREATE TABLE ongs
     senha VARCHAR(255) NOT NULL,
     descricao VARCHAR(255),
     cnpj VARCHAR(14) NOT NULL,
+    foto_perfil VARCHAR(255) NULL;
+    banner VARCHAR(255) NULL;
     CONSTRAINT pk_id PRIMARY KEY (id)
 );
 

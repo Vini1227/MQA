@@ -13,7 +13,7 @@ if (!isset($_SESSION['ong'])) {
 $email = $_SESSION['ong']['email']; // Agora estamos acessando corretamente a sessão da ONG
 
 // Busca o ID e a descrição da ONG com base no email
-$sqlOng = "SELECT id, descricao, nome FROM ongs WHERE email = :email";
+$sqlOng = "SELECT id, descricao, nome, foto_perfil, banner FROM ongs WHERE email = :email";
 $stmt = $pdo->prepare($sqlOng);
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->execute();
@@ -127,12 +127,26 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
             <a href="./logout.php" id="b4">Sair</a>
         </div>  
         <div class="banner-perf-box">
-            <img class="banner-do-perfil" src="../imgs/banner.png">
-            <p class="texto-banner"><?php echo htmlspecialchars($ong['nome']); ?></p>
-        </div>
-        <div class="img-perf-box">
-            <img class="imagem-do-perfil" src="../imgs/avatar.png">
-        </div>
+        <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? $ong['banner'] : '../imgs/banner.png'; ?>">
+    <p class="texto-banner"><?php echo htmlspecialchars($ong['nome']); ?></p>
+</div>
+
+<div class="img-perf-box">
+<img class="imagem-do-perfil" src="<?php echo !empty($ong['foto_perfil']) ? $ong['foto_perfil'] : '../imgs/avatar.png'; ?>">
+</div>
+
+<!-- Formulário para upload das imagens -->
+<form action="upload.php" method="POST" enctype="multipart/form-data" id="form-upload">
+    <label for="perfil">Alterar Foto de Perfil:</label>
+    <input type="file" name="perfil" id="perfil" accept="image/*">
+
+    <label for="banner">Alterar Banner:</label>
+    <input type="file" name="banner" id="banner" accept="image/*">
+
+    <button type="submit">Salvar Imagens</button>
+</form>
+
+
         <div class="cad-monprod-box">
             <h1 class="titulos">Descrição</h1>
             <form action="atualizar_descricao.php" method="POST" id="form-descricao">
