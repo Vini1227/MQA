@@ -127,25 +127,27 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
             <a href="./logout.php" id="b4">Sair</a>
         </div>  
         <div class="banner-perf-box">
-        <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? $ong['banner'] : '../imgs/banner.png'; ?>">
-    <p class="texto-banner"><?php echo htmlspecialchars($ong['nome']); ?></p>
+    <!-- Banner clicável para alterar -->
+    <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? $ong['banner'] : '../imgs/banner.png'; ?>" onclick="document.getElementById('banner').click();">
+    
+    <!-- Formulário para editar o nome da ONG -->
+    <form action="upload.php" method="POST" enctype="multipart/form-data" id="form-upload">
+        <!-- Campo para editar o nome da ONG -->
+        <label for="nome">Editar Nome da ONG:</label>
+        <input type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($ong['nome']); ?>" placeholder="Editar Nome da ONG">
+        
+        <!-- Texto que mostra o nome da ONG -->
+        <p class="texto-banner"><?php echo htmlspecialchars($ong['nome']); ?></p>
+        
+        <!-- Botão de envio -->
+        <button type="submit">Salvar Imagens e Nome</button>
+    </form>
 </div>
 
 <div class="img-perf-box">
-<img class="imagem-do-perfil" src="<?php echo !empty($ong['foto_perfil']) ? $ong['foto_perfil'] : '../imgs/avatar.png'; ?>">
+    <!-- Foto de perfil clicável para alterar -->
+    <img class="imagem-do-perfil" src="<?php echo !empty($ong['foto_perfil']) ? $ong['foto_perfil'] : '../imgs/avatar.png'; ?>" onclick="document.getElementById('perfil').click();">
 </div>
-
-<!-- Formulário para upload das imagens -->
-<form action="upload.php" method="POST" enctype="multipart/form-data" id="form-upload">
-    <label for="perfil">Alterar Foto de Perfil:</label>
-    <input type="file" name="perfil" id="perfil" accept="image/*">
-
-    <label for="banner">Alterar Banner:</label>
-    <input type="file" name="banner" id="banner" accept="image/*">
-
-    <button type="submit">Salvar Imagens</button>
-</form>
-
 
         <div class="cad-monprod-box">
             <h1 class="titulos">Descrição</h1>

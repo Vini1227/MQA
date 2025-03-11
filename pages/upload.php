@@ -21,77 +21,46 @@ if (!is_dir($uploadDir)) {
 
 $perfilPath = null;
 $bannerPath = null;
+$novoNome = isset($_POST['nome']) ? $_POST['nome'] : '';  // Recupera o novo nome
 
-// Verifica e faz o upload da foto de perfil
+// Verifica se o nome foi enviado e se está não vazio
+if (empty($novoNome)) {
+    // Se o nome não foi enviado ou está vazio, mantém o nome original
+    echo "<script>alert('Nome da ONG não foi alterado.');</script>";
+}
+
+// Upload da foto de perfil
 if (!empty($_FILES['perfil']['name'])) {
-    // Verifica se o arquivo é uma imagem válida
-    if (getimagesize($_FILES['perfil']['tmp_name'])) {
-        $perfilPath = $uploadDir . "perfil_" . $ong_id . ".jpg";
-        if (move_uploaded_file($_FILES['perfil']['tmp_name'], $perfilPath)) {
-            echo "<script>alert('Foto de perfil carregada com sucesso!');</script>";
-        } else {
-            echo "<script>alert('Erro ao fazer upload da foto de perfil.');</script>";
-        }
-    } else {
-        echo "<script>alert('O arquivo de perfil não é uma imagem válida.');</script>";
-    }
+    $perfilPath = $uploadDir . "perfil_" . $ong_id . ".jpg";
+    move_uploaded_file($_FILES['perfil']['tmp_name'], $perfilPath);
 }
 
-// Verifica e faz o upload do banner
+// Upload do banner
 if (!empty($_FILES['banner']['name'])) {
-    // Verifica se o arquivo é uma imagem válida
-    if (getimagesize($_FILES['banner']['tmp_name'])) {
-        $bannerPath = $uploadDir . "banner_" . $ong_id . ".jpg";
-        if (move_uploaded_file($_FILES['banner']['tmp_name'], $bannerPath)) {
-            echo "<script>alert('Banner carregado com sucesso!');</script>";
-        } else {
-            echo "<script>alert('Erro ao fazer upload do banner.');</script>";
-        }
-    } else {
-        echo "<script>alert('O arquivo do banner não é uma imagem válida.');</script>";
-    }
+    $bannerPath = $uploadDir . "banner_" . $ong_id . ".jpg";
+    move_uploaded_file($_FILES['banner']['tmp_name'], $bannerPath);
 }
 
-// Verifica se pelo menos uma imagem foi carregada antes de tentar atualizar no banco de dados
-if ($perfilPath || $bannerPath) {
-    // Atualiza o banco de dados apenas com os campos preenchidos
-    $sqlUpdate = "UPDATE ongs SET ";
-    $params = [];
+// Atualiza o banco de dados apenas com os campos preenchidos
+$sqlUpdate = "UPDATE ongs SET nome = :nome, ";
+$params = [':nome' => $novoNome];
 
-    // Se a foto de perfil foi carregada, adiciona no banco
-    if ($perfilPath) {
-        $sqlUpdate .= "foto_perfil = :foto_perfil, ";
-        $params[':foto_perfil'] = $perfilPath;
-    }
-
-    // Se o banner foi carregado, adiciona no banco
-    if ($bannerPath) {
-        $sqlUpdate .= "banner = :banner, ";
-        $params[':banner'] = $bannerPath;
-    }
-
-    // Remover a vírgula extra caso nenhum arquivo tenha sido atualizado
-    $sqlUpdate = rtrim($sqlUpdate, ", ") . " WHERE id = :id";
-    $params[':id'] = $ong_id;
-
-    // Depuração: Exibe a query para verificar se está correta
-    echo "<pre>";
-    echo "SQL: " . $sqlUpdate . "\n";
-    echo "Parâmetros: ";
-    print_r($params);
-    echo "</pre>";
-
-    // Prepara e executa a query
-    try {
-        $stmt = $pdo->prepare($sqlUpdate);
-        $stmt->execute($params);
-
-        echo "<script>alert('Imagens atualizadas com sucesso!');</script>";
-        echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
-    } catch (PDOException $e) {
-        echo "<script>alert('Erro ao atualizar as imagens: " . $e->getMessage() . "');</script>";
-    }
-} else {
-    echo "<script>alert('Nenhuma imagem foi carregada.');</script>";
+if ($perfilPath) {
+    $sqlUpdate .= "foto_perfil = :foto_perfil, ";
+    $params[':foto_perfil'] = $perfilPath;
 }
+
+if ($bannerPath) {
+    $sqlUpdate .= "banner = :banner, ";
+    $params[':banner'] = $bannerPath;
+}
+
+$sqlUpdate = rtrim($sqlUpdate, ", ") . " WHERE id = :id";
+$params[':id'] = $ong_id;
+
+$stmt = $pdo->prepare($sqlUpdate);
+$stmt->execute($params);
+
+echo "<script>alert('Imagens e Nome atualizados com sucesso!');</script>";
+echo "<script>window.location.href='cadastromonetarioproduto.php';</script>";
 ?>

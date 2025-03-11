@@ -63,3 +63,19 @@ img.addEventListener("mouseover", function () {
 img.addEventListener("mouseout", function () {
   img.src = "/imgs/trashcan.png"; // Caminho da imagem original
 });
+
+// Função para mostrar a imagem selecionada no lugar da imagem original
+function showSelectedImage(input, imgClass) {
+  var file = input.files[0];
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    // Substitui a imagem atual com a imagem selecionada
+    var img = document.querySelector("." + imgClass);
+    img.src = e.target.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file); // Lê o arquivo como URL de dados
+  }
+}
