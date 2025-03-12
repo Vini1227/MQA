@@ -1,22 +1,24 @@
 <?php
+session_start();
 require_once('config.php');
 
-$id = $_GET['id'] ?? '';
 
-if (!empty($id)) {
-    $sql = "SELECT * FROM ongs WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-    $stmt->execute();
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    header('Location: user_logado.php'); 
+    exit();
+}
 
-    $ong = $stmt->fetch(PDO::FETCH_ASSOC);
+$id = $_GET['id'];
 
-    if (!$ong) {
-        echo "<h1>ONG não encontrada!</h1>";
-        exit();
-    }
-} else {
-    echo "<h1>ID da ONG não especificado!</h1>";
+$sql = "SELECT nome, descricao FROM ongs WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+
+$ong = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$ong) {
+    echo "ONG não encontrada.";
     exit();
 }
 ?>
@@ -26,12 +28,18 @@ if (!empty($id)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $ong['nome']; ?></title>
+    <title><?php echo htmlspecialchars($ong['nome']); ?></title>
+    <link rel="stylesheet" href="../css/ong.css">
 </head>
 <body>
-    <h1><?php echo $ong['nome']; ?></h1>
-    <p>Email: <?php echo $ong['email']; ?></p>
-    <p>Descrição: <?php echo $ong['descricao'] ?: 'Sem descrição disponível'; ?></p>
-    <a href="user_logado.php">Voltar</a>
+
+    <header>
+        <h1><?php echo htmlspecialchars($ong['nome']); ?></h1>
+    </header>
+
+    <div class="ong-container">
+        <p><?php echo htmlspecialchars($ong['descricao']); ?></p>
+    </div>
+
 </body>
 </html>
