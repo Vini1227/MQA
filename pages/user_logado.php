@@ -2,6 +2,7 @@
 session_start();
 require_once('config.php');
 require_once('./cards.php');
+require_once('./barra_pesquisa.php');
 
 if(!isset($_SESSION['usuario'])) {
     header('Location:./login.php');
@@ -19,7 +20,7 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User_logado</title>
     <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../css/user_logado.css">
+    <link rel="stylesheet" href="/css/user_logado.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Krona+One&family=Lalezar&display=swap" rel="stylesheet">
@@ -42,7 +43,7 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
         </div>
             
     </header>
-    <form action="./barra_pesquisa.php" method="get">
+    <form action="" method="get">
     <div class="content-pesq">
         <input name="busca" type="search" class="pesq" placeholder="Procure por uma ONG">
         <button type="submit" class="icone">
@@ -50,10 +51,10 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
         </button>
     </div>
 </form>
-<?php if (isset($_GET['erro']) && $_GET['erro'] == 1): ?>
-    <p class="erro-msg">Nenhuma ONG encontrada.</p>
+<?php if ($error): ?>
+    <p class="error-msg">Nenhuma ONG encontrada.</p>
 <?php endif; ?>
-
+    
     <div class="title">
         <h1>Descubra ONGS</h1>
     </div>
@@ -65,9 +66,8 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
                     <button class="botao-ong"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></button>
                 </div>
             <?php endforeach; ?>
-        <?php else: ?>
-            <p>Nenhuma ONG encontrada.</p>
         <?php endif; ?>
     </div>
+    <script src="../js/erro-msg.js"></script>
 </body>
 </html>
