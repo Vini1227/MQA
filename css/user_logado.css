@@ -155,5 +155,27 @@ background-color: #00ccff;
 cursor: pointer;
 text-align: center;
 }
+.error-msg {
+background-color: #ff4d4d; 
+color: white;
+font-size: 18px;
+font-weight: bold;
+padding: 12px 20px;
+border-radius: 8px;
+text-align: center;
+margin: 10px auto;
+width: fit-content;
+max-width: 80%;
+display: block;
+animation: fadeIn 0.5s ease-in-out;
+}
 
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(-10px); }
+to { opacity: 1; transform: translateY(0); }
+}
 
+@keyframes fadeOut {
+from { opacity: 1; transform: translateY(0); }
+to { opacity: 0; transform: translateY(-10px); }
+}
