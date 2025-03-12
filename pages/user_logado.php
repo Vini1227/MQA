@@ -55,9 +55,15 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
     <p class="erro-msg">Nenhuma ONG encontrada.</p>
 <?php endif; ?>
 
-    <div class="title">
-        <h1>Descubra ONGS</h1>
-    </div>
+<div class="title">
+    <h1>
+        <?php if (isset($_GET['busca']) && !empty($_GET['busca']) && !$error): ?>
+            Resultado da pesquisa
+        <?php else: ?>
+            Descubra ONGS
+        <?php endif; ?>
+    </h1>
+</div>
     <div class="content-ongs">
     <?php if (!empty($ongs)): ?>
         <?php foreach ($ongs as $ong): ?>
