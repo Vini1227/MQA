@@ -127,37 +127,20 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
             <a href="./logout.php" id="b4">Sair</a>
         </div>  
         <div class="banner-perf-box">
-    <!-- Banner clicável para alterar -->
-    <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? $ong['banner'] : '../imgs/banner.png'; ?>" onclick="document.getElementById('banner').click();">
-    
-    <!-- Formulário para editar o nome da ONG -->
-    <form action="upload.php" method="POST" enctype="multipart/form-data" id="form-upload">
-
-        <!-- Nome da ONG que pode ser editado ao clicar -->
-        <div class="editable-nome">
-            <p id="nome-texto" class="texto-banner" onclick="makeEditable()">
-                <?php echo htmlspecialchars($ong['nome']); ?>
-            </p>
-            <input type="text" name="nome" id="nome-input" value="<?php echo htmlspecialchars($ong['nome']); ?>" style="display:none;" onblur="submitForm()">
+            <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? $ong['banner'] : '../imgs/banner.png'; ?>" onclick="document.getElementById('banner').click();">
+            <form action="upload.php" method="POST" enctype="multipart/form-data" id="form-upload">
+                <div class="editable-nome">
+                    <p id="nome-texto" class="texto-banner" onclick="makeEditable()"><?php echo htmlspecialchars($ong['nome']); ?></p>
+                    <input type="text" name="nome" id="nome-input" value="<?php echo htmlspecialchars($ong['nome']); ?>" style="display:none;" onblur="submitForm()">
+                </div>
+                <input type="file" name="perfil" id="perfil" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'imagem-do-perfil')">
+                <input type="file" name="banner" id="banner" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'banner-do-perfil')">
+                <button type="submit" style="display:none;">Salvar Imagens e Nome</button>
+            </form>
         </div>
-
-        <!-- Campo de upload da foto de perfil (oculto) -->
-        <input type="file" name="perfil" id="perfil" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'imagem-do-perfil')">
-
-        <!-- Campo de upload do banner (oculto) -->
-        <input type="file" name="banner" id="banner" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'banner-do-perfil')">
-
-        <!-- Botão de envio -->
-        <button type="submit" style="display:none;">Salvar Imagens e Nome</button>
-    </form>
-</div>
-
-<div class="img-perf-box">
-    <!-- Foto de perfil clicável para alterar -->
-    <img class="imagem-do-perfil" src="<?php echo !empty($ong['foto_perfil']) ? $ong['foto_perfil'] : '../imgs/avatar.png'; ?>" onclick="document.getElementById('perfil').click();">
-</div>
-
-
+            <div class="img-perf-box">
+            <img class="imagem-do-perfil" src="<?php echo !empty($ong['foto_perfil']) ? $ong['foto_perfil'] : '../imgs/doador.png'; ?>" onclick="document.getElementById('perfil').click();">
+            </div>
         <div class="cad-monprod-box">
             <h1 class="titulos">Descrição</h1>
             <form action="atualizar_descricao.php" method="POST" id="form-descricao">
@@ -175,40 +158,32 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <form method="POST" action="cadastromonetarioproduto.php">
-    <details class="details-box">
-        <summary class="titulos titulos-var1">Cadastro Monetário</summary>
-        <img src="../imgs/pix.png" alt="simbolo do pix" class="pix-imagem">
-
-        <p class="titulos titulos-varPix">Pix</p>
-        <input type="text" class="pix-textbox" name="pix" id="pix" autocomplete="off" value="<?php echo htmlspecialchars($pix); ?>">
-
-        <p class="titulos titulos-varBanco">Banco</p>
-
-        <p class="subtitulos">Agência</p>
-        <input type="text" class="banco-textbox" name="agencia" id="agencia" autocomplete="off" value="<?php echo htmlspecialchars($agencia); ?>">
-
-        <p class="subtitulos">CNPJ</p>
-        <input type="text" class="banco-textbox" name="cnpj" id="cnpj" autocomplete="off" value="<?php echo htmlspecialchars($cnpj); ?>">
-
-        <p class="subtitulos">Código da Conta</p>
-        <input type="text" class="banco-textbox" name="codigo_conta" id="codigo_conta" autocomplete="off" value="<?php echo htmlspecialchars($codigo_conta); ?>">
-
-        <p class="subtitulos">Nome do Banco</p>
-        <input type="text" class="banco-textbox" name="nome_banco" id="nome_banco" autocomplete="off" value="<?php echo htmlspecialchars($nome_banco); ?>">
-
-        <p class="subtitulos">Tipo da Conta</p>
-        <input type="text" class="banco-textbox" name="tipo_conta" id="tipo_conta" autocomplete="off" value="<?php echo htmlspecialchars($tipo_conta); ?>">
-
-        <div class="salvarEsquecer-box">
-            <button type="reset" class="button">
-                <p class="titulos titulos-varEsqSalvar">Esquecer</p>
-            </button>
-            <button type="submit" class="button">
-                <p class="titulos titulos-varEsqSalvar">Salvar</p>
-            </button>
-        </div>
-    </details>
-</form>
+            <details class="details-box">
+                <summary class="titulos titulos-var1">Cadastro Monetário</summary>
+                <img src="../imgs/pix.png" alt="simbolo do pix" class="pix-imagem">
+                <p class="titulos titulos-varPix">Pix</p>
+                <input type="text" class="pix-textbox" name="pix" id="pix" autocomplete="off" value="<?php echo htmlspecialchars($pix); ?>">
+                <p class="titulos titulos-varBanco">Banco</p>
+                <p class="subtitulos">Agência</p>
+                <input type="text" class="banco-textbox" name="agencia" id="agencia" autocomplete="off" value="<?php echo htmlspecialchars($agencia); ?>">
+                <p class="subtitulos">CNPJ</p>
+                <input type="text" class="banco-textbox" name="cnpj" id="cnpj" autocomplete="off" value="<?php echo htmlspecialchars($cnpj); ?>">
+                <p class="subtitulos">Código da Conta</p>
+                <input type="text" class="banco-textbox" name="codigo_conta" id="codigo_conta" autocomplete="off" value="<?php echo htmlspecialchars($codigo_conta); ?>">
+                <p class="subtitulos">Nome do Banco</p>
+                <input type="text" class="banco-textbox" name="nome_banco" id="nome_banco" autocomplete="off" value="<?php echo htmlspecialchars($nome_banco); ?>">
+                <p class="subtitulos">Tipo da Conta</p>
+                <input type="text" class="banco-textbox" name="tipo_conta" id="tipo_conta" autocomplete="off" value="<?php echo htmlspecialchars($tipo_conta); ?>">
+                <div class="salvarEsquecer-box">
+                    <button type="reset" class="button">
+                        <p class="titulos titulos-varEsqSalvar">Esquecer</p>
+                    </button>
+                    <button type="submit" class="button">
+                        <p class="titulos titulos-varEsqSalvar">Salvar</p>
+                    </button>
+                </div>
+            </details>
+            </form>
             <div>
                 <details class="details-box">
                     <summary class="titulos titulos-var1">Lista de Itens</summary>

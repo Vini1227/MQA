@@ -85,10 +85,14 @@ function makeEditable() {
   document.getElementById("nome-texto").style.display = "none";
 
   // Mostra o input para edição
-  document.getElementById("nome-input").style.display = "inline-block";
+  var input = document.getElementById("nome-input");
+  input.style.display = "inline-block";
+
+  // Adiciona a classe texto-nome ao input
+  input.classList.add("input-texto-banner");
 
   // Foca no input
-  document.getElementById("nome-input").focus();
+  input.focus();
 }
 
 function submitForm() {
