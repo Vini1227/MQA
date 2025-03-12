@@ -85,7 +85,6 @@
 
 .imagem-do-perfil:hover {
   border: 1.5px solid #00ccff;
-  box-sizing: border-box;
 }
 
 /*Div principal da página onde fica o cadastro de tipos de doações aceitas*/
