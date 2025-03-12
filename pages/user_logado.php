@@ -50,9 +50,6 @@ png';
         </button>
     </div>
 </form>
-<?php if (isset($_GET['erro']) && $_GET['erro'] == 1): ?>
-    <p style="color: red;">Nenhuma ONG encontrada com esse nome.</p>
-<?php endif; ?>
 
     <div class="opcoes_por_cor">
 
@@ -103,9 +100,6 @@ png';
     </div>
 
     <div class="content-ongs">
-    <?php if (!empty($mensagem)): ?>
-            <p><?php echo $mensagem; ?></p>
-        <?php endif; ?>
 
         <div class="card_ong">
             <img src="../imgs/coelho1.png" alt="">
@@ -122,6 +116,5 @@ png';
             <button class="botao-ong">Refúgio das Bromelias</button>
         </div>
     </div>
-
 </body>
 </html>
