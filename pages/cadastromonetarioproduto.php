@@ -155,16 +155,6 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
                 <textarea class="textarea-descricao" name="descricao" id="descricao" autocomplete="on"><?php echo htmlspecialchars(trim($descricao_ong)); ?></textarea>
             </form>
             <p class="titulos">Tipos de Doações Aceitas:</p>
-            <div class="row-box">
-                <div class="box-da-checkbox">
-                    <p class="titulos titulos-var1">Dinheiro</p>
-                    <input type="checkbox" id="checkboxDinheiro" class="checkbox" name="checkboxTipo[]" value="dinheiro" autocomplete="off">
-                </div>
-                <div class="box-da-checkbox">
-                    <p class="titulos titulos-var1">Itens</p>
-                    <input type="checkbox" id="checkboxItens" class="checkbox" name="checkboxTipo[]" value="itens" autocomplete="off">
-                </div>
-            </div>
             <form method="POST" action="cadastromonetarioproduto.php">
             <details class="details-box">
                 <summary class="titulos titulos-var1">Cadastro Monetário</summary>

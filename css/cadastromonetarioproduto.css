@@ -418,3 +418,14 @@ details[open] {
 .input-texto-salvar:hover {
   border: 1.5px solid #8f8f8f;
 }
+
+#b3,
+#b4 {
+  display: flex;
+  align-items: center;
+  font-family: "lalezar";
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
