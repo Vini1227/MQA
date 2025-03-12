@@ -1,8 +1,8 @@
 <?php
 require_once('config.php');
 
-// Consulta apenas o banner e o nome das ONGs
-$sql = "SELECT nome, banner FROM ongs";
+// Consulta o ID, nome e banner das ONGs
+$sql = "SELECT id, nome, banner FROM ongs"; // Adicione o ID na consulta
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);

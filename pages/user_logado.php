@@ -58,16 +58,19 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
         <h1>Descubra ONGS</h1>
     </div>
     <div class="content-ongs">
-        <?php if (!empty($ongs)): ?>
-            <?php foreach ($ongs as $ong): ?>
-                <div class="card_ong">
-                    <img src="<?php echo htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8'); ?>" alt="Banner da ONG">
+    <?php if (!empty($ongs)): ?>
+        <?php foreach ($ongs as $ong): ?>
+            <div class="card_ong">
+                <a href="perfil_ong.php?id=<?php echo $ong['id']; ?>" class="card-link">
+                    <img src="<?php echo htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8'); ?>" alt="Banner da ONG" class="card-img">
                     <button class="botao-ong"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></button>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>Nenhuma ONG encontrada.</p>
-        <?php endif; ?>
-    </div>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p class="erro-msg">Nenhuma ONG encontrada.</p>
+    <?php endif; ?>
+</div>
+
 </body>
 </html>
