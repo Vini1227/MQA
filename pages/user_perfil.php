@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['usuario']['imagem'] = $imagemNovoNome;
 
     echo "<script>alert('Perfil atualizado com sucesso!');</script>";
-    echo "<script>window.location.href='user_logado.php';</script>";
+    echo "<script>window.location.href='user_perfil.php';</script>";
 }
 ?>
 
