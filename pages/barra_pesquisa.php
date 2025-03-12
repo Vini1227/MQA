@@ -28,7 +28,7 @@ if (isset($_GET['busca']) && !empty($_GET['busca'])) {
         $ongs = $ongsPesquisadas;
     }
 } else {
-    $sql = "SELECT nome, banner FROM ongs ORDER BY RAND() LIMIT 5";
+    $sql = "SELECT id, nome, banner FROM ongs ORDER BY RAND() LIMIT 5";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
