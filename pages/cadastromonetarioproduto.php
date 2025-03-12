@@ -132,15 +132,23 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
     
     <!-- Formulário para editar o nome da ONG -->
     <form action="upload.php" method="POST" enctype="multipart/form-data" id="form-upload">
-        <!-- Campo para editar o nome da ONG -->
-        <label for="nome">Editar Nome da ONG:</label>
-        <input type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($ong['nome']); ?>" placeholder="Editar Nome da ONG">
-        
-        <!-- Texto que mostra o nome da ONG -->
-        <p class="texto-banner"><?php echo htmlspecialchars($ong['nome']); ?></p>
-        
+
+        <!-- Nome da ONG que pode ser editado ao clicar -->
+        <div class="editable-nome">
+            <p id="nome-texto" class="texto-banner" onclick="makeEditable()">
+                <?php echo htmlspecialchars($ong['nome']); ?>
+            </p>
+            <input type="text" name="nome" id="nome-input" value="<?php echo htmlspecialchars($ong['nome']); ?>" style="display:none;" onblur="submitForm()">
+        </div>
+
+        <!-- Campo de upload da foto de perfil (oculto) -->
+        <input type="file" name="perfil" id="perfil" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'imagem-do-perfil')">
+
+        <!-- Campo de upload do banner (oculto) -->
+        <input type="file" name="banner" id="banner" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'banner-do-perfil')">
+
         <!-- Botão de envio -->
-        <button type="submit">Salvar Imagens e Nome</button>
+        <button type="submit" style="display:none;">Salvar Imagens e Nome</button>
     </form>
 </div>
 
@@ -148,6 +156,7 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
     <!-- Foto de perfil clicável para alterar -->
     <img class="imagem-do-perfil" src="<?php echo !empty($ong['foto_perfil']) ? $ong['foto_perfil'] : '../imgs/avatar.png'; ?>" onclick="document.getElementById('perfil').click();">
 </div>
+
 
         <div class="cad-monprod-box">
             <h1 class="titulos">Descrição</h1>

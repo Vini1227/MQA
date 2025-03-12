@@ -79,3 +79,19 @@ function showSelectedImage(input, imgClass) {
     reader.readAsDataURL(file); // Lê o arquivo como URL de dados
   }
 }
+
+function makeEditable() {
+  // Esconde o texto do nome
+  document.getElementById("nome-texto").style.display = "none";
+
+  // Mostra o input para edição
+  document.getElementById("nome-input").style.display = "inline-block";
+
+  // Foca no input
+  document.getElementById("nome-input").focus();
+}
+
+function submitForm() {
+  // Envia o formulário quando o input perde o foco (blur)
+  document.getElementById("form-upload").submit();
+}
