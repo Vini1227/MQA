@@ -50,6 +50,10 @@ png';
         </button>
     </div>
 </form>
+<?php if (isset($_GET['erro']) && $_GET['erro'] == 1): ?>
+    <p class="erro-msg">Nenhuma ONG encontrada.</p>
+<?php endif; ?>
+
 
     <div class="opcoes_por_cor">
 

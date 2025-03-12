@@ -36,13 +36,23 @@ if (!empty($pesquisa)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resultado da Pesquisa</title>
 </head>
 <body>
-<h1>Resultado da Pesquisa</h1>
+    <h1>Resultado da Pesquisa</h1>
 
-<?php if (!empty($mensagem)): ?>
-    <p><?php echo $mensagem; ?></p>
-<?php endif; ?>
+    <?php if (!empty($mensagem)): ?>
+        <p><?php echo $mensagem; ?></p>
+    <?php else: ?>
+        <?php foreach ($ongs as $ong): ?>
+            <div>
+                <h2><?php echo htmlspecialchars($ong['nome']); ?></h2>
+                <p><?php echo htmlspecialchars($ong['descricao'] ?? 'Descrição não disponível'); ?></p>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
 </body>
 </html>
+
+
