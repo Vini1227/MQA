@@ -97,7 +97,7 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
                 </table>
             </div>
             <div class="botaodoar-box">
-                <p class="texto-doar">DOAR<br>AGORA!!!</p>
+                <p class="texto-doar">DOAR AGORA!!!</p>
             </div>
             </div>
         </div>

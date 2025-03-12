@@ -175,3 +175,8 @@ table {
   font-weight: bold;
   color: #ffffff;
 }
+
+.botaodoar-box:hover {
+  border: 1.5px solid #8f8f8f;
+  cursor: pointer;
+}
