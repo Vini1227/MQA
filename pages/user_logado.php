@@ -71,6 +71,5 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
         <p class="erro-msg">Nenhuma ONG encontrada.</p>
     <?php endif; ?>
 </div>
-
 </body>
 </html>
