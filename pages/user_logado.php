@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('config.php');
+require_once('./cards.php');
 
 if(!isset($_SESSION['usuario'])) {
     header('Location:./login.php');
@@ -35,8 +36,8 @@ png';
 
         <div class="link">
             <a href="./user_perfil.php" id="b3">
-            <img src="<?php echo $usuario['imagem'] ? '../uploads/users/' . $usuario['imagem'] : '../imgs/doador.png'; ?>" class="user-img" alt="">
-               <?php echo $usuario['nome']; ?>
+            <img src="<?php echo isset($usuario['imagem']) && !empty($usuario['imagem']) ? '../uploads/users/' . $usuario['imagem'] : '../imgs/doador.png'; ?>" class="user-img" alt="Foto do usuário">
+            <?php echo $usuario['nome']; ?>
         </a>
             <a href="./logout.php" id="b4">Sair</a>
         </div>
@@ -54,71 +55,27 @@ png';
     <p class="erro-msg">Nenhuma ONG encontrada.</p>
 <?php endif; ?>
 
-
-    <div class="opcoes_por_cor">
-
-        <button class="cor" id="01">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="02">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="03">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="04">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="05">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="06">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="07">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="08">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="09">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-        <button class="cor" id="10">
-            <img src="../imgs/cor01.png" alt="">
-        </button>
-
-    </div>
-
     <div class="title">
         <h1>Descubra ONGS</h1>
     </div>
-
     <div class="content-ongs">
-
+    <?php if (!empty($ongs)): ?>
+        <?php foreach ($ongs as $ong): ?>
         <div class="card_ong">
-            <img src="../imgs/coelho1.png" alt="">
-            <button class="botao-ong">Salva Animal</button>
-        </div>
-
-        <div class="card_ong">
-            <img src="../imgs/cachorro.png" alt="">
-            <button class="botao-ong">Canil Igarassu</button>
-        </div>
-
-        <div class="card_ong">
-            <img src="../imgs/bromelia.png" alt="">
-            <button class="botao-ong">Refúgio das Bromelias</button>
-        </div>
+        <img src="<?php 
+        $caminhoImagem = $ong['banner'];
+        if (!file_exists($caminhoImagem)) {
+            $caminhoImagem = '../imgs/default-banner.png';
+        }
+        echo htmlspecialchars($caminhoImagem, ENT_QUOTES, 'UTF-8'); 
+    ?>" alt="Banner da ONG">
+    <button class="botao-ong"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></button>
     </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Nenhuma ONG encontrada.</p>
+    <?php endif; ?>
+</div>
+
 </body>
 </html>
