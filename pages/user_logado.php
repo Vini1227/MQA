@@ -2,6 +2,7 @@
 session_start();
 require_once('config.php');
 require_once('./cards.php');
+require_once('./barra_pesquisa.php');
 
 if(!isset($_SESSION['usuario'])) {
     header('Location:./login.php');
@@ -42,7 +43,7 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
         </div>
             
     </header>
-    <form action="./barra_pesquisa.php" method="get">
+    <form action="" method="get">
     <div class="content-pesq">
         <input name="busca" type="search" class="pesq" placeholder="Procure por uma ONG">
         <button type="submit" class="icone">
@@ -50,7 +51,7 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
         </button>
     </div>
 </form>
-<?php if (isset($_GET['erro']) && $_GET['erro'] == 1): ?>
+<?php if ($error): ?>
     <p class="erro-msg">Nenhuma ONG encontrada.</p>
 <?php endif; ?>
 
@@ -61,7 +62,7 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
     <?php if (!empty($ongs)): ?>
         <?php foreach ($ongs as $ong): ?>
             <div class="card_ong">
-                <a href="perfil_ong.php?id=<?php echo $ong['id']; ?>" class="card-link">
+            <a href="perfil_ong.php?id=<?php echo $ong['id']; ?>" class="card-link">
                     <img src="<?php echo htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8'); ?>" alt="Banner da ONG" class="card-img">
                     <button class="botao-ong"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></button>
                 </a>
