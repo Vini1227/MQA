@@ -80,20 +80,40 @@ function showSelectedImage(input, imgClass) {
   }
 }
 
-function makeEditable() {
-  // Esconde o texto do nome
-  document.getElementById("nome-texto").style.display = "none";
-
-  // Mostra o input para edição
-  var input = document.getElementById("nome-input");
-  input.style.display = "inline-block";
-
-  // Adiciona a classe texto-nome ao input
-  input.classList.add("input-texto-banner");
-
-  // Foca no input
-  input.focus();
+// Função para mostrar o botão de salvar quando qualquer alteração ocorrer
+function showSaveButton() {
+  var saveButton = document.getElementById("save-button");
+  saveButton.style.display = "inline-block"; // Exibe o botão de "Salvar"
 }
+
+// Função para mostrar o botão de salvar quando qualquer alteração ocorrer
+function showSaveButton() {
+  var saveButton = document.getElementById("save-button");
+  saveButton.style.display = "inline-block"; // Exibe o botão de "Salvar"
+}
+
+// Função para permitir edição do nome
+function makeEditable() {
+  var nomeTexto = document.getElementById("nome-texto");
+  var nomeInput = document.getElementById("nome-input");
+
+  nomeTexto.style.display = "none"; // Esconde o nome visível
+  nomeInput.style.display = "inline-block"; // Exibe o campo de input
+  nomeInput.focus(); // Dá foco no campo de input
+}
+
+// Detecta alterações no input de nome
+document.getElementById("nome-input").addEventListener("input", function () {
+  showSaveButton();
+});
+
+// Detecta alterações nas imagens (perfil e banner)
+document.getElementById("perfil").addEventListener("change", function () {
+  showSaveButton();
+});
+document.getElementById("banner").addEventListener("change", function () {
+  showSaveButton();
+});
 
 function submitForm() {
   // Envia o formulário quando o input perde o foco (blur)

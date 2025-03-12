@@ -129,14 +129,22 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
         <div class="banner-perf-box">
             <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? $ong['banner'] : '../imgs/banner.png'; ?>" onclick="document.getElementById('banner').click();">
             <form action="upload.php" method="POST" enctype="multipart/form-data" id="form-upload">
-                <div class="editable-nome">
-                    <p id="nome-texto" class="texto-banner" onclick="makeEditable()"><?php echo htmlspecialchars($ong['nome']); ?></p>
-                    <input type="text" name="nome" id="nome-input" value="<?php echo htmlspecialchars($ong['nome']); ?>" style="display:none;" onblur="submitForm()">
-                </div>
-                <input type="file" name="perfil" id="perfil" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'imagem-do-perfil')">
-                <input type="file" name="banner" id="banner" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'banner-do-perfil')">
-                <button type="submit" style="display:none;">Salvar Imagens e Nome</button>
-            </form>
+    <div class="editable-nome">
+        <p id="nome-texto" class="texto-banner" onclick="makeEditable()"><?php echo htmlspecialchars($ong['nome']); ?></p>
+        <input class="input-texto-banner" type="text" name="nome" id="nome-input" value="<?php echo htmlspecialchars($ong['nome']); ?>" style="display:none;">
+        
+        <!-- Botão de Salvar ao lado do input -->
+        <button type="submit" name="saveChanges" class="button" style="display:none;" id="save-button">
+            <p class="input-texto-salvar">Salvar</p>
+        </button>
+    </div>
+
+    <!-- Inputs para as imagens -->
+    <input type="file" name="perfil" id="perfil" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'imagem-do-perfil')">
+    <input type="file" name="banner" id="banner" accept="image/*" style="display:none;" onchange="showSelectedImage(this, 'banner-do-perfil')">
+</form>
+
+
         </div>
             <div class="img-perf-box">
             <img class="imagem-do-perfil" src="<?php echo !empty($ong['foto_perfil']) ? $ong['foto_perfil'] : '../imgs/doador.png'; ?>" onclick="document.getElementById('perfil').click();">

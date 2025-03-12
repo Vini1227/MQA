@@ -402,3 +402,19 @@ details[open] {
   font-weight: bold;
   color: #000000;
 }
+
+.input-texto-salvar {
+  position: absolute;
+  left: 90%;
+  bottom: 0%;
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  font-weight: bold;
+  background-color: #00ccff;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.input-texto-salvar:hover {
+  border: 1.5px solid #8f8f8f;
+}
