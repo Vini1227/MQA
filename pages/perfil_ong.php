@@ -26,6 +26,11 @@ if (!$ong) {
     echo "ONG não encontrada.";
     exit();
 }
+
+// Busca os itens que a ONG aceita receber
+$stmt_itens = $pdo->prepare("SELECT * FROM itens WHERE ong_id = ?");
+$stmt_itens->execute([$id]);
+$itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -51,10 +56,7 @@ if (!$ong) {
             </div>
         </div>  
         <div class="banner-perf-box">
-        <img class="banner-do-perfil" 
-     src="<?php echo isset($ong['banner']) && !empty($ong['banner']) ? htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8') : '../imgs/banner.png'; ?>" 
-     alt="Banner da ONG">
-
+        <img class="banner-do-perfil" src="<?php echo isset($ong['banner']) && !empty($ong['banner']) ? htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8') : '../imgs/banner.png'; ?>" alt="Banner da ONG">
             <div>
                 <p id="nome-texto" class="texto-banner"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></p>
             </div>
@@ -66,9 +68,40 @@ if (!$ong) {
         </div>
         <div>
         <p class="fonte">
-    <?php echo isset($ong['descricao']) && !empty($ong['descricao']) ? htmlspecialchars($ong['descricao'], ENT_QUOTES, 'UTF-8') : 'Esta ONG ainda não adicionou uma descrição.'; ?>
-</p>
+            <?php echo isset($ong['descricao']) && !empty($ong['descricao']) ? htmlspecialchars($ong['descricao'], ENT_QUOTES, 'UTF-8') : 'Esta ONG ainda não adicionou uma descrição.'; ?>
+        </p>
+        </div>
+        <div class="recebidos-box">
+            <p class="titulos">Recebemos:</p>
+            <div class="alinhador">
+            <div class="itens-box">
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Tipo</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <?php if (!empty($itens)): ?>
+                        <?php foreach ($itens as $item): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td><?php echo htmlspecialchars($item['tipo'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td><?php echo isset($item['descricao']) && !empty($item['descricao']) ? htmlspecialchars($item['descricao'], ENT_QUOTES, 'UTF-8') : 'Sem descrição'; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="3">Nenhum item registrado.</td>
+                        </tr>
+                    <?php endif; ?>
+                </table>
+            </div>
+            <div class="botaodoar-box">
+                <p class="texto-doar">DOAR<br>AGORA!!!</p>
+            </div>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
