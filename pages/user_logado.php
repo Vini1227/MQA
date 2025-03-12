@@ -8,8 +8,8 @@ if(!isset($_SESSION['usuario'])) {
 }
 
 $usuario = $_SESSION['usuario'];
-$imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usuario['imagem'] : '../imgs/doador.png';
-
+$imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usuario['imagem'] : '../imgs/doador.
+png';
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +18,7 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User_logado</title>
+    <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/user_logado.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,13 +42,18 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
         </div>
             
     </header>
-
+    <form action="./barra_pesquisa.php" method="get">
     <div class="content-pesq">
-        <input type="search" class="pesq" placeholder="Procure por uma ONG">
-        <button class="icone">
+        <input name="busca" type="search" class="pesq" placeholder="Procure por uma ONG">
+        <button type="submit" class="icone">
             <i class="fas fa-search"></i>
         </button>
     </div>
+</form>
+<?php if (isset($_GET['erro']) && $_GET['erro'] == 1): ?>
+    <p class="erro-msg">Nenhuma ONG encontrada.</p>
+<?php endif; ?>
+
 
     <div class="opcoes_por_cor">
 
@@ -114,6 +120,5 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
             <button class="botao-ong">Refúgio das Bromelias</button>
         </div>
     </div>
-
 </body>
 </html>
