@@ -9,8 +9,7 @@ if(!isset($_SESSION['usuario'])) {
 }
 
 $usuario = $_SESSION['usuario'];
-$imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usuario['imagem'] : '../imgs/doador.
-png';
+$imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usuario['imagem'] : '../imgs/doador.png';
 ?>
 
 <!DOCTYPE html>
@@ -59,23 +58,16 @@ png';
         <h1>Descubra ONGS</h1>
     </div>
     <div class="content-ongs">
-    <?php if (!empty($ongs)): ?>
-        <?php foreach ($ongs as $ong): ?>
-        <div class="card_ong">
-        <img src="<?php 
-        $caminhoImagem = $ong['banner'];
-        if (!file_exists($caminhoImagem)) {
-            $caminhoImagem = '../imgs/default-banner.png';
-        }
-        echo htmlspecialchars($caminhoImagem, ENT_QUOTES, 'UTF-8'); 
-    ?>" alt="Banner da ONG">
-    <button class="botao-ong"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></button>
+        <?php if (!empty($ongs)): ?>
+            <?php foreach ($ongs as $ong): ?>
+                <div class="card_ong">
+                    <img src="<?php echo htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8'); ?>" alt="Banner da ONG">
+                    <button class="botao-ong"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></button>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Nenhuma ONG encontrada.</p>
+        <?php endif; ?>
     </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Nenhuma ONG encontrada.</p>
-    <?php endif; ?>
-</div>
-
 </body>
 </html>
