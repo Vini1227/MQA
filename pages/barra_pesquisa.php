@@ -1,58 +1,39 @@
 <?php
-
-session_start();
-
-if (!isset($_SESSION['usuario'])) {
-    header('Location: login.php');
-    exit();
-}
-
 require_once('config.php');
 
-
-$pesquisa =  $_GET['busca'] ?? '';
-
-$mensagem = '';
 $ongs = [];
+$error = false;
 
-
-if (!empty($pesquisa)) {
-    $sql = "SELECT * FROM ongs WHERE nome LIKE :pesquisa";
+if (isset($_GET['busca']) && !empty($_GET['busca'])) {
+    $busca = $_GET['busca'];
+    $sql = "SELECT nome, banner FROM ongs WHERE nome LIKE :busca";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':pesquisa', "%$pesquisa%", PDO::PARAM_STR);
+    $stmt->bindValue(':busca', "%$busca%", PDO::PARAM_STR);
     $stmt->execute();
+    $ongsPesquisadas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    if (empty($ongsPesquisadas)) {
+        $error = true;
 
-    if (empty($ongs)) { 
-        $mensagem = 'Nenhuma ONG encontrada';
+        if (isset($_SESSION['ongs_exibidas'])) {
+            $ongs = $_SESSION['ongs_exibidas'];
+        } else {
+            $sql = "SELECT nome, banner FROM ongs ORDER BY RAND() LIMIT 5";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $_SESSION['ongs_exibidas'] = $ongs; 
+        }
+    } else {
+        $ongs = $ongsPesquisadas;
     }
+} else {
+    $sql = "SELECT nome, banner FROM ongs ORDER BY RAND() LIMIT 5";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $_SESSION['ongs_exibidas'] = $ongs; 
 }
-
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado da Pesquisa</title>
-</head>
-<body>
-    <h1>Resultado da Pesquisa</h1>
-
-    <?php if (!empty($mensagem)): ?>
-        <p><?php echo $mensagem; ?></p>
-    <?php else: ?>
-        <?php foreach ($ongs as $ong): ?>
-            <div>
-                <h2><?php echo htmlspecialchars($ong['nome']); ?></h2>
-                <p><?php echo htmlspecialchars($ong['descricao'] ?? 'Descrição não disponível'); ?></p>
-            </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-
-</body>
-</html>
-
-
+<script src="/js/mensagem_erro.js"></script>
