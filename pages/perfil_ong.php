@@ -2,12 +2,15 @@
 session_start();
 require_once('config.php');
 
-if (!isset($_SESSION['usuario'])) {
+// Permitir que tanto usuários quanto ONGs acessem a página
+if (!isset($_SESSION['usuario']) && !isset($_SESSION['ong'])) {
     header('Location: ./login.php');
     exit();
 }
 
-$usuario = $_SESSION['usuario'];
+// Identifica quem está logado
+$usuario = $_SESSION['usuario'] ?? null;
+$ongLogada = $_SESSION['ong'] ?? null;
 
 // Verifica se o ID da ONG foi passado pela URL
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -45,63 +48,80 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
     <div class="app">
         <div class="header">
             <div class="nav">
-                <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
+                <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="Logo MQA">
             </div>
             <div class="link">
-                <a href="./user_perfil.php" id="b3">
-                    <img src="<?php echo isset($usuario['imagem']) && !empty($usuario['imagem']) ? '../uploads/users/' . $usuario['imagem'] : '../imgs/doador.png'; ?>" class="user-img" alt="Foto do usuário">
-                    <?php echo $usuario['nome']; ?>
-                </a>
+                <?php if ($usuario): ?>
+                    <!-- Se um usuário estiver logado -->
+                    <a href="./user_perfil.php" id="b3">
+                        <img src="<?php echo isset($usuario['imagem']) && !empty($usuario['imagem']) ? '../uploads/users/' . $usuario['imagem'] : '../imgs/doador.png'; ?>" 
+                             class="user-img" alt="Foto do usuário">
+                        <?php echo $usuario['nome']; ?>
+                    </a>
+                <?php elseif ($ongLogada): ?>
+                    <!-- Se uma ONG estiver logada -->
+                    <a href="./cadastromonetarioproduto.php" id="b3">
+                        <img src="<?php echo isset($ongLogada['imagem']) && !empty($ongLogada['imagem']) ? '../uploads/ongs/' . $ongLogada['imagem'] : '../imgs/doador.png'; ?>" 
+                             class="user-img" alt="Foto da ONG">
+                        <?php echo $ongLogada['nome']; ?>
+                    </a>
+                <?php endif; ?>
                 <a href="./logout.php" id="b4">Sair</a>
             </div>
         </div>  
+
         <div class="banner-perf-box">
-        <img class="banner-do-perfil" src="<?php echo isset($ong['banner']) && !empty($ong['banner']) ? htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8') : '../imgs/banner.png'; ?>" alt="Banner da ONG">
+            <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8') : '../imgs/banner.png'; ?>" 
+                 alt="Banner da ONG">
             <div>
-                <p id="nome-texto" class="texto-banner"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p id="nome-texto" class="texto-banner">
+                    <?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?>
+                </p>
             </div>
         </div>
+
         <div class="img-perf-box">
-        <img class="imagem-do-perfil" 
-     src="<?php echo !empty($ong['foto_perfil']) ? htmlspecialchars($ong['foto_perfil'], ENT_QUOTES, 'UTF-8') : '../imgs/doador.png'; ?>" 
-     alt="Logo da ONG">
+            <img class="imagem-do-perfil" 
+                 src="<?php echo !empty($ong['foto_perfil']) ? htmlspecialchars($ong['foto_perfil'], ENT_QUOTES, 'UTF-8') : '../imgs/doador.png'; ?>" 
+                 alt="Logo da ONG">
         </div>
+
         <div>
-        <p class="fonte">
-            <?php echo isset($ong['descricao']) && !empty($ong['descricao']) ? htmlspecialchars($ong['descricao'], ENT_QUOTES, 'UTF-8') : 'Esta ONG ainda não adicionou uma descrição.'; ?>
-        </p>
+            <p class="fonte">
+                <?php echo !empty($ong['descricao']) ? htmlspecialchars($ong['descricao'], ENT_QUOTES, 'UTF-8') : 'Esta ONG ainda não adicionou uma descrição.'; ?>
+            </p>
         </div>
+
         <div class="recebidos-box">
             <p class="titulos">Recebemos:</p>
             <div class="alinhador">
-            <div class="itens-box">
-                <table>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Tipo</th>
-                        <th>Descrição</th>
-                    </tr>
-                    <?php if (!empty($itens)): ?>
-                        <?php foreach ($itens as $item): ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($item['tipo'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo isset($item['descricao']) && !empty($item['descricao']) ? htmlspecialchars($item['descricao'], ENT_QUOTES, 'UTF-8') : 'Sem descrição'; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
+                <div class="itens-box">
+                    <table>
                         <tr>
-                            <td colspan="3">Nenhum item registrado.</td>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
                         </tr>
-                    <?php endif; ?>
-                </table>
-            </div>
-            <div class="botaodoar-box">
-                <p class="texto-doar">DOAR AGORA!!!</p>
-            </div>
+                        <?php if (!empty($itens)): ?>
+                            <?php foreach ($itens as $item): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo htmlspecialchars($item['tipo'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo !empty($item['descricao']) ? htmlspecialchars($item['descricao'], ENT_QUOTES, 'UTF-8') : 'Sem descrição'; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="3">Nenhum item registrado.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </table>
+                </div>
+                <div class="botaodoar-box">
+                    <p class="texto-doar">DOAR AGORA!!!</p>
+                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
-

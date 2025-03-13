@@ -4,13 +4,15 @@ require_once('config.php');
 require_once('./cards.php');
 require_once('./barra_pesquisa.php');
 
-if(!isset($_SESSION['usuario'])) {
-    header('Location:./login.php');
+// Verifica se há um usuário ou uma ONG logada
+if (!isset($_SESSION['usuario']) && !isset($_SESSION['ong'])) {
+    header('Location: ./login.php');
     exit();
 }
 
-$usuario = $_SESSION['usuario'];
-$imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usuario['imagem'] : '../imgs/doador.png';
+// Define as variáveis de sessão para usuário ou ONG
+$usuario = $_SESSION['usuario'] ?? null;
+$ong = $_SESSION['ong'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -32,51 +34,53 @@ $imagemPerfil = isset ($usuario['imagem']) && !empty($usuario['imagem']) ? $usua
 
 <body>
     <header>
-        <img class="v3" src="../imgs/MQA_whitewithtext.svg" alt="">
+        <img class="v3" src="../imgs/MQA_whitewithtext.svg" alt="Logo">
 
         <div class="link">
-            <a href="./user_perfil.php" id="b3">
-            <img src="<?php echo isset($usuario['imagem']) && !empty($usuario['imagem']) ? '../uploads/users/' . $usuario['imagem'] : '../imgs/doador.png'; ?>" class="user-img" alt="Foto do usuário">
-            <?php echo $usuario['nome']; ?>
-        </a>
+            <a href="<?php echo isset($ong) ? 'cadastromonetarioproduto.php' : 'user_perfil.php'; ?>" id="b3">
+                <img src="<?php echo isset($ong) ? '../uploads/ongs/' . ($ong['imagem'] ?? 'default-ong.png') : '../uploads/users/' . ($usuario['imagem'] ?? 'doador.png'); ?>" class="user-img" alt="Foto do perfil">
+                <?php echo isset($ong) ? htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8') : htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8'); ?>
+            </a>
             <a href="./logout.php" id="b4">Sair</a>
         </div>
-            
     </header>
-    <form action="" method="get">
-    <div class="content-pesq">
-        <input name="busca" type="search" class="pesq" placeholder="Procure por uma ONG">
-        <button type="submit" class="icone">
-            <i class="fas fa-search"></i>
-        </button>
-    </div>
-</form>
-<?php if ($error): ?>
-    <p class="erro-msg">Nenhuma ONG encontrada.</p>
-<?php endif; ?>
 
-<div class="title">
-    <h1>
-        <?php if (isset($_GET['busca']) && !empty($_GET['busca']) && !$error): ?>
-            Resultado da pesquisa
-        <?php else: ?>
-            Descubra ONGS
-        <?php endif; ?>
-    </h1>
-</div>
-    <div class="content-ongs">
-    <?php if (!empty($ongs)): ?>
-        <?php foreach ($ongs as $ong): ?>
-            <div class="card_ong">
-            <a href="perfil_ong.php?id=<?php echo $ong['id']; ?>" class="card-link">
-                    <img src="<?php echo htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8'); ?>" alt="Banner da ONG" class="card-img">
-                    <button class="botao-ong"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></button>
-                </a>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
+    <form action="" method="get">
+        <div class="content-pesq">
+            <input name="busca" type="search" class="pesq" placeholder="Procure por uma ONG">
+            <button type="submit" class="icone">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+
+    <?php if (isset($error) && $error): ?>
         <p class="erro-msg">Nenhuma ONG encontrada.</p>
     <?php endif; ?>
-</div>
+
+    <div class="title">
+        <h1>
+            <?php if (isset($_GET['busca']) && !empty($_GET['busca']) && !$error): ?>
+                Resultado da pesquisa
+            <?php else: ?>
+                Descubra ONGs
+            <?php endif; ?>
+        </h1>
+    </div>
+
+    <div class="content-ongs">
+        <?php if (!empty($ongs)): ?>
+            <?php foreach ($ongs as $ong): ?>
+                <div class="card_ong">
+                    <a href="perfil_ong.php?id=<?php echo $ong['id']; ?>" class="card-link">
+                        <img src="<?php echo htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8'); ?>" alt="Banner da ONG" class="card-img">
+                        <button class="botao-ong"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></button>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="erro-msg">Nenhuma ONG encontrada.</p>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
