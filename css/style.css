@@ -1,8 +1,11 @@
 *{
-    margin:0;
-    padding:0;
+    padding: 0;
+    margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    font-weight: bold;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    }
 
 header{
     display: flex;
@@ -33,7 +36,6 @@ a{
 }
 
 #b3, #b4{
-    font-family: 'lalezar';
     font-size: 20px;
 }
 .conteiner{

@@ -1,7 +1,11 @@
 *{
-padding: 0;
-margin: 0;
-}
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    }
 
 header{
 display: flex;
@@ -30,7 +34,6 @@ flex-wrap: nowrap;
 .link a {
 text-decoration: none;
 color: white;
-font-family: 'Lalezar', sans-serif;
 font-size: 20px;
 white-space: nowrap;
 overflow: hidden;
@@ -54,7 +57,6 @@ color: white;
 #b3, #b4{
 display: flex;
 align-items: center;
-font-family: 'lalezar';
 font-size: 20px;
 }
 
@@ -70,7 +72,6 @@ border-bottom-left-radius: 20px;
 border-top-left-radius: 20px;
 padding: 8px 10px 8px 22px;
 font-size: 20px;
-font-family: 'lalezar';
 border-right: none;
 border: 1.5px solid #8f8f8f;
 background-color: #f4f4f4;
@@ -106,7 +107,6 @@ background-color: white;
 margin-top: 100px;
 margin-bottom: 15px;
 margin-left: 78px;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 font-size: 20px;
 }
 
@@ -146,7 +146,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 width: 100%;
-font-family: 'Lalezar', sans-serif;
 font-size: 24px;
 border: none;
 border-bottom-left-radius: 20px;

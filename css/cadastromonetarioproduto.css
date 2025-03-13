@@ -3,7 +3,9 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "DM Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
 }
 
 .app {
@@ -423,7 +425,6 @@ details[open] {
 #b4 {
   display: flex;
   align-items: center;
-  font-family: "lalezar";
   font-size: 20px;
   text-decoration: none;
   color: white;
