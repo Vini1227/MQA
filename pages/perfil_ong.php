@@ -52,16 +52,14 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="link">
                 <?php if ($usuario): ?>
-                    <!-- Se um usuário estiver logado -->
                     <a href="./user_perfil.php" id="b3">
-                        <img src="<?php echo isset($usuario['imagem']) && !empty($usuario['imagem']) ? '../uploads/users/' . $usuario['imagem'] : '../imgs/doador.png'; ?>" 
+                        <img src="<?php echo isset($usuario['imagem']) ? '../uploads/users/' . $usuario['imagem'] : '../imgs/doador.png'; ?>" 
                              class="user-img" alt="Foto do usuário">
                         <?php echo $usuario['nome']; ?>
                     </a>
                 <?php elseif ($ongLogada): ?>
-                    <!-- Se uma ONG estiver logada -->
                     <a href="./cadastromonetarioproduto.php" id="b3">
-                        <img src="<?php echo isset($ongLogada['imagem']) && !empty($ongLogada['imagem']) ? '../uploads/ongs/' . $ongLogada['imagem'] : '../imgs/doador.png'; ?>" 
+                        <img src="<?php echo isset($ongLogada['imagem']) ? '../uploads/ongs/' . $ongLogada['imagem'] : '../imgs/doador.png'; ?>" 
                              class="user-img" alt="Foto da ONG">
                         <?php echo $ongLogada['nome']; ?>
                     </a>
@@ -71,56 +69,35 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
         </div>  
 
         <div class="banner-perf-box">
-            <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8') : '../imgs/banner.png'; ?>" 
-                 alt="Banner da ONG">
-            <div>
-                <p id="nome-texto" class="texto-banner">
-                    <?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?>
-                </p>
-            </div>
+            <img class="banner-do-perfil" src="<?php echo !empty($ong['banner']) ? htmlspecialchars($ong['banner'], ENT_QUOTES, 'UTF-8') : '../imgs/banner.png'; ?>" alt="Banner da ONG">
+            <p id="nome-texto" class="texto-banner"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
 
         <div class="img-perf-box">
-            <img class="imagem-do-perfil" 
-                 src="<?php echo !empty($ong['foto_perfil']) ? htmlspecialchars($ong['foto_perfil'], ENT_QUOTES, 'UTF-8') : '../imgs/doador.png'; ?>" 
-                 alt="Logo da ONG">
+            <img class="imagem-do-perfil" src="<?php echo !empty($ong['foto_perfil']) ? htmlspecialchars($ong['foto_perfil'], ENT_QUOTES, 'UTF-8') : '../imgs/doador.png'; ?>" alt="Logo da ONG">
         </div>
 
-        <div>
-            <p class="fonte">
-                <?php echo !empty($ong['descricao']) ? htmlspecialchars($ong['descricao'], ENT_QUOTES, 'UTF-8') : 'Esta ONG ainda não adicionou uma descrição.'; ?>
-            </p>
-        </div>
+        <p class="fonte"><?php echo !empty($ong['descricao']) ? htmlspecialchars($ong['descricao'], ENT_QUOTES, 'UTF-8') : 'Esta ONG ainda não adicionou uma descrição.'; ?></p>
 
         <div class="recebidos-box">
             <p class="titulos">Recebemos:</p>
-            <div class="alinhador">
-                <div class="itens-box">
-                    <table>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Tipo</th>
-                            <th>Descrição</th>
-                        </tr>
-                        <?php if (!empty($itens)): ?>
-                            <?php foreach ($itens as $item): ?>
-                                <tr>
-                                    <td><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                    <td><?php echo htmlspecialchars($item['tipo'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                    <td><?php echo !empty($item['descricao']) ? htmlspecialchars($item['descricao'], ENT_QUOTES, 'UTF-8') : 'Sem descrição'; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="3">Nenhum item registrado.</td>
-                            </tr>
-                        <?php endif; ?>
-                    </table>
-                </div>
-                <button class="botaodoar-box">
-                    <a href="../pages/cadastro-itens-usuario.php" class="texto-doar">DOAR AGORA!!!</a>
-                </button>
-            </div>
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                </tr>
+                <?php foreach ($itens as $item): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($item['tipo'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($item['descricao'] ?? 'Sem descrição', ENT_QUOTES, 'UTF-8'); ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+            <button class="botaodoar-box">
+                <a href="../pages/cadastro-itens-usuario.php?id=<?php echo $id; ?>&user_id=<?php echo $usuario ? $usuario['id'] : ''; ?>" class="texto-doar">DOAR AGORA!!!</a>
+            </button>
         </div>
     </div>
 </body>
