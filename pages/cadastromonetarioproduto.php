@@ -134,7 +134,7 @@ $itens = $stmtItens->fetchAll(PDO::FETCH_ASSOC);
         <input class="input-texto-banner" type="text" name="nome" id="nome-input" value="<?php echo htmlspecialchars($ong['nome']); ?>" style="display:none;">
         
         <!-- Botão de Salvar ao lado do input -->
-        <button type="submit" name="saveChanges" class="button" style="display:none;" id="save-button">
+        <button type="submit" name="saveChanges" class="button" id="save-button">
             <p class="input-texto-salvar">Salvar</p>
         </button>
     </div>
