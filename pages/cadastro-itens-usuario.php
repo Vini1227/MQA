@@ -29,19 +29,22 @@ if (!$ong) {
     exit();
 }
 
+// Busca os dados bancários da ONG (PIX)
+$stmt_pix = $pdo->prepare("SELECT pix FROM cadastro_monetario WHERE ong_id = ?");
+$stmt_pix->execute([$id]);
+$dados_bancarios = $stmt_pix->fetch(PDO::FETCH_ASSOC);
+
 // Captura o ID do usuário
 $user_id = $_GET['user_id'] ?? ($usuario ? $usuario['id'] : null);
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/itensUsuario.css">
     <title>Doação para <?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></title>
 </head>
-<body>
     <div class="app">
         <div class="header">
             <div class="nav">
@@ -65,13 +68,53 @@ $user_id = $_GET['user_id'] ?? ($usuario ? $usuario['id'] : null);
                 <div class="dnttp-title">
                     <h1 class="dnttp-card-title">O que você deseja doar para: ONG <?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></h1>
                 </div>
-                <div class="dnttp-buttons">
-                    <button class="dnttp-money">Dinheiro</button>
-                    <button id="card-toggle-1" class="dnttp-itens">Itens</button>
+                <div class="dnttp-buttons" id="botoesDinItens">
+                    <button class="dnttp-money" onclick="mostrarPix()">Dinheiro</button>
+                    <button class="dnttp-itens" onclick="mostrarWhatsapp()">Itens</button>
                 </div>
             </div>
 
-            <form action="processar_doacao.php" method="POST" onsubmit="return validateForm()">
+            <!-- PIX aparece aqui -->
+            <div id="pix-container" class="pix-box" style="display: none;">
+                <h2>Chave PIX da ONG:</h2>
+                <p id="pix-key"><?php echo $dados_bancarios ? htmlspecialchars($dados_bancarios['pix'], ENT_QUOTES, 'UTF-8') : 'Nenhuma chave PIX cadastrada.'; ?></p>
+                <div class="dnttp-buttons" id="botoesDinItens">
+                    <button class="dnttp-money" onclick="mostrarTela()">Voltar</button>
+                </div>
+            </div>
+
+            <!-- WhatsApp aparece aqui -->
+            <div id="whatsapp-container" class="whatsapp-box" style="display: none;">
+                <h2>Para doar itens entre em contato com a ONG</h2>
+                <p>Número: +55 (81) 94002-8922</p>
+                <div class="dnttp-buttons" id="botoesDinItens">
+                    <button class="dnttp-money" onclick="mostrarTela()">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarPix() {
+            document.getElementById('pix-container').style.display = 'block';
+            document.getElementById('whatsapp-container').style.display = 'none'; // Esconde WhatsApp ao clicar em Dinheiro
+            document.getElementById('donatetype-card').style.display = 'none';
+        }
+
+        function mostrarWhatsapp() {
+            document.getElementById('whatsapp-container').style.display = 'block';
+            document.getElementById('pix-container').style.display = 'none'; // Esconde PIX ao clicar em Itens
+            document.getElementById('donatetype-card').style.display = 'none';
+        }
+        function mostrarTela() {
+            document.getElementById('whatsapp-container').style.display = 'none';
+            document.getElementById('pix-container').style.display = 'none'; // Esconde PIX ao clicar em Itens
+            document.getElementById('donatetype-card').style.display = 'block';
+        }
+    </script>
+
+
+            <!--<form action="processar_doacao.php" method="POST" onsubmit="return validateForm()">
                 <input type="hidden" name="ong_id" value="<?php echo $id; ?>">
                 <input type="hidden" name="usuario_id" value="<?php echo $user_id; ?>">
 
@@ -118,6 +161,6 @@ $user_id = $_GET['user_id'] ?? ($usuario ? $usuario['id'] : null);
         </div>
     </div>
 
-    <script src="../js/itensUsuario.js"></script>
+    <script src="../js/itensUsuario.js"></script>-->
 </body>
 </html>

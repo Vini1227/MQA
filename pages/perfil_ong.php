@@ -81,6 +81,7 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="recebidos-box">
             <p class="titulos">Recebemos:</p>
+            <div class="recebidos-box2">
             <table>
                 <tr>
                     <th>Nome</th>
@@ -98,6 +99,8 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
             <button class="botaodoar-box">
                 <a href="../pages/cadastro-itens-usuario.php?id=<?php echo $id; ?>&user_id=<?php echo $usuario ? $usuario['id'] : ''; ?>" class="texto-doar">DOAR AGORA!!!</a>
             </button>
+            </div>
+            </div>
         </div>
     </div>
 </body>
