@@ -47,7 +47,6 @@ $ong = $_SESSION['ong'] ?? null;
             <a href="./logout.php" id="b4">Sair</a>
         </div>
     </header>
-
     <form action="" method="get">
         <div class="content-pesq">
             <input name="busca" type="search" class="pesq" placeholder="Procure por uma ONG">
