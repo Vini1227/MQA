@@ -44,7 +44,7 @@ if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']
             'descricao' => $result_ong['descricao'] ?? null
         ];
 
-        header('Location: cadastromonetarioproduto.php');
+        header('Location: user_logado.php');
         exit();
     }
 
