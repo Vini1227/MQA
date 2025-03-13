@@ -1,16 +1,3 @@
-<?php
-session_start();
-require_once('config.php');
-
-// Verifica se os dados da ONG estão armazenados na sessão
-if (!isset($_SESSION['ong_dados'])) {
-    echo "Dados da ONG não encontrados.";
-    exit();
-}
-
-$ong = $_SESSION['ong_dados'];
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
