@@ -34,7 +34,15 @@ if (!$ong) {
 $stmt_itens = $pdo->prepare("SELECT * FROM itens WHERE ong_id = ?");
 $stmt_itens->execute([$id]);
 $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
+
+// Armazena os dados da ONG na sessão
+$_SESSION['ong_dados'] = $ong;
+
+// Redireciona para a nova página
+header("Location: ../pages/cadastro-itens-usuario.php");
+exit();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -117,9 +125,9 @@ $itens = $stmt_itens->fetchAll(PDO::FETCH_ASSOC);
                         <?php endif; ?>
                     </table>
                 </div>
-                <div class="botaodoar-box">
-                    <p class="texto-doar">DOAR AGORA!!!</p>
-                </div>
+                <button class="botaodoar-box">
+                    <a href="../pages/cadastro-itens-usuario.php" class="texto-doar">DOAR AGORA!!!</a>
+                </button>
             </div>
         </div>
     </div>

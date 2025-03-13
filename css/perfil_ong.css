@@ -163,21 +163,35 @@ table {
 .botaodoar-box {
   display: flex;
   margin: auto;
-  background-color: #00ccff;
   width: fit-content;
   height: fit-content;
-  border-radius: 20px;
   padding: 20px;
   align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  min-height: 60px;
+  border-radius: 5px;
+  border: none;
+  background-color: #00ccff;
+  color: #ffffff;
 }
 
 .texto-doar {
   font-size: 28px;
   font-weight: bold;
   color: #ffffff;
+  text-decoration: none;
 }
 
 .botaodoar-box:hover {
-  border: 1.5px solid #8f8f8f;
+  background-color: #ffffff;
+  color: #00ccff;
+  border: #00ccff solid;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.botaodoar-box:hover .texto-doar {
+  color: #00ccff;
+  transition: 0.3s;
 }

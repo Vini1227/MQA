@@ -1,3 +1,16 @@
+<?php
+session_start();
+require_once('config.php');
+
+// Verifica se os dados da ONG estão armazenados na sessão
+if (!isset($_SESSION['ong_dados'])) {
+    echo "Dados da ONG não encontrados.";
+    exit();
+}
+
+$ong = $_SESSION['ong_dados'];
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,7 +20,7 @@
     <script src="https://kit.fontawesome.com/b0c267dc7d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/itensUsuario.css">
     <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
-    <title>Login</title>
+    <title><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></title>
 </head>
 <body>
     <div class="app"> <!-- classe app é a div pai de toda pagina -->
@@ -21,17 +34,17 @@
         <div class="ong-profile">
             <div class="ong-profile-space">
                 <div class="ong-profile-img">
-                    <img class="ong-profile-img-logo" src="../imgs/avatar.png" alt="">
+                    <img class="ong-profile-img-logo" src="<?php echo !empty($ong['foto_perfil']) ? htmlspecialchars($ong['foto_perfil'], ENT_QUOTES, 'UTF-8') : '../imgs/avatar.png'; ?>" alt="Logo da ONG">
                 </div>
                 <div class="ong-profile-info">
-                    <h1 class="ong-profile-title">Salva Animal</h1>
+                    <h1 class="ong-profile-title"><?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></h1>
                 </div>
             </div>
         </div>
         <div class="main"> <!-- parte principal da pagina -->
             <div id="donatetype-card" class="donatetype-card">
                 <div class="dnttp-title">
-                    <h1 class="dnttp-card-title">O que você deseja doar para: ONG Salva Animal</h1>
+                    <h1 class="dnttp-card-title">O que você deseja doar para: ONG <?php echo htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8'); ?></h1>
                 </div>
                 <div class="dnttp-buttons">
                     <button class="dnttp-money">Dinheiro</button>
@@ -83,3 +96,4 @@
     <script src="../js/itensUsuario.js"></script>
 </body>
 </html>
+
