@@ -20,15 +20,12 @@ $ong = $_SESSION['ong'] ?? null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User_logado</title>
+    <title>User Logado</title>
     <link rel="shortcut icon" href="../imgs/MQA_blue.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/user_logado.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Krona+One&family=Lalezar&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -38,8 +35,14 @@ $ong = $_SESSION['ong'] ?? null;
 
         <div class="link">
             <a href="<?php echo isset($ong) ? 'cadastromonetarioproduto.php' : 'user_perfil.php'; ?>" id="b3">
-                <img src="<?php echo isset($ong) ? '../uploads/ongs/' . ($ong['imagem'] ?? 'default-ong.png') : '../uploads/users/' . ($usuario['imagem'] ?? 'doador.png'); ?>" class="user-img" alt="Foto do perfil">
-                <?php echo isset($ong) ? htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8') : htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8'); ?>
+                <!-- Exibe a imagem de perfil da ONG -->
+                <img src="<?php echo isset($ong) 
+                    ? 'uploads/ongs/perfil_' . $ong['id'] . '.jpg' // Ajuste aqui para o formato correto da imagem
+                    : '../uploads/users/' . ($usuario['imagem'] ?? 'doador.png'); ?>" 
+                    class="user-img" alt="Foto do perfil">
+                <?php echo isset($ong) 
+                    ? htmlspecialchars($ong['nome'], ENT_QUOTES, 'UTF-8') 
+                    : htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8'); ?>
             </a>
             <a href="./logout.php" id="b4">Sair</a>
         </div>
