@@ -39,7 +39,7 @@
                     ou registre sua organização para receber apoio essencial. Juntos, podemos transformar vidas e construir um futuro melhor. 
                     Clique no botão "Registre-se" para começar e participe dessa corrente de solidariedade!
                 </p>
-                <button class="box2-button">Registre-se</button>
+                <button class="box2-button"><a href="../pages/pag_conhecimento.php">Registre-se</a></button>
             </div>
             <div class="box2-img">
                 <img class="box2-img-home1" src="../imgs/home-illustration01.svg" alt="">

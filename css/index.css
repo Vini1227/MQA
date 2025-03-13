@@ -162,6 +162,10 @@
   transition: 0.3s;
 }
 
+.box2-button:hover a{
+color: #00ccff;
+}
+
 .box2-img-home1{
   width: 100%;
   height: 100%;
@@ -381,4 +385,10 @@
 
 .box5-img-home3 {
   height: 330px
+}
+
+a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
 }

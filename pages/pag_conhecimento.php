@@ -19,8 +19,6 @@
         <img class="mqa" src="../imgs/MQA_whitewithtext.svg" alt="">
 
         <div class="link">
-            <a href="#" id="b3">Login</a>
-            <a href="#" id="b4">Cadastre-se</a>
         </div>
     </header>
     
