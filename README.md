@@ -18,13 +18,41 @@ Sistema para intermediar a comunicação entre doadores e ONGs. Criado com o int
 
 ## Tecnologias ⚛
 
-
 * HTML
 * CSS
 * PHP
 * MYSQL
 * JAVASCRIPT
 * REACT
+
+
+## Como rodar o MQA na sua máquina local 🚀
+
+Siga os passos abaixo para configurar e rodar o MQA localmente.
+
+### 1. Verifique os pré-requisitos
+Certifique-se de que o **PHP** e o **MySQL** estão instalados em sua máquina.
+
+- Caso não tenha essas ferramentas, você pode baixá-las nos seguintes links:
+  - [Baixar PHP](https://www.php.net/downloads.php)
+  - [Baixar MySQL](https://dev.mysql.com/downloads/)
+
+### 2. Habilitar a extensão PDO no PHP
+- Abra o arquivo `php.ini` do seu PHP (geralmente localizado na pasta de instalação do PHP).
+- Localize a linha `;extension=pdo_mysql` e remova o ponto e vírgula (`;`) no início dela para habilitar a extensão.
+
+### 3. Configuração do banco de dados
+- Abra o arquivo `config.php` na pasta do projeto.
+- Verifique e, se necessário, altere a porta do banco de dados. Por padrão, o MySQL usa a porta `3306`, mas se você estiver usando uma porta diferente, altere a linha correspondente.
+
+### 4. Criando o banco de dados
+O banco de dados necessário para o funcionamento do MQA está definido no arquivo `banco.sql`.
+
+### 5. Rodando o servidor
+- Acesse a pasta `MQA` via terminal.
+- Execute o comando:
+  ```bash
+  php -S localhost:8000
 
 
 ## Desenvolvedores 👨🏽‍💻
